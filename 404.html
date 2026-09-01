@@ -3,22 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Dolores turns your trade idea into a clear plan, watches the market, and acts through your connected broker within your rules."
-    />
-    <meta name="theme-color" content="#151521" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Dolores | Build and manage your trade</title>
-    <script type="module" crossorigin src="/assets/index-Dv7fV3PN.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BkEa3vbq.css">
+    <meta name="robots" content="noindex" />
+    <title>Page not found — Noureddine Ziani</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script>
+      if (window.location.pathname.startsWith("/Kadr.ai/")) {
+        document.documentElement.hidden = true;
+        fetch("/Kadr.ai/index.html", { cache: "no-store" })
+          .then((response) => {
+            if (!response.ok) throw new Error("Dolores staging is unavailable.");
+            return response.text();
+          })
+          .then((html) => {
+            document.open();
+            document.write(html);
+            document.close();
+          })
+          .catch(() => window.location.replace("/Kadr.ai/"));
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <main class="not-found">
+      <p class="eyebrow">404</p>
+      <h1>This page isn’t here.</h1>
+      <a class="button button-primary" href="/">Return home</a>
+    </main>
   </body>
 </html>

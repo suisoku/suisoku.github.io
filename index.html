@@ -3,22 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f0e7" />
     <meta
       name="description"
-      content="Dolores turns your trade idea into a clear plan, watches the market, and acts through your connected broker within your rules."
+      content="Noureddine Ziani builds focused software for complicated systems in Grenoble, France."
     />
-    <meta name="theme-color" content="#151521" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Noureddine Ziani — Builder" />
+    <meta property="og:description" content="Focused software for complicated systems." />
+    <meta property="og:image" content="https://suisoku.github.io/og.png" />
+    <meta property="og:url" content="https://suisoku.github.io/" />
+    <title>Noureddine Ziani — Builder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet"
     />
-    <title>Dolores | Build and manage your trade</title>
-    <script type="module" crossorigin src="/assets/index-Dv7fV3PN.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BkEa3vbq.css">
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div id="root"></div>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Noureddine Ziani, home">NZ</a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/suisoku" rel="me">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Builder · Grenoble, France</p>
+          <h1 id="hero-title">I build focused software for complicated systems.</h1>
+          <p class="intro">
+            I’m Noureddine Ziani. I work on intelligent products, market tools, and
+            experiments that turn difficult ideas into clear, usable software.
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href="/Kadr.ai/">Open Dolores <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://github.com/suisoku">View GitHub</a>
+          </div>
+        </div>
+
+        <figure class="portrait-frame">
+          <span class="portrait-index" aria-hidden="true">01 / NZ</span>
+          <img
+            src="/avatar.jpg"
+            alt="Noureddine Ziani's illustrated GitHub avatar"
+            width="460"
+            height="460"
+          />
+          <figcaption>Online as suisoku.</figcaption>
+        </figure>
+      </section>
+
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2 id="work-title">One system, made legible.</h2>
+        </div>
+        <article class="project-card">
+          <div>
+            <p class="project-number">01</p>
+            <h3>Dolores</h3>
+          </div>
+          <p>
+            A workspace for turning trading ideas into explicit, reviewable strategy
+            contracts before execution.
+          </p>
+          <div class="project-meta">
+            <span>Staging preview</span>
+            <a href="/Kadr.ai/">Explore the project <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <p class="eyebrow">About</p>
+        <div>
+          <h2 id="about-title">Curious about the mechanism beneath the surface.</h2>
+          <p>
+            I build, learn, and refine systems in public. My interests sit where
+            product thinking, intelligent software, and financial technology meet.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Noureddine Ziani</p>
+      <a href="https://github.com/suisoku">github.com/suisoku</a>
+    </footer>
   </body>
 </html>
