@@ -51,6 +51,6 @@ Before publishing an update, check local HTML/CSS/JavaScript asset references,
 render the linked designs, scan for credentials and private endpoints, and verify
 the Pages deployment and public URLs after pushing.
 
-Live audit 13 (`studio-evolution/horizon-live-13.html?lang=fr`) is a browser-first exploration with an on-demand journal drawer, optional pinned journal and local takeover. No runtime is connected.
+Live audit 13 (`studio-evolution/horizon-live-13.html?lang=fr`) is a browser-first exploration with the journal pinned on the left by default, optional unpinning into a drawer and local takeover. No runtime is connected.
 
 Silk Arc / Live audit 14 (`studio-evolution/silk-arc-live-14.html?lang=fr`) reuses the original Arc navigation and visual theme, with a browser-first workspace, optional right journal and local takeover.
