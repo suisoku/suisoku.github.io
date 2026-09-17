@@ -1,0 +1,108 @@
+/* Palette-only Silk study, with grounded control states. Layout/motion stays in surfaces.css/app.js. */
+body[data-palette]{
+  --bg:#f7f7f8;--surface:#fff;--subtle:#f2f2f4;--rail:#ededf0;
+  --text:#28272e;--muted:#62616c;--line:#dedee3;--control:#888793;
+  --accent:#6242bd;--accent-hover:#51339f;--tint:#f0ebfb;--selection:#e9e2f7;
+  --accent-line:#b8a5de;--focus-halo:#e9e2f7;--hero:#6242bd;--hero-muted:#efe8ff;
+  --ink-shadow:#20202b;--on-accent:#fff;background:var(--bg);color:var(--text);
+}
+body[data-palette=blue]{
+  --bg:#f5f5f5;--subtle:#f0f2f5;--rail:#eaecef;--text:#172334;--muted:#586273;
+  --line:#d8dde3;--control:#7e8998;--accent:#214fd7;--accent-hover:#163dab;
+  --tint:#eef3fd;--selection:#e2eafa;--accent-line:#9db3e4;--focus-halo:#e0e9fb;
+  --hero:#082242;--hero-muted:#ccd9ed;--ink-shadow:#172334;
+}
+body[data-palette=mineral]{
+  --bg:#f6f7f6;--subtle:#eff2f1;--rail:#e9edeb;--text:#233034;--muted:#5a686b;
+  --line:#d8dfdc;--control:#7b8b8d;--accent:#1e6271;--accent-hover:#154e5b;
+  --tint:#edf5f6;--selection:#dcecef;--accent-line:#98bac3;--focus-halo:#dcecef;
+  --hero:#214c57;--hero-muted:#d8ebef;--ink-shadow:#233034;
+}
+/* Opaque neutral reading planes. Accent is reserved for identity, action and selection. */
+[data-palette] .sidebar{background:var(--rail)}
+[data-palette] .work{background:var(--bg);box-shadow:-1px 0 var(--line)}
+[data-palette] .topbar{background:var(--bg);border-color:var(--line)}
+[data-palette] .labbar{background:var(--surface);border-color:var(--line);color:var(--muted)}
+[data-palette] .labbar b{color:var(--accent)}
+[data-palette] :is(.panel,.project-grid,.metrics,.rows,.table-wrap,.playground-cell,.empty){background:var(--surface);border-color:var(--line);box-shadow:none}
+[data-palette] .project{background:transparent;border-color:var(--line)}
+[data-palette] :is(.row,.metric,td,th,.project footer,.inspector dl,.dialog-actions,.timeline li){border-color:var(--line)}
+[data-palette] :is(.panel p,.navlabel,.sidebar-caption,.sidebar-caption span,.project-index,.inspector-head .eyebrow){color:var(--muted)}
+[data-palette] :is(th,.browser-toolbar,.browser-footer){background:var(--subtle);color:var(--muted)}
+[data-palette] :is(.inspector,dialog){background:var(--surface);border-color:var(--line)}
+[data-palette] .inspector{box-shadow:inset 0 3px var(--accent),0 4px 16px #20202b06}
+[data-palette] .inspector:focus-within{border-color:var(--accent-line)}
+[data-palette] .inspector:focus{outline-color:var(--accent)}
+[data-palette] .inspector code{background:var(--subtle);border-color:var(--line);color:var(--text);border-radius:8px}
+[data-palette] dialog{box-shadow:0 24px 80px #18202d30,0 3px 12px #18202d12}
+[data-palette] dialog::backdrop{background:#18202d66;backdrop-filter:blur(2px)}
+[data-palette] .command-dialog::backdrop{backdrop-filter:none}
+[data-palette] .attention{background:var(--hero);border-color:var(--hero);color:#fff;box-shadow:inset 0 1px #ffffff30,0 10px 22px -16px #20202b55}
+[data-palette] .attention :is(p,.eyebrow,.number){color:var(--hero-muted)}
+[data-palette] .attention .primary{background:#fff;color:var(--accent);border-color:#fff;box-shadow:0 1px 3px #0002}
+[data-palette] .attention .primary:hover{background:var(--tint);color:var(--accent-hover);box-shadow:0 0 0 2px #ffffff50}
+/* Smaller rectangular hit areas inside Silk's flowing outer contours. No hover translation. */
+[data-palette] :is(button,.button){border-radius:8px;border-color:var(--control);background:var(--surface);color:var(--text)}
+[data-palette] :is(button,.button):hover{background:var(--subtle);border-color:var(--accent-line);box-shadow:inset 0 0 0 1px var(--line)}
+[data-palette] :is(button,.button):focus-visible,
+[data-palette] :is(a,input,select,textarea,summary):focus-visible{outline:3px solid var(--accent);outline-offset:3px;box-shadow:0 0 0 6px var(--surface)}
+[data-palette] .primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:inset 0 1px #ffffff25,0 1px 2px #18202d18}
+[data-palette] .primary:hover{background:var(--accent-hover);color:#fff;border-color:var(--accent-hover);box-shadow:0 0 0 2px var(--tint);filter:none}
+[data-palette] .quiet{border-color:transparent;background:transparent}
+[data-palette] .quiet:hover{border-color:var(--line);background:var(--subtle)}
+[data-palette] .danger{color:var(--bad)}
+[data-palette] button:disabled{color:#72747c;background:#f1f2f3;border-color:#d4d7dc;box-shadow:none;transform:none}
+[data-palette] :is(input,select,textarea){background:var(--surface);border-color:var(--control);color:var(--text);border-radius:8px}
+[data-palette] :is(input,select,textarea):hover{border-color:var(--accent)}
+[data-palette] :is(input,select,textarea):focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--focus-halo)}
+[data-palette] input[readonly]{background:var(--subtle);border-color:var(--line)}
+[data-palette] .form-grid:focus-within{border-color:var(--accent-line)}
+[data-palette] .form-grid .check{background:var(--subtle);border-color:var(--line);border-radius:8px}
+[data-palette] .form-grid .check:focus-within{box-shadow:0 0 0 3px var(--focus-halo);border-color:var(--accent)}
+[data-palette] :is(.org-select,.search-trigger){background:var(--surface);border-color:var(--line);color:var(--muted)}
+[data-palette] :is(kbd,.org-initial){background:var(--surface);color:var(--muted);border-color:var(--line)}
+[data-palette] .avatar{background:var(--tint);border-color:var(--line);color:var(--accent)}
+[data-palette] .brandmark{box-shadow:inset 0 1px #ffffff40,0 2px 4px #18202d12}
+[data-palette] .nav-indicator{background:var(--selection);border-radius:9px;box-shadow:inset 3px 0 var(--accent)}
+[data-palette] .navgroup a{border-radius:9px;color:var(--muted)}
+[data-palette] .navgroup a:hover{background:var(--subtle);color:var(--text)}
+[data-palette] .navgroup a[aria-current=page]{color:var(--accent);background:transparent}
+[data-palette] .navgroup a[aria-current=page]:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+[data-palette] .project .monogram{background:var(--subtle);color:var(--accent);border:1px solid var(--line);border-radius:10px}
+[data-palette] .project:focus-within{background:var(--subtle);box-shadow:inset 0 0 0 2px var(--accent-line)}
+[data-palette] .row:focus-within{background:var(--subtle);box-shadow:none}
+[data-palette] tr:focus-within{background:var(--subtle)}
+[data-palette] .finding{background:var(--surface);border-color:var(--line);box-shadow:none;border-radius:15px}
+[data-palette] .finding:hover{background:var(--subtle);border-color:var(--control);box-shadow:none}
+[data-palette] .finding[aria-pressed=true]{background:var(--tint);border-color:var(--accent-line);box-shadow:inset 4px 0 var(--accent);border-radius:15px 5px 5px 15px}
+[data-palette] .finding[aria-expanded=true] .title{color:var(--text)}
+[data-palette] .finding:active{transform:none;box-shadow:inset 4px 0 var(--accent),inset 0 0 0 1px var(--accent)}
+[data-palette] .tablinks a:hover{color:var(--accent);background:var(--subtle)}
+[data-palette] :is(.demo-toggle,#motion)[aria-pressed=true]{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:none}
+[data-palette] .command-results button{background:transparent;border:0;box-shadow:none;border-radius:8px}
+[data-palette] .command-results button.command-current{background:var(--tint);color:var(--accent)}
+[data-palette] .command-results button:hover{background:var(--subtle);color:var(--text);box-shadow:none}
+[data-palette] .command-results button:focus-visible{outline-offset:-3px;box-shadow:none}
+[data-palette] .timeline li:before{box-shadow:0 0 0 4px var(--bg)}
+[data-palette] :is(.aside-note,.browser-frame){border-color:var(--control)}
+[data-palette] .toast{background:var(--text);border-color:var(--text);color:#fff;box-shadow:0 8px 30px #18202d22}
+[data-palette][data-collapsed=true] .navgroup a:is(:hover,:focus-visible):after{background:var(--text);color:#fff;box-shadow:0 4px 12px #18202d20}
+@media(hover:hover){
+  [data-palette] .project:has(a:hover){background:var(--subtle);box-shadow:inset 0 0 0 1px var(--line)}
+  [data-palette] :is(.row,tr):has(a:hover){background:var(--subtle)}
+}
+/* The research toolbar is outside the product shell and remains available on every view. */
+.palette-bar{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:10px 26px;background:#fff;border-bottom:1px solid var(--line);font-size:12px}
+.palette-heading{font-weight:700;letter-spacing:.08em;color:var(--accent)}
+.palette-heading span{font-weight:400;letter-spacing:0;color:var(--muted);margin-left:8px}
+.palette-bar label{display:flex;align-items:center;gap:10px;margin-left:auto}
+.palette-bar select{width:auto;min-height:40px;font-size:12px;max-width:240px}
+.palette-bar a{color:var(--muted);text-underline-offset:4px;min-height:40px;display:flex;align-items:center}
+@media(max-width:760px){
+  .palette-bar{padding:9px 16px;gap:6px 14px}
+  .palette-heading{width:100%}
+  .palette-bar label{margin-left:0;flex:1;font-size:11px}
+  .palette-bar select{width:100%;max-width:190px;min-height:44px}
+  .palette-bar a{font-size:11px;min-height:44px}
+  [data-palette] :is(.icon-button,.search-trigger,.tools select){min-height:44px;min-width:44px}
+}

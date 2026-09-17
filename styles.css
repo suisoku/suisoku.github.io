@@ -406,3 +406,5 @@ footer p {
     transition: none;
   }
 }
+
+.project-card + .project-card { margin-top: 24px; }

@@ -1,0 +1,810 @@
+/* Horizon live-audit inspection workspace. The remote canvas remains 16:10 at Fit and 1440 × 900 at 100%. */
+body[data-horizon] .horizon-live {
+  max-width:none;
+}
+body[data-horizon] .live-view-title {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+
+body[data-horizon] .live-run-context {
+  display:grid;
+  grid-template-columns:116px minmax(0,1fr);
+  gap:0;
+  margin-bottom:14px;
+  overflow:hidden;
+  border:1px solid #c9ccdc;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 3px 0 #e0e3ed;
+}
+body[data-horizon] .live-run-id {
+  display:grid;
+  align-content:center;
+  min-height:86px;
+  padding:13px 18px;
+  border-right:1px solid #dce0eb;
+  background:#302963;
+  color:#fff;
+}
+body[data-horizon] .live-run-id span,
+body[data-horizon] .live-run-id small {
+  color:#ddd8f4;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+body[data-horizon] .live-run-id strong {
+  margin:2px 0;
+  font-size:27px;
+  font-weight:560;
+  line-height:1;
+  letter-spacing:-1px;
+}
+body[data-horizon] .live-run-context dl {
+  display:grid;
+  grid-template-columns:minmax(270px,1.7fr) repeat(3,minmax(130px,1fr));
+  margin:0;
+}
+body[data-horizon] .live-run-context dl div {
+  display:grid;
+  align-content:center;
+  min-width:0;
+  padding:12px 17px;
+  border-right:1px solid #e2e4ed;
+}
+body[data-horizon] .live-run-context dl div:last-child {
+  border-right:0;
+}
+body[data-horizon] .live-run-context dt,
+body[data-horizon] .live-axes dt {
+  color:#74768a;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+body[data-horizon] .live-run-context dd {
+  margin:5px 0 0;
+  color:#29283b;
+  font-size:12px;
+  font-weight:650;
+  overflow-wrap:anywhere;
+}
+body[data-horizon] .live-run-context code {
+  font:600 11px/1.4 ui-monospace,Consolas,monospace;
+}
+
+body[data-horizon] .live-axes {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  margin:0 0 14px;
+  overflow:hidden;
+  border:1px solid #cfd2df;
+  border-radius:14px;
+  background:#fff;
+}
+body[data-horizon] .live-axes>div {
+  position:relative;
+  display:grid;
+  align-content:start;
+  gap:5px;
+  min-width:0;
+  padding:13px 15px 13px 18px;
+  border-right:1px solid #e1e3eb;
+}
+body[data-horizon] .live-axes>div:last-child {
+  border-right:0;
+}
+body[data-horizon] .live-axes>div::before {
+  position:absolute;
+  inset:14px auto auto 8px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#85879a;
+  content:"";
+}
+body[data-horizon] .live-axes [data-tone=active]::before,
+body[data-horizon] .live-axes [data-tone=control]::before {background:#5650c9}
+body[data-horizon] .live-axes [data-tone=good]::before {background:#267057}
+body[data-horizon] .live-axes [data-tone=warning]::before {background:#9a6313}
+body[data-horizon] .live-axes dd {
+  display:grid;
+  gap:2px;
+  margin:0;
+}
+body[data-horizon] .live-axes strong {
+  color:#29283b;
+  font-size:12px;
+  font-weight:700;
+}
+body[data-horizon] .live-axes dd span {
+  color:#6f7183;
+  font-size:10px;
+  line-height:1.35;
+}
+
+body[data-horizon] .live-layout {
+  min-width:0;
+}
+body[data-horizon] .live-control-bar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-width:0;
+  padding:13px 14px 13px 17px;
+  border:1px solid #c8c9db;
+  border-radius:15px;
+  background:#f8f7fd;
+  box-shadow:0 3px 0 #e2e3ee;
+}
+body[data-horizon] .live-control-bar:focus {
+  outline:3px solid #5650c9;
+  outline-offset:3px;
+}
+body[data-horizon] .live-control-bar>div:first-child {
+  min-width:220px;
+}
+body[data-horizon] .live-responsibility {
+  display:block;
+  margin-bottom:3px;
+  color:#312d67;
+  font-size:12px;
+  font-weight:750;
+}
+body[data-horizon] .live-control-bar p {
+  max-width:620px;
+  margin:0;
+  color:#66687a;
+  font-size:11px;
+  line-height:1.45;
+}
+body[data-horizon] .live-control-actions {
+  display:flex;
+  flex:none;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:8px;
+}
+body[data-horizon] .horizon-live :is(.live-control-actions,.remote-display-controls,.journal-controls,.journal-footer) button {
+  min-height:44px;
+}
+
+body[data-horizon] .horizon-remote {
+  min-width:0;
+  overflow:hidden;
+  border:1px solid #b8bdca;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 4px 0 #dce0e8,0 12px 26px #2b31500b;
+}
+body[data-horizon] .horizon-remote[data-controller=human] {
+  border-color:#5650c9;
+  box-shadow:0 0 0 3px #dcd9ff,0 4px 0 #a9a4e2,0 12px 26px #2b31500e;
+}
+body[data-horizon] .remote-chrome {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  min-height:60px;
+  padding:8px 10px 8px 15px;
+  border-bottom:1px solid #d5d8e0;
+  background:#f1f3f6;
+}
+body[data-horizon] .remote-chrome>div:first-child {
+  display:grid;
+  gap:2px;
+  min-width:0;
+}
+body[data-horizon] .remote-product {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#656979;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+body[data-horizon] .remote-product svg {
+  width:14px;
+  height:14px;
+}
+body[data-horizon] .remote-chrome strong {
+  color:#2c2e3e;
+  font-size:12px;
+}
+body[data-horizon] .remote-display-controls {
+  display:flex;
+  gap:4px;
+  padding:3px;
+  border:1px solid #c7cad4;
+  border-radius:12px;
+  background:#fff;
+}
+body[data-horizon] .remote-display-controls button {
+  min-width:58px;
+  border-color:transparent;
+  background:transparent;
+  box-shadow:none;
+  color:#5f6272;
+  font-size:11px;
+}
+body[data-horizon] .remote-display-controls button[aria-pressed=true] {
+  border-color:#817bd4;
+  background:#eeecff;
+  color:#302a80;
+  box-shadow:inset 0 0 0 1px #fff;
+}
+body[data-horizon] .remote-scrollport {
+  display:grid;
+  place-items:center;
+  min-width:0;
+  overflow:auto;
+  background:#202438;
+  scrollbar-color:#8d92a8 #202438;
+}
+body[data-horizon] .remote-canvas {
+  position:relative;
+  width:100%;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  container-type:inline-size;
+  background:#f4efe6;
+  color:#173b3c;
+}
+body[data-horizon] .horizon-remote[data-presentation=actual] .remote-scrollport {
+  place-items:start;
+  max-height:600px;
+}
+body[data-horizon] .horizon-remote[data-presentation=actual] .remote-canvas {
+  width:1440px;
+  height:900px;
+  aspect-ratio:auto;
+  flex:none;
+}
+body[data-horizon] .horizon-remote[data-connection=reconnecting] .remote-canvas {
+  opacity:.68;
+  filter:saturate(.42) contrast(.92);
+}
+body[data-horizon] .remote-canvas[data-capturing=true] {
+  outline:5px solid #ffd37a;
+  outline-offset:-8px;
+}
+body[data-horizon] .remote-page {
+  display:grid;
+  grid-template-rows:7% 10% 1fr;
+  width:100%;
+  height:100%;
+  background:#f4efe6;
+}
+body[data-horizon] .remote-window-bar {
+  display:grid;
+  grid-template-columns:1fr 2fr 1fr;
+  align-items:center;
+  gap:2%;
+  padding:0 2.2%;
+  background:#edf0f2;
+  color:#616977;
+  font-size:clamp(7px,1.05cqw,13px);
+}
+body[data-horizon] .remote-window-bar>span {
+  display:flex;
+  gap:clamp(3px,.5cqw,7px);
+}
+body[data-horizon] .remote-window-bar i {
+  width:clamp(5px,.8cqw,11px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:#b8bdc6;
+}
+body[data-horizon] .remote-window-bar b {
+  overflow:hidden;
+  padding:.55em 1em;
+  border-radius:999px;
+  background:#fff;
+  font-family:ui-monospace,Consolas,monospace;
+  font-weight:500;
+  text-align:center;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+body[data-horizon] .remote-window-bar em {
+  font-style:normal;
+  text-align:right;
+}
+body[data-horizon] .remote-site-bar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6%;
+  padding:0 6.5%;
+  border-bottom:1px solid #c7cec9;
+  background:#fbfaf6;
+  color:#214749;
+  font-size:clamp(8px,1.25cqw,16px);
+}
+body[data-horizon] .remote-site-bar b {
+  font:600 clamp(13px,2.15cqw,29px)/1 Georgia,serif;
+}
+body[data-horizon] .remote-page-body {
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  gap:7%;
+  min-height:0;
+  padding:6.5% 8%;
+}
+body[data-horizon] .remote-page-copy {
+  position:relative;
+  align-self:center;
+  min-width:0;
+}
+body[data-horizon] .remote-page-copy>span,
+body[data-horizon] .remote-login-card small {
+  color:#607474;
+  font-size:clamp(7px,1cqw,13px);
+  font-weight:800;
+  letter-spacing:.13em;
+}
+body[data-horizon] .remote-page-copy h2 {
+  max-width:14ch;
+  margin:4% 0 3%;
+  color:#173f40;
+  font:500 clamp(18px,4.3cqw,58px)/1.03 Georgia,serif;
+  letter-spacing:-.035em;
+}
+body[data-horizon] .remote-page-copy p {
+  max-width:32ch;
+  color:#526766;
+  font-size:clamp(8px,1.3cqw,17px);
+}
+body[data-horizon] .remote-shape {
+  position:absolute;
+  right:-5%;
+  bottom:-32%;
+  width:36%;
+  aspect-ratio:1;
+  border:clamp(5px,1cqw,15px) solid #c3d8ca;
+  border-radius:48% 52% 15% 85%;
+  transform:rotate(18deg);
+}
+body[data-horizon] .remote-login-card {
+  align-self:center;
+  min-width:0;
+  padding:9%;
+  border:1px solid #bec8c2;
+  border-radius:4%;
+  background:#fff;
+  box-shadow:0 2.2cqw 5cqw #34514e13;
+}
+body[data-horizon] .remote-login-card h3 {
+  margin:3% 0 10%;
+  color:#173f40;
+  font:500 clamp(16px,3cqw,40px)/1.1 Georgia,serif;
+}
+body[data-horizon] .remote-login-card label {
+  display:block;
+  margin-bottom:3%;
+  color:#3d5554;
+  font-size:clamp(8px,1.05cqw,14px);
+  font-weight:650;
+}
+body[data-horizon] .remote-field,
+body[data-horizon] .remote-submit {
+  padding:4.2% 5%;
+  border:1px solid #79908a;
+  border-radius:4px;
+  font-size:clamp(8px,1.15cqw,15px);
+}
+body[data-horizon] .remote-field {
+  color:#6d7777;
+  background:#fbfcfa;
+}
+body[data-horizon] .remote-submit {
+  margin-top:5%;
+  border-color:#224e4b;
+  background:#224e4b;
+  color:#fff;
+  font-weight:700;
+  text-align:center;
+}
+body[data-horizon] .remote-login-card p {
+  margin:6% 0 0;
+  color:#778381;
+  font-size:clamp(6px,.9cqw,12px);
+  text-align:center;
+}
+body[data-horizon] .remote-closed {
+  display:grid;
+  width:100%;
+  aspect-ratio:16/10;
+  place-items:center;
+  padding:24px;
+  background:#272a3b;
+  color:#fff;
+  text-align:center;
+}
+body[data-horizon] .remote-closed>div {
+  max-width:430px;
+}
+body[data-horizon] .remote-closed span {
+  display:grid;
+  width:48px;
+  height:48px;
+  margin:0 auto 14px;
+  place-items:center;
+  border:1px solid #aeb2c6;
+  border-radius:50%;
+  color:#d9dbe6;
+  font-size:25px;
+}
+body[data-horizon] .remote-closed strong {
+  display:block;
+  margin-bottom:8px;
+  font-size:18px;
+}
+body[data-horizon] .remote-closed p {
+  margin:0;
+  color:#c4c7d4;
+  font-size:12px;
+}
+body[data-horizon] .remote-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  padding:10px 14px;
+  border-top:1px solid #daddE5;
+  background:#f4f5f8;
+  color:#666979;
+  font-size:10px;
+  line-height:1.45;
+}
+body[data-horizon] .remote-meta span:last-child {
+  margin-left:auto;
+}
+body[data-horizon] .remote-key-status {
+  margin:0;
+  padding:0 14px;
+  color:#4c447f;
+  font-size:11px;
+}
+body[data-horizon] .remote-key-status:not(:empty) {
+  padding-block:9px;
+  border-top:1px solid #dedbea;
+  background:#f3efff;
+}
+
+body[data-horizon] .live-journal {
+  min-width:0;
+  overflow:hidden;
+  border:1px solid #c7c7d8;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 3px 0 #e2e3ed;
+}
+body[data-horizon] .live-journal>header {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  padding:17px 18px 14px;
+  border-bottom:1px solid #e0e1e9;
+  background:#302963;
+  color:#fff;
+}
+body[data-horizon] .live-journal>header .eyebrow {
+  margin-bottom:4px;
+  color:#d7d1f1;
+  font-size:9px;
+}
+body[data-horizon] .live-journal>header h2 {
+  margin:0;
+  color:#fff;
+  font-size:18px;
+}
+body[data-horizon] .live-journal>header p {
+  margin:4px 0 0;
+  color:#d7d3e8;
+  font-size:10px;
+  line-height:1.35;
+}
+body[data-horizon] .live-journal>header>span {
+  flex:none;
+  padding:5px 7px;
+  border:1px solid #716aa1;
+  border-radius:7px;
+  color:#dedaf0;
+  font-size:9px;
+}
+body[data-horizon] .journal-controls {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  padding:10px 12px;
+  border-bottom:1px solid #e1e2e9;
+  background:#f7f6fb;
+}
+body[data-horizon] .journal-controls button {
+  min-height:38px!important;
+  padding:7px 9px;
+  border-radius:9px!important;
+  font-size:10px;
+}
+body[data-horizon] .journal-controls button[aria-pressed=true] {
+  border-color:#746bc3;
+  background:#ebe8ff;
+  color:#332c80;
+}
+body[data-horizon] .journal-controls .journal-unread {
+  flex-basis:100%;
+  border-color:#91611d;
+  background:#fff3d8;
+  color:#71480e;
+  font-weight:700;
+}
+body[data-horizon] .live-event-list {
+  list-style:none;
+  margin:0;
+  padding:0;
+  overflow:auto;
+  overscroll-behavior:contain;
+}
+body[data-horizon] .live-event-list>li {
+  position:relative;
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr);
+  gap:11px;
+  padding:14px 16px;
+  border-bottom:1px solid #e5e5ec;
+}
+body[data-horizon] .live-event-list>li::before {
+  position:absolute;
+  top:19px;
+  left:66px;
+  width:7px;
+  height:7px;
+  border:2px solid #625ac0;
+  border-radius:50%;
+  background:#fff;
+  content:"";
+}
+body[data-horizon] .event-time {
+  color:#686b7d;
+  font:600 10px/1.5 ui-monospace,Consolas,monospace;
+}
+body[data-horizon] .event-copy {
+  display:grid;
+  min-width:0;
+  padding-left:10px;
+}
+body[data-horizon] .event-copy small {
+  color:#6f659f;
+  font-size:9px;
+  font-weight:750;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+body[data-horizon] .event-copy strong {
+  margin:2px 0 4px;
+  color:#303042;
+  font-size:12px;
+}
+body[data-horizon] .event-copy>span {
+  color:#6c6e7d;
+  font-size:10px;
+  line-height:1.45;
+}
+body[data-horizon] .journal-footer {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-top:1px solid #dedfe7;
+  background:#fafafd;
+}
+body[data-horizon] .journal-footer button {
+  min-height:38px!important;
+  padding:7px 9px;
+  font-size:10px;
+}
+
+body[data-horizon] .live-inspection {
+  display:grid;
+  grid-template-columns:minmax(310px,355px) minmax(560px,1fr);
+  gap:18px;
+  align-items:start;
+}
+body[data-horizon] .live-inspection-rail {
+  display:grid;
+  gap:12px;
+  min-width:0;
+}
+body[data-horizon] .live-inspection .live-axes {
+  grid-template-columns:1fr 1fr;
+  margin:0;
+}
+body[data-horizon] .live-inspection .live-axes>div:nth-child(2) {
+  border-right:0;
+}
+body[data-horizon] .live-inspection .live-axes>div:nth-child(-n+2) {
+  border-bottom:1px solid #e1e3eb;
+}
+body[data-horizon] .live-inspection-work {
+  display:grid;
+  gap:12px;
+  min-width:0;
+}
+body[data-horizon] .live-journal-inspection .live-event-list {
+  max-height:420px;
+}
+body[data-horizon] .live-journal-inspection .live-event-list>li {
+  display:block;
+  padding:0;
+}
+body[data-horizon] .live-journal-inspection .live-event-list>li::before {
+  display:none;
+}
+body[data-horizon] .live-journal-inspection .live-event-list button {
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr);
+  gap:10px;
+  width:100%;
+  min-height:76px;
+  padding:12px 14px;
+  border:0;
+  border-radius:0!important;
+  background:#fff;
+  box-shadow:none;
+  color:inherit;
+  text-align:left;
+}
+body[data-horizon] .live-journal-inspection .live-event-list button[aria-pressed=true] {
+  background:#eeecff;
+  box-shadow:inset 4px 0 #5650c9;
+}
+body[data-horizon] .live-journal-inspection .event-copy>span {
+  display:none;
+}
+body[data-horizon] .live-event-detail {
+  display:grid;
+  padding:18px 20px;
+  border:1px solid #cbc9dc;
+  border-radius:15px;
+  background:#fff;
+  box-shadow:0 3px 0 #e3e1ed;
+}
+body[data-horizon] .live-event-detail .eyebrow {
+  margin-bottom:7px;
+}
+body[data-horizon] .live-event-detail>div {
+  display:flex;
+  gap:8px;
+  color:#6e6f82;
+  font-size:10px;
+}
+body[data-horizon] .live-event-detail>div span::before {
+  margin-right:8px;
+  content:"·";
+}
+body[data-horizon] .live-event-detail h2 {
+  margin:8px 0 6px;
+  color:#2f2d44;
+  font-size:18px;
+}
+body[data-horizon] .live-event-detail>p:not(.eyebrow) {
+  max-width:72ch;
+  margin:0;
+  color:#626475;
+  font-size:12px;
+}
+body[data-horizon] #horizon-takeover .dialog-head {
+  align-items:flex-start;
+}
+body[data-horizon] #horizon-takeover .dialog-head .eyebrow {
+  margin-bottom:5px;
+}
+body[data-horizon] #horizon-takeover .dialog-body ul {
+  display:grid;
+  gap:8px;
+  margin:0;
+  padding-left:22px;
+  color:#5f6070;
+  font-size:13px;
+}
+
+@media(max-width:1250px) {
+  body[data-horizon] .live-run-context dl {grid-template-columns:minmax(240px,1.6fr) repeat(3,minmax(115px,1fr))}
+  body[data-horizon] .live-control-bar {align-items:flex-start;flex-direction:column}
+  body[data-horizon] .live-control-actions {justify-content:flex-start}
+}
+@media(max-width:1100px) {
+  body[data-horizon] .live-run-context dl {grid-template-columns:1fr 1fr}
+  body[data-horizon] .live-run-context dl div:nth-child(2) {border-right:0}
+  body[data-horizon] .live-run-context dl div:nth-child(-n+2) {border-bottom:1px solid #e2e4ed}
+  body[data-horizon] .live-inspection {grid-template-columns:1fr}
+  body[data-horizon] .live-inspection-rail {grid-template-columns:1fr 1.35fr;align-items:start}
+  body[data-horizon] .live-inspection-work {grid-row:1}
+}
+@media(max-width:760px) {
+  body[data-horizon] .sidebar {overflow-y:auto}
+  body[data-horizon] .app.menu-open .project-nav {display:block}
+  body[data-horizon] .live-run-context {grid-template-columns:86px minmax(0,1fr)}
+  body[data-horizon] .live-run-id {min-height:0;padding:12px}
+  body[data-horizon] .live-run-context dl {grid-template-columns:1fr}
+  body[data-horizon] .live-run-context dl div {border-right:0;border-bottom:1px solid #e2e4ed}
+  body[data-horizon] .live-run-context dl div:last-child {border-bottom:0}
+  body[data-horizon] .live-axes {grid-template-columns:1fr 1fr}
+  body[data-horizon] .live-axes>div:nth-child(2) {border-right:0}
+  body[data-horizon] .live-axes>div:nth-child(-n+2) {border-bottom:1px solid #e1e3eb}
+  body[data-horizon] .live-control-actions {width:100%}
+  body[data-horizon] .live-control-actions button {flex:1 1 170px}
+  body[data-horizon] .remote-chrome {align-items:flex-start;flex-direction:column}
+  body[data-horizon] .remote-display-controls {width:100%}
+  body[data-horizon] .remote-display-controls button {flex:1}
+  body[data-horizon] .horizon-remote[data-presentation=actual] .remote-scrollport {max-height:480px}
+  body[data-horizon] .remote-meta {display:grid;gap:4px}
+  body[data-horizon] .remote-meta span:last-child {margin-left:0}
+  body[data-horizon] .live-journal>header {display:grid}
+  body[data-horizon] .live-journal>header>span {justify-self:start}
+  body[data-horizon] .live-inspection-rail {grid-row:2;grid-template-columns:1fr}
+  body[data-horizon] .live-inspection-work {grid-row:1}
+  body[data-horizon] .live-journal-inspection .live-event-list {max-height:none}
+  body[data-horizon] .journal-footer {align-items:flex-start;flex-direction:column}
+}
+@media(max-width:430px) {
+  body[data-horizon] .live-run-context {grid-template-columns:1fr}
+  body[data-horizon] .live-run-id {grid-template-columns:auto auto 1fr;align-items:center;gap:8px}
+  body[data-horizon] .live-run-id small {text-align:right}
+  body[data-horizon] .live-axes {grid-template-columns:1fr}
+  body[data-horizon] .live-axes>div {border-right:0;border-bottom:1px solid #e1e3eb}
+  body[data-horizon] .live-axes>div:last-child {border-bottom:0}
+  body[data-horizon] .live-journal-inspection .live-event-list button {grid-template-columns:50px minmax(0,1fr)}
+}
+@media(forced-colors:active) {
+  body[data-horizon] .live-axes>div::before {background:CanvasText}
+  body[data-horizon] .remote-canvas[data-capturing=true] {outline:5px solid Highlight}
+  body[data-horizon] .live-journal-inspection .live-event-list button[aria-pressed=true] {outline:2px solid Highlight;outline-offset:-4px}
+}
+
+/* The selected inspection workspace fills the desktop without stretching remote pixels. */
+@media(min-width:1101px) and (min-height:700px) {
+  body[data-horizon][data-live-view] {height:100dvh;overflow:hidden}
+  body[data-horizon][data-live-view] #root {height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}
+  body[data-horizon][data-live-view] .app {height:100%;min-height:0;overflow:hidden}
+  body[data-horizon][data-live-view] .sidebar {height:100%;min-height:0;max-height:none;overflow-y:auto}
+  body[data-horizon][data-live-view] .work {height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+  body[data-horizon][data-live-view] .topbar {flex:none}
+  body[data-horizon][data-live-view] .horizon-live {flex:1;display:grid;grid-template-rows:auto minmax(0,1fr);gap:14px;min-height:0;width:100%;margin:0;padding:16px 20px 20px;overflow:hidden}
+  body[data-horizon] .live-run-context {margin:0;grid-template-columns:106px minmax(0,1fr)}
+  body[data-horizon] .live-run-id {min-height:64px;padding:8px 14px}
+  body[data-horizon] .live-run-id strong {font-size:23px}
+  body[data-horizon] .live-run-context dl {grid-template-columns:minmax(190px,1.6fr) repeat(3,minmax(100px,1fr))}
+  body[data-horizon] .live-run-context dl div {padding:8px 12px}
+  body[data-horizon] .live-inspection {min-height:0;grid-template-columns:clamp(280px,23vw,340px) minmax(0,1fr);gap:16px;align-items:stretch}
+  body[data-horizon] .live-inspection-rail {min-height:0;grid-template-rows:auto minmax(0,1fr)}
+  body[data-horizon] .live-inspection-work {min-height:0;grid-template-rows:auto minmax(0,1fr) auto}
+  body[data-horizon] .live-journal {display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;min-height:0}
+  body[data-horizon] .live-journal-inspection .live-event-list {min-height:0;max-height:none}
+  body[data-horizon] .live-journal>header {padding:12px 14px}
+  body[data-horizon] .live-control-bar {padding:10px 14px}
+  body[data-horizon] .horizon-remote {display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;min-height:0}
+  body[data-horizon] .remote-scrollport {min-height:0;container-type:size}
+  body[data-horizon] .horizon-remote[data-presentation=fit] .remote-canvas {width:min(100cqw,160cqh);height:auto;aspect-ratio:16/10}
+  body[data-horizon] .horizon-remote[data-presentation=actual] .remote-scrollport {max-height:none}
+  body[data-horizon] .remote-closed {height:100%;aspect-ratio:auto}
+  body[data-horizon] .remote-meta {padding:7px 12px;font-size:9px}
+  body[data-horizon] .remote-meta span:last-child {display:none}
+  body[data-horizon] .live-event-detail {grid-template-columns:minmax(180px,.85fr) minmax(0,1.15fr);gap:5px 18px;padding:12px 16px;max-height:150px;overflow:auto}
+  body[data-horizon] .live-event-detail .eyebrow {margin:0}
+  body[data-horizon] .live-event-detail h2 {margin:0;font-size:15px}
+  body[data-horizon] .live-event-detail>p:not(.eyebrow) {font-size:11px}
+}

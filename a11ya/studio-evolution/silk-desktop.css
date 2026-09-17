@@ -1,0 +1,111 @@
+/* Original Silk geometry and motion. Cooler materials; blue appears in actions/focus. */
+body[data-refined]{--bg:#edeff2;--surface:#fff;--subtle:#e9ecf1;--text:#242a35;--muted:#535d6c;--line:#c8ced7;--control:#7e899a;--accent:#214fd7;--tint:#e8edf7;--radius:24px;--good:#265b45;--good-bg:#e8f0eb;--bad:#8f3540;--bad-bg:#f6e9eb;--warn:#76551e;--warn-bg:#f4eedf;background:var(--bg);color:var(--text)}
+[data-refined] .sidebar{background:#dfe3e9}
+[data-refined] .work{background:var(--bg);box-shadow:-1px 0 #c4cad3}
+[data-refined] .topbar{background:#f6f7f9;border-color:var(--line)}
+[data-refined] .labbar{background:#e4e7ec;color:#505a6a;border-color:var(--line)}
+[data-refined] .labbar b{color:#364155}
+[data-refined] :is(.panel,.project-grid,.rows,.metrics,.table-wrap,.playground-cell){background:#fff;border-color:var(--line);box-shadow:none}
+[data-refined] .project{background:transparent;border-color:var(--line)}
+[data-refined] :is(.row,.metric,td,th,.project footer,.inspector dl,.dialog-actions,.timeline li){border-color:var(--line)}
+[data-refined] :is(.panel p,.navlabel,.sidebar-caption,.sidebar-caption span,.project-index,.inspector-head .eyebrow){color:var(--muted)}
+[data-refined] :is(th,.browser-toolbar,.browser-footer){background:#e9edf2;color:#4d5869}
+[data-refined] .attention{background:#535b6d;border-color:#444d60;color:#fff;box-shadow:inset 0 1px #ffffff30,0 10px 22px -16px #303b5080}
+[data-refined] .attention :is(p,.eyebrow,.number){color:#e2e7f1}
+[data-refined] .attention .primary{background:#fff;color:#214fd7;border-color:#fff;box-shadow:inset 0 1px #fff,0 2px 6px #18253b22}
+[data-refined] .attention .primary:hover{background:#fff;color:#163dab;border-color:#9db7fa;box-shadow:inset 0 0 0 1px #9db7fa}
+[data-refined] .inspector{background:#f9fafc;border-color:#bac3d0;box-shadow:0 1px #fff inset}
+[data-refined] .inspector:focus-within{border-color:#6e83a7}
+[data-refined] .inspector:focus{outline:2px solid #5376bd;outline-offset:3px}
+[data-refined] .inspector code{background:#e8ecf2;border-color:#c1cad8;color:#344156}
+[data-refined] dialog{background:#fff;border-color:#b9c3d2;box-shadow:0 30px 100px #14203942,0 0 0 7px #ffffff0f}
+[data-refined] dialog::backdrop{background:#17233766;backdrop-filter:blur(3px)}
+[data-refined] .command-dialog::backdrop{backdrop-filter:none}
+/* Only action buttons change geometry; finding cards, navigation, fields and panels keep Silk contours. */
+[data-refined] :is(button,.button):not(.finding){border-radius:5px;background:#fff;color:var(--text);border-color:var(--control)}
+[data-refined] :is(button,.button):not(.finding):hover{background:#fff;border-color:#214fd7;box-shadow:inset 0 0 0 1px #214fd7}
+[data-refined] :is(button,.button):not(.finding):focus-visible{outline:2px solid #214fd7;outline-offset:3px;box-shadow:none}
+[data-refined] :is(button,.button):not(.finding):active{border-color:#163dab;box-shadow:inset 0 0 0 1px #163dab}
+[data-refined] .primary:not(.finding){background:#214fd7;color:#fff;border-color:#214fd7;box-shadow:inset 0 1px #ffffff35,0 2px 3px #182b5020}
+[data-refined] .primary:not(.finding):hover{background:#214fd7;color:#fff;border-color:#0c2e91;box-shadow:inset 0 0 0 1px #0c2e91;filter:none}
+[data-refined] .attention .primary:not(.finding){background:#fff;color:#214fd7;border-color:#fff}
+[data-refined] .attention .primary:not(.finding):hover{border-color:#9db7fa;box-shadow:inset 0 0 0 1px #9db7fa}
+[data-refined] .quiet:not(.finding){background:transparent;border-color:transparent}
+[data-refined] .quiet:not(.finding):hover{background:transparent;border-color:#778aaa;box-shadow:none}
+[data-refined] .danger:not(.finding){color:var(--bad)}
+[data-refined] button:disabled:not(.finding){background:#e8ebef;color:#68717e;border-color:#c0c7d1;box-shadow:none;transform:none}
+[data-refined] :is(a,input,select,textarea,summary):focus-visible{outline:2px solid #214fd7;outline-offset:3px;box-shadow:none}
+[data-refined] :is(input,select,textarea){background:#fff;color:var(--text);border-color:#7e899a}
+[data-refined] :is(input,select,textarea):hover{border-color:#526688}
+[data-refined] :is(input,select,textarea):focus{border-color:#214fd7;box-shadow:0 0 0 2px #d9e3fa}
+[data-refined] input[readonly]{background:#e9edf2;border-color:#c0c8d4}
+[data-refined] .form-grid:focus-within{border-color:#9aa9bf}
+[data-refined] .form-grid .check{background:#e9edf2;border-color:#c0cad8}
+[data-refined] .form-grid .check:focus-within{box-shadow:none;border-color:#5275b9}
+[data-refined] :is(.org-select,.search-trigger){background:#f7f8fa;color:#445065;border-color:#aeb9c9}
+[data-refined] :is(kbd,.org-initial){background:#f6f7f9;border-color:#bac4d3;color:#536075}
+[data-refined] .avatar{background:#e2e8f4;border-color:#b3c2df;color:#244683}
+[data-refined] .real-logo{width:38px;height:38px;object-fit:cover;border-radius:50%;flex:none}
+[data-refined] .navgroup a{color:#4b5668}
+[data-refined] .navgroup a:hover{background:#d3d9e3;color:#25334d}
+[data-refined] .navgroup a[aria-current=page]{color:#234984;background:transparent}
+[data-refined] .navgroup a[aria-current=page]:hover{background:#214fd707}
+[data-refined] .nav-indicator{background:#ccd5e5;box-shadow:inset 0 1px #f8faff}
+[data-refined] .project .monogram{background:#e4e9f1;color:#3d506e}
+[data-refined] .project:focus-within{background:#edf0f5;box-shadow:inset 0 0 0 2px #8c9cb5}
+[data-refined] .row:focus-within{background:#e9edf3;box-shadow:none}
+[data-refined] tr:focus-within{background:#e9edf3}
+/* Full-perimeter selection, no corner-to-corner left stripe or changed silhouette. */
+[data-refined] .finding{position:relative;background:#fafbfc;border-color:#c2cad6;box-shadow:none}
+[data-refined] .finding:hover{background:#f1f4f8;border-color:#7f90aa;box-shadow:inset 0 0 0 1px #b9c5d7}
+[data-refined] .finding[aria-pressed=true]{background:#e8edf6;border-color:#617baf;box-shadow:inset 0 0 0 1px #617baf}
+[data-refined] .finding[aria-pressed=true]:after{content:'';position:absolute;right:18px;top:16px;width:7px;height:12px;border:2px solid #244679;border-top:0;border-left:0;transform:rotate(45deg)}
+[data-refined] .finding .title{padding-right:20px}
+[data-refined] .finding[aria-expanded=true] .title{color:#25324a}
+[data-refined] .finding:focus-visible{outline:2px solid #214fd7;outline-offset:3px;box-shadow:none}
+[data-refined] .finding:active{transform:none;box-shadow:inset 0 0 0 2px #617baf}
+[data-refined] .tablinks a:hover{background:#e1e7f0;color:#214fd7}
+[data-refined] :is(.demo-toggle,#motion)[aria-pressed=true]{background:#e0e7f3;color:#244683;border-color:#617baf;box-shadow:inset 0 0 0 1px #617baf}
+[data-refined] .command-results button{background:transparent;border:1px solid transparent;box-shadow:none}
+[data-refined] .command-results button.command-current{background:#e6ebf3;color:#244683}
+[data-refined] .command-results button:hover{background:#e6ebf3;box-shadow:none;border-color:#7b90b4}
+[data-refined] .command-results button:focus-visible{outline-offset:-3px;box-shadow:none}
+[data-refined] .timeline li:before{box-shadow:0 0 0 4px #edeff2}
+[data-refined] :is(.aside-note,.browser-frame){border-color:#98a6bb}
+[data-refined] .toast{background:#29354a;border-color:#465875;color:#fff;box-shadow:0 8px 30px #192c4322}
+[data-refined][data-collapsed=true] .navgroup a:is(:hover,:focus-visible):after{background:#29354a;color:#fff}
+@media(hover:hover){[data-refined] .project:has(a:hover){background:#edf0f5;box-shadow:inset 0 0 0 1px #a7b4c8}[data-refined] :is(.row,tr):has(a:hover){background:#e9edf3}}
+/* Desktop-first nonmodal task surfaces. Existing Silk panels are not reshaped. */
+.silk-popover{position:fixed;inset:auto;margin:0;padding:18px;width:320px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;border:1px solid #afbaca;border-radius:12px;background:#fff;color:#242a35;box-shadow:0 12px 40px #192c4325,0 2px 5px #192c4310;z-index:30;font-size:13px}
+.silk-popover::backdrop{background:transparent}
+.silk-popover h2{font-size:15px;margin:0}.silk-popover p{font-size:12px;color:#535d6c;margin:6px 0 14px}
+.pop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.pop-head button{padding:0;min-height:28px;min-width:28px;font-size:19px}
+.pop-links{display:grid;gap:4px;margin-top:12px;padding-top:12px;border-top:1px solid #d1d7df}
+.pop-links :is(a,button){text-align:left;justify-content:flex-start;width:100%;font-weight:500;text-decoration:none;padding:9px 10px;min-height:38px}
+.pop-links a:hover{background:#edf1f6}.pop-links a{border:1px solid transparent;border-radius:5px}.pop-links a:focus-visible{outline-offset:-2px}
+.pop-row{display:flex;align-items:center;gap:10px;padding:9px 8px;font-weight:400;border:1px solid transparent;border-radius:6px;cursor:pointer}
+.pop-row:hover{background:#eef1f6}.pop-row:focus-within{border-color:#8da4cd;background:#f1f4f9}.pop-row input{margin:0;width:17px;min-height:17px;accent-color:#214fd7;flex:none}
+.pop-row small{margin-left:auto;font-variant-numeric:tabular-nums;color:#536078}.pop-row span{flex:1}.pop-section{border:0;padding:0;margin:12px 0 0}.pop-section legend{font-size:11px;font-weight:650;color:#586478;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.pop-footer{display:flex;justify-content:space-between;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #d1d7df}
+.pop-footer button{font-size:12px}.group-options{max-height:320px;overflow:auto;margin:8px -4px;padding:0 4px}.group-search{font-size:13px}.group-help{font-size:11px!important}.group-empty{padding:12px 8px}
+.account-identity{display:flex;gap:12px;align-items:center;margin-bottom:14px}.account-identity .avatar{width:38px;height:38px}.account-identity strong{display:block;font-size:14px}.account-identity small{font-size:11px}
+.review-toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:8px;margin:0 0 12px}.review-toolbar>label{flex:1;min-width:190px;font-size:11px}.review-toolbar button{min-height:42px;font-size:12px;white-space:nowrap}
+.active-filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px}.active-filters:empty{display:none}.active-filters button{font-size:11px;padding:4px 8px;min-height:30px;background:#e3e9f2!important;border-color:#aebdd3!important;color:#334d77!important}
+.review-count{font-size:11px;color:#4c5c74;margin:0 0 12px}.group-heading{margin:12px 0 2px;font-size:12px;font-weight:650;color:#526079;display:flex;gap:8px;align-items:center}.group-heading span{font-variant-numeric:tabular-nums;color:#214fd7}.group-heading:first-child{margin-top:0}
+.review-actions{display:flex;gap:8px;align-items:center}.review-actions button{font-size:12px}.silk-popover textarea{min-height:110px;font-size:13px}.silk-popover .pop-note-hint{font-size:11px}
+@media(min-width:1201px){[data-refined] .results-grid{grid-template-columns:minmax(0,1fr) minmax(330px,.68fr)}}
+@media(max-width:760px){[data-refined] .tools .account-link{display:inline-flex}.review-toolbar>label{min-width:100%;}.review-toolbar{gap:8px}.review-toolbar button{flex:1}.silk-popover{max-height:calc(100dvh - 24px)}.review-actions{flex-wrap:wrap}.group-options{max-height:240px}}
+/* Three restrained presets: same Silk surfaces and motion, different palette and action corners. */
+[data-treatment=graphite]{--action-radius:4px;--frame:#edeff2;--side:#dfe3e9;--hero:#535b6d;--selected:#ccd5e5}
+[data-treatment=mist]{--action-radius:8px;--frame:#eaf0f5;--side:#dbe4ec;--hero:#425b74;--selected:#c8d8e8}
+[data-treatment=violet]{--action-radius:12px;--frame:#eeeef4;--side:#e0e0e9;--hero:#615e73;--selected:#d4d2e4}
+[data-treatment] .work{background:var(--frame)}
+[data-treatment] .sidebar{background:var(--side)}
+[data-treatment] .attention{background:var(--hero);border-color:var(--hero)}
+[data-treatment] .nav-indicator{background:var(--selected)}
+[data-treatment] :is(button,.button):not(.finding),[data-treatment] .pop-links a{border-radius:var(--action-radius)}
+.treatment-label{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:11px}
+.treatment-label select{width:auto;min-height:30px;padding:4px 8px;font-size:11px}
+[data-refined] .labbar{align-items:center;flex-wrap:wrap;gap:8px 20px}
+[data-refined] .labbar #compare{margin-left:auto}

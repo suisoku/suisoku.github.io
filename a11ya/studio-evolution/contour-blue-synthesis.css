@@ -1,0 +1,194 @@
+/* Two unselected, desktop-focused refinements. Load after unchanged Contour Blue. */
+body[data-blue-synthesis] {
+  --bg:#f4f6fa; --surface:#fff; --subtle:#f1f4f9; --text:#1e2d45;
+  --muted:#52627a; --line:#d1d9e6; --control:#8495b0;
+  --accent:#193c94; --action-hover:#13317b; --action-pressed:#102b6c;
+  --focus:#234c9b; --tint:#edf2fc; --selection:#edf3ff; --selection-border:#829dca;
+  --nav:218px; --radius:10px;
+}
+body[data-blue-synthesis] .work {background:var(--bg)}
+body[data-blue-synthesis] .sidebar {background:#eaf0f8;border-color:#c6d1e2;box-shadow:none}
+body[data-blue-synthesis] .topbar {border-color:#d5ddea;box-shadow:0 1px 2px #1c355807}
+body[data-blue-synthesis] .labbar {background:#f0f3f8;border-color:#d1daea;align-items:center}
+.synthesis-comparisons {display:flex;gap:15px;align-items:center;white-space:nowrap}
+.synthesis-comparisons a {font-weight:500;text-underline-offset:3px}
+.synthesis-comparisons .synthesis-current {color:#536581;font-size:10px}
+body[data-blue-synthesis] .sidebar-caption span {display:none}
+body[data-blue-synthesis] .heading::after {display:none}
+body[data-blue-synthesis] .heading {border-color:#d4ddea}
+body[data-blue-synthesis] .heading h1 {color:#1e2e48;font-size:30px}
+body[data-blue-synthesis] :is(.panel,.project,.rows,.metrics,.table-wrap,.attention,.inspector) {
+  border:1px solid var(--line);
+  background:#fff;
+  box-shadow:0 1px 2px #172e5008,0 1px 0 #e6ebf3;
+}
+body[data-blue-synthesis] .attention {
+  border-color:#b4c5e0;background:#edf3ff;box-shadow:0 2px 3px #1a3b6b09;
+  padding:22px;grid-template-columns:56px minmax(0,1fr);column-gap:17px;
+}
+body[data-blue-synthesis] .attention .eyebrow {font-size:10px;color:#3f5e8a}
+body[data-blue-synthesis] .attention .number {font-size:42px;letter-spacing:-2px;color:#214894}
+body[data-blue-synthesis] .attention h2 {font-size:20px;font-weight:620}
+body[data-blue-synthesis] .attention p:not(.eyebrow) {color:#485e7c}
+body[data-blue-synthesis] .grid>.panel {padding:20px}
+body[data-blue-synthesis] .project {padding:17px 18px}
+body[data-blue-synthesis] .project .monogram {box-shadow:none;border:1px solid #d0dbed;background:#f1f5fc}
+body[data-blue-synthesis] .project footer {border-color:#e0e6ef}
+body[data-blue-synthesis] .project:hover {border-color:#a5b6d0;background:#fff;box-shadow:0 2px 4px #243d5b0b}
+body[data-blue-synthesis] .row {border-color:#e0e6ef}
+body[data-blue-synthesis] .row:last-child {border-bottom:0}
+body[data-blue-synthesis] .metric {border-color:#e1e6ef}
+body[data-blue-synthesis] .metric b {font-size:24px}
+body[data-blue-synthesis] .inspector {padding:18px;border-color:#bccce3}
+body[data-blue-synthesis] .inspector-head {border-color:#e0e6f0;margin-bottom:13px}
+body[data-blue-synthesis] .inspector h2 {font-size:18px;line-height:1.4}
+body[data-blue-synthesis] .inspector code {border:1px solid #d6e0ee;box-shadow:none;background:#f4f7fc}
+body[data-blue-synthesis] .notice.info {border:1px solid #d5e0f1;background:#f0f5fd;border-radius:7px;color:#405b82}
+body[data-blue-synthesis] .finding {box-shadow:none;border:1px solid #d0dbea;background:#fff}
+body[data-blue-synthesis] .finding:hover {box-shadow:none;border-color:#9eb2d2;background:#f7f9fd}
+body[data-blue-synthesis] .finding[aria-pressed=true],
+body[data-blue-synthesis] .finding:active {
+  border:1px solid var(--selection-border)!important;
+  box-shadow:none!important;background:var(--selection)!important;
+  background-image:none!important;transform:none;
+}
+body[data-blue-synthesis] .finding[aria-pressed=true] .title {color:#1a3d7c}
+body[data-blue-synthesis] .finding::after {display:none}
+body[data-blue-synthesis] .nav-indicator {
+  border:1px solid var(--selection-border)!important;background:#f4f7fd!important;
+  box-shadow:none!important;border-radius:6px;
+}
+body[data-blue-synthesis] .navgroup a[aria-current=page] {color:#193c94;background:none;box-shadow:none}
+body[data-blue-synthesis] .navgroup a:is(:hover,:focus-visible) {color:#193c94;background:#f6f8fd;box-shadow:none}
+body[data-blue-synthesis] .tablinks a {border:1px solid transparent;padding:7px 11px;border-radius:5px}
+body[data-blue-synthesis] .tablinks {gap:8px;padding-bottom:10px}
+body[data-blue-synthesis] .tablinks a[aria-current=page] {border:1px solid var(--selection-border);background:var(--selection);color:#193c94}
+body[data-blue-synthesis] button:not(:disabled):not(.finding):not(.danger),
+body[data-blue-synthesis] .button {color:#294774;border-color:#a3b2c9;box-shadow:none}
+body[data-blue-synthesis] :is(button,.button).primary {
+  background:#193c94;border:1px solid #183987;color:#fff!important;
+  box-shadow:0 1px 1px #10295721;
+}
+body[data-blue-synthesis] button:not(:disabled):not(.finding):not(.danger):is(:hover,:focus-visible),
+body[data-blue-synthesis] .button:is(:hover,:focus-visible) {
+  background:#f0f5fd;color:#193c94;border-color:#819bc2;box-shadow:none;filter:none;
+}
+body[data-blue-synthesis] :is(button,.button).primary:is(:hover,:focus-visible,:active) {
+  background:#13317b!important;color:#fff!important;border-color:#13317b;box-shadow:none;
+}
+body[data-blue-synthesis] button:not(:disabled):not(.finding):not(.danger):active,
+body[data-blue-synthesis] .button:active {background:#e7eef9;color:#193c94;box-shadow:none;transform:none}
+body[data-blue-synthesis] .quiet:not(:hover):not(:focus-visible) {border-color:transparent}
+body[data-blue-synthesis] :is(.search-trigger,.org-select) {border-color:#a9b8cf;background:#fff}
+body[data-blue-synthesis] :is(input,select,textarea) {border-color:#8b9ebc;box-shadow:none}
+body[data-blue-synthesis] :is(input,select,textarea):focus-visible {background:#fff;box-shadow:none}
+body[data-blue-synthesis] :focus-visible {
+  outline:2px solid var(--focus)!important;outline-offset:3px!important;box-shadow:none!important;
+}
+body[data-blue-synthesis] #view-title:focus:not(:focus-visible) {outline:0;box-shadow:none}
+/* The inherited router focuses this noninteractive heading; controls retain the keyboard outline. */
+body[data-blue-synthesis] #view-title:focus-visible {outline:0!important;box-shadow:none!important}
+body[data-blue-synthesis][data-synthesis-view=results] .heading {margin-bottom:16px;padding-bottom:14px}
+body[data-blue-synthesis][data-synthesis-view=results] .tablinks {padding-bottom:8px;margin-bottom:12px}
+body[data-blue-synthesis][data-synthesis-view=results] .notice.info {font-size:12px;padding:9px 12px}
+body[data-blue-synthesis][data-synthesis-view=results] .metric {padding:10px 16px}
+body[data-blue-synthesis=refined] .inspector dl {display:grid;grid-template-columns:110px minmax(0,1fr);gap:13px 12px;padding-top:15px;margin:16px 0}
+body[data-blue-synthesis=refined] .inspector dt {font-size:9px;line-height:1.65;margin:0}
+body[data-blue-synthesis=refined] .inspector dd {font-size:11px;line-height:1.7;margin:0}
+body[data-blue-synthesis=refined] .inspector code {font-size:11px;padding:9px}
+body[data-blue-synthesis] :is(.project,.row,tr):focus-within {background:inherit;box-shadow:none}
+body[data-blue-synthesis] .project:focus-within {border-color:#a5b6d0}
+body[data-blue-synthesis] :is(#motion,.demo-toggle)[aria-pressed=true],
+body[data-blue-synthesis] .command-results button.command-current {
+  background:var(--selection);color:#193c94;border:1px solid var(--selection-border);box-shadow:none;
+}
+body[data-blue-synthesis] .form-grid {box-shadow:none;border-color:var(--line)}
+body[data-blue-synthesis] .form-layout {align-items:start}
+body[data-blue-synthesis] .form-layout>.aside-note {padding-top:18px;border-top:1px solid #c3d0e4}
+body[data-blue-synthesis] .aside-note h2 {font-size:18px}
+body[data-blue-synthesis] .aside-note li {margin-bottom:10px;font-size:13px}
+body[data-blue-synthesis] .aside-note p {font-size:12px;line-height:1.7}
+body[data-blue-synthesis] :is(dialog,.silk-popover) {border:1px solid #b5c6df;box-shadow:0 12px 34px #19335322;background:#fff}
+body[data-blue-synthesis] .active-filters button:is(:hover,:focus-visible) {
+  border-color:var(--selection-border)!important;background:var(--selection)!important;color:#193c94!important;
+}
+/* Workbench keeps Blue's shell. Related content shares one outer frame. */
+body[data-blue-synthesis=workbench] .wb-activity {
+  gap:0;background:#fff;border:1px solid #bfcee3;border-radius:10px;
+  box-shadow:0 2px 2px #18365b09;overflow:hidden;
+}
+body[data-blue-synthesis=workbench] .wb-activity>.attention {
+  border:0;border-radius:0;box-shadow:none;background:#f7faff;padding:20px;
+}
+body[data-blue-synthesis=workbench] .wb-activity>.panel {
+  border:0;border-left:1px solid #d3deed;border-radius:0;box-shadow:none;background:#fff;
+}
+body[data-blue-synthesis=workbench] .wb-projects {
+  gap:0;border:1px solid #ced8e7;border-radius:9px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 2px #1c355808;
+}
+body[data-blue-synthesis=workbench] .wb-projects>.project {
+  border:0;border-right:1px solid #dce4ef;border-radius:0;box-shadow:none;background:#fff;
+}
+body[data-blue-synthesis=workbench] .wb-projects>.project:last-child {border-right:0}
+body[data-blue-synthesis=workbench] .wb-projects .project footer {border:0;padding-top:5px}
+.wb-review {border:1px solid #bdcce3;border-radius:10px;background:#fff;overflow:clip;box-shadow:0 2px 3px #1a34580a}
+body[data-blue-synthesis=workbench] .wb-review>.metrics {
+  border:0;border-bottom:1px solid #d3deed;border-radius:0;margin:0;box-shadow:none;background:#f5f8fd;
+}
+body[data-blue-synthesis=workbench] .wb-review>.detail-toolbar {
+  margin:0;padding:9px 15px;border-bottom:1px solid #dde5f0;background:#fff;
+}
+body[data-blue-synthesis=workbench] .wb-review .results-grid {
+  gap:0;grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);align-items:stretch;
+}
+body[data-blue-synthesis=workbench] .wb-review .results-grid.detail-closed {grid-template-columns:1fr}
+body[data-blue-synthesis=workbench] .wb-review .results-grid>.stack {padding:16px;gap:10px}
+body[data-blue-synthesis=workbench] .review-toolbar>label {flex-basis:auto}
+body[data-blue-synthesis=workbench] .review-toolbar {margin-bottom:0}
+body[data-blue-synthesis=workbench] .wb-review .review-count {margin:0;font-size:10px}
+.wb-filterbar {padding:12px 15px;background:#fff;border-bottom:1px solid #e1e7f0}
+.wb-filterbar .active-filters:not(:empty) {margin:10px 0 0}
+body[data-blue-synthesis=workbench] .wb-review .finding-list {gap:3px}
+body[data-blue-synthesis=workbench] .wb-review .finding {
+  border:1px solid transparent;border-bottom-color:#e3e9f2;border-radius:5px;padding:11px 12px;
+}
+body[data-blue-synthesis=workbench] .wb-review .finding[aria-pressed=true] {border:1px solid var(--selection-border)}
+body[data-blue-synthesis=workbench] .wb-review .finding .title {margin:6px 0}
+body[data-blue-synthesis=workbench] .wb-review .inspector {
+  border:0;border-left:1px solid #d3deed;border-radius:0;box-shadow:none;background:#fcfdff;padding:16px 18px;
+}
+body[data-blue-synthesis=workbench] .wb-review .inspector-head {padding-bottom:10px;margin-bottom:12px}
+.wb-selected {display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.wb-selected>span:first-child {font:11px ui-monospace,Consolas,monospace;color:#3b5277}
+body[data-blue-synthesis=workbench] .inspector h2 {font-size:17px;margin:0 0 11px}
+body[data-blue-synthesis=workbench] .inspector>.wb-observation {font-size:12px;line-height:1.65;margin-bottom:16px}
+body[data-blue-synthesis=workbench] .inspector .wb-evidence {
+  background:#f0f5fc;border:1px solid #d3deed;border-radius:6px;padding:11px 12px;margin-bottom:10px;
+}
+.wb-evidence-heading {display:flex;justify-content:space-between;gap:12px;color:#4a6287;font-size:10px;margin-bottom:10px}
+body[data-blue-synthesis=workbench] .inspector .wb-evidence code {
+  border:0;padding:0;background:none;font-size:12px;line-height:1.65;color:#263e65;
+}
+.wb-evidence-context {margin:11px 0 0!important;font-size:10px!important;color:#5b6d87}
+body[data-blue-synthesis=workbench] .inspector .wb-meta {
+  display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0;padding:0 0 14px;border-bottom:1px solid #dce5f1;
+}
+body[data-blue-synthesis=workbench] .inspector .wb-meta dt {font-size:9px;letter-spacing:.7px;margin:0}
+body[data-blue-synthesis=workbench] .inspector .wb-meta dd {font-size:11px;margin:5px 0 0}
+.wb-next {padding:10px 0}
+.wb-next h3 {font-size:12px;margin:0 0 7px}
+body[data-blue-synthesis=workbench] .inspector .wb-next p {font-size:12px;line-height:1.65;margin:0}
+.wb-demo-source {font-size:10px!important;color:#64738a;line-height:1.6!important;margin:0 0 13px!important}
+body[data-blue-synthesis=workbench] .inspector>.actionrow {padding-top:0;gap:7px}
+body[data-blue-synthesis=workbench] .inspector>.actionrow button {font-size:11px}
+body[data-blue-synthesis=workbench] .wb-launch {
+  gap:0;background:#fff;border:1px solid #c3d0e3;border-radius:10px;overflow:hidden;box-shadow:0 2px 2px #19385b08;
+}
+body[data-blue-synthesis=workbench] .wb-launch>#launch-form {border:0;border-radius:0;box-shadow:none}
+body[data-blue-synthesis=workbench] .wb-launch>.aside-note {
+  margin:0;padding:23px 20px;border:0;border-left:1px solid #dbe3ef;background:#f7f9fd;align-self:stretch;
+}
+body[data-blue-synthesis=workbench] .wb-launch>.aside-note .eyebrow {font-size:10px}
+body[data-blue-synthesis=workbench] .wb-launch>.aside-note h2 {font-size:17px}
+@media(min-width:1600px) {body[data-blue-synthesis] .main {max-width:1500px;padding:25px 28px 24px}}

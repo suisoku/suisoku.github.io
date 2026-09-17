@@ -1,0 +1,163 @@
+/* Tactile is opt-in. Original Blue and both synthesis entries stay untouched. */
+body[data-blue-tactile][data-blue-synthesis] {
+  --bg:#fff; --subtle:#fff; --text:#242d4a; --muted:#57617e;
+  --line:#c2cae5; --control:#929fc8; --accent:#354cc4; --focus:#394ed0;
+  --tint:#e8ebff; --selection:#e9ecff; --selection-border:#8190d5;
+  --action-hover:#2d40ad; --action-pressed:#293b9b;
+  --tactile-edge:#bcc5e6; --tactile-shadow:0 3px 0 #c5cce6,0 5px 10px #28357409;
+  --tactile-ease:cubic-bezier(.2,.7,.3,1);
+}
+body[data-blue-tactile] .sidebar {
+  background:#fff;border-color:#bdc6e4;box-shadow:1px 0 0 #ffffffa6;
+}
+body[data-blue-tactile] .labbar {background:#fff;border-color:#bec8e7;color:#59617c}
+body[data-blue-tactile] .labbar b {color:#303f95}
+body[data-blue-tactile] .topbar {border-color:#c7cee7;box-shadow:0 2px 0 #e6e9f5}
+body[data-blue-tactile] .heading {border-color:#ccd2e8}
+body[data-blue-tactile] .heading h1 {color:#252f55}
+body[data-blue-tactile] .eyebrow {color:#3b4eb1}
+body[data-blue-tactile] .navgroup a[aria-current=page] {color:#3045b4;font-weight:650}
+body[data-blue-tactile] .nav-indicator {
+  background:#f5f5ff!important;border-color:#8e9ad2!important;box-shadow:none!important;
+}
+body[data-blue-tactile][data-blue-synthesis] :is(.panel,.rows,.table-wrap,.browser-frame) {
+  border:1px solid var(--tactile-edge);box-shadow:var(--tactile-shadow);
+}
+/* A shallow tray joins the workflow without flattening its two components. */
+body[data-blue-tactile][data-blue-synthesis] .wb-activity {
+  padding:7px;gap:8px;background:#fff;border:1px solid #adb9df;
+  border-radius:12px;overflow:visible;box-shadow:var(--tactile-shadow);
+}
+body[data-blue-tactile][data-blue-synthesis] .wb-activity>.attention {
+  background:#fff;border:1px solid #bbc5e5;border-radius:8px;
+  box-shadow:0 3px 0 #c4cde9;color:var(--text);padding:20px;
+}
+body[data-blue-tactile][data-blue-synthesis] .attention .eyebrow {color:var(--accent)}
+body[data-blue-tactile][data-blue-synthesis] .attention .number {color:var(--accent)}
+body[data-blue-tactile][data-blue-synthesis] .attention h2 {color:var(--text)}
+body[data-blue-tactile][data-blue-synthesis] .attention p:not(.eyebrow) {color:var(--muted)}
+body[data-blue-tactile][data-blue-synthesis] .wb-activity>.panel {
+  background:#fff;border:1px solid #bbc5e5;border-radius:8px;
+  box-shadow:0 3px 0 #c4cde9;padding:20px;
+}
+body[data-blue-tactile] .badge.active {background:#e8ecff;color:#344bb7;border-color:#c4ccef}
+body[data-blue-tactile][data-blue-synthesis] .wb-projects {
+  gap:10px;padding:7px;background:#fff;border:1px solid #bcc6e6;
+  border-radius:11px;overflow:visible;box-shadow:0 3px 0 #d1d7eb;
+}
+body[data-blue-tactile][data-blue-synthesis] .wb-projects>.project,
+body[data-blue-tactile][data-blue-synthesis] .project {
+  border:1px solid #b8c3e5;border-radius:8px;background:#fff;
+  box-shadow:0 3px 0 #c5cee9;position:relative;
+  transition:transform 160ms var(--tactile-ease),box-shadow 160ms var(--tactile-ease),border-color 130ms;
+}
+body[data-blue-tactile][data-blue-synthesis] .project .monogram {
+  background:#e5eaff;border:1px solid #a2b0e3;color:#314ab6;box-shadow:0 2px 0 #bdc8ed;
+}
+body[data-blue-tactile][data-blue-synthesis] .project footer {border-top:1px solid #e1e5f3;padding-top:10px}
+body[data-blue-tactile][data-blue-synthesis] .project:has(a:hover) {
+  transform:translateY(-2px);border-color:#8799d5;box-shadow:0 5px 0 #bec9e9,0 8px 12px #273c8010;
+}
+body[data-blue-tactile][data-blue-synthesis] .project:has(a:active) {
+  transform:translateY(1px);box-shadow:0 2px 0 #bec9e9;
+}
+/* Buttons have physical travel. Selection and quiet navigation never acquire an edge stripe. */
+body[data-blue-tactile][data-blue-synthesis] button:not(:disabled):not(.finding):not(.quiet):not(.danger):not(.primary),
+body[data-blue-tactile][data-blue-synthesis] .button:not(.quiet):not(.primary) {
+  background:#fdfdff;color:#354b9d;border:1px solid #98a7d4;
+  box-shadow:0 2px 0 #bac5e6;transform:translateY(0);
+  transition:transform 120ms var(--tactile-ease),box-shadow 120ms var(--tactile-ease),background-color 120ms,border-color 120ms;
+}
+body[data-blue-tactile][data-blue-synthesis] button:not(:disabled):not(.finding):not(.quiet):not(.danger):not(.primary):hover,
+body[data-blue-tactile][data-blue-synthesis] .button:not(.quiet):not(.primary):hover {
+  background:#f3f4ff;border-color:#748ac7;box-shadow:0 3px 0 #b3c0e3;transform:translateY(-1px);
+}
+body[data-blue-tactile][data-blue-synthesis] :is(button,.button).primary:not(:disabled) {
+  background:#354cc4;border-color:#273ba6;color:#fff!important;
+  box-shadow:0 3px 0 #23338f,inset 0 1px 0 #ffffff25;transform:translateY(0);
+  transition:transform 120ms var(--tactile-ease),box-shadow 120ms var(--tactile-ease),background-color 120ms;
+}
+body[data-blue-tactile][data-blue-synthesis] :is(button,.button).primary:not(:disabled):is(:hover,:focus-visible) {
+  background:#3045b8!important;border-color:#24379e;box-shadow:0 4px 0 #23338f,inset 0 1px 0 #ffffff25;
+}
+body[data-blue-tactile][data-blue-synthesis] :is(button,.button).primary:not(:disabled):hover {transform:translateY(-1px)}
+body[data-blue-tactile][data-blue-synthesis] button:not(:disabled):not(.finding):not(.quiet):not(.danger):not(.primary):active,
+body[data-blue-tactile][data-blue-synthesis] .button:not(.quiet):not(.primary):active {
+  transform:translateY(2px);box-shadow:0 0 0 transparent;background:#e8edff;
+}
+body[data-blue-tactile][data-blue-synthesis] :is(button,.button).primary:not(:disabled):active {
+  background:#293b9b!important;transform:translateY(2px);box-shadow:none;
+}
+body[data-blue-tactile][data-blue-synthesis] :is(input,select,textarea) {
+  border-color:#9aa8d0;background:#fdfdff;box-shadow:0 1px 0 #e3e7f4;
+}
+body[data-blue-tactile][data-blue-synthesis] :is(input,select,textarea):hover {border-color:#627ac3}
+body[data-blue-tactile][data-blue-synthesis] .notice.info {
+  background:#fff;border:1px solid #c0cae9;color:#41548b;
+}
+/* White surfaces throughout; blue is reserved for controls, type and small state accents. */
+body[data-blue-tactile][data-synthesis-view=results] .heading {padding-bottom:10px;margin-bottom:10px}
+body[data-blue-tactile][data-synthesis-view=results] .tablinks {padding-bottom:6px;margin-bottom:10px}
+body[data-blue-tactile][data-synthesis-view=results] .tablinks a {min-height:34px;padding:6px 10px}
+body[data-blue-tactile][data-synthesis-view=results] .notice.info {margin-bottom:12px}
+body[data-blue-tactile][data-blue-synthesis] .wb-review {
+  border:1px solid #a1afd9;border-radius:11px;background:#fff;box-shadow:var(--tactile-shadow);
+}
+body[data-blue-tactile][data-blue-synthesis] .wb-review>.metrics {
+  background:#fff;border-bottom:1px solid #cbd4ed;color:var(--text);
+  box-shadow:none;
+}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .metric {border-color:#cbd4ed}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .metric b {color:var(--accent)}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .metric span {color:var(--muted)}
+body[data-blue-tactile] .wb-filterbar {background:#fff;border-color:#cbd4ed}
+body[data-blue-tactile][data-blue-synthesis] .wb-review>.detail-toolbar {background:#fff;border-color:#ccd5ed}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .results-grid {padding:8px;gap:8px;align-items:start}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .results-grid>.stack {padding:7px;gap:9px}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .finding-list {gap:7px}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .finding {
+  border:1px solid #b9c6e5;border-radius:7px;padding:11px 12px;background:#fff;box-shadow:0 2px 0 #d3daef;
+}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .finding:hover {background:#f6f7ff;border-color:#8e9ed2}
+body[data-blue-tactile][data-blue-synthesis] .finding[aria-pressed=true] .title {color:#2e42a7}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .inspector {
+  border:1px solid #adbce2;border-radius:8px;padding:14px 16px;background:#fff;
+  box-shadow:0 3px 0 #bcc9e9;transform-origin:50% 0;
+}
+body[data-blue-tactile][data-blue-synthesis] .inspector-head {border-color:#d7def0}
+body[data-blue-tactile][data-blue-synthesis] .wb-review .inspector-head {padding-bottom:8px;margin-bottom:10px}
+body[data-blue-tactile][data-blue-synthesis] .inspector>.wb-observation {margin-bottom:12px}
+body[data-blue-tactile][data-blue-synthesis] .inspector .wb-evidence {
+  background:#fff;border:1px solid #bdc7eb;border-radius:6px;box-shadow:0 2px 0 #d7ddf3;
+}
+body[data-blue-tactile] .wb-evidence-heading {color:#4557a1}
+body[data-blue-tactile][data-blue-synthesis] .inspector .wb-evidence code {color:#2e3e7f}
+body[data-blue-tactile][data-blue-synthesis] .wb-launch {
+  padding:7px;gap:8px;background:#fff;border:1px solid #acb9df;
+  border-radius:11px;box-shadow:var(--tactile-shadow);align-items:start;overflow:visible;
+}
+body[data-blue-tactile][data-blue-synthesis] .wb-launch>#launch-form {
+  border:1px solid #b6c3e4;border-radius:8px;background:#fff;box-shadow:0 3px 0 #c2cdeb;
+}
+body[data-blue-tactile][data-blue-synthesis] .wb-launch legend {color:#3047ad}
+body[data-blue-tactile][data-blue-synthesis] .wb-launch>.aside-note {
+  padding:19px 17px;background:#fff;border:1px solid #b4c0e8;
+  border-radius:8px;box-shadow:0 3px 0 #c5cdec;align-self:start;
+}
+body[data-blue-tactile] .wb-launch>.aside-note h2 {color:#2e4098}
+body[data-blue-tactile] .wb-launch>.aside-note ol {padding-left:23px}
+body[data-blue-tactile] .wb-launch>.aside-note li::marker {color:#354cc4;font-weight:700}
+body[data-blue-tactile][data-blue-synthesis] :is(dialog,.silk-popover) {
+  border:1px solid #a9b7dc;box-shadow:0 4px 0 #b8c3e3,0 12px 28px #25357826;
+}
+/* Created only when evidence changes. No idle motion, pointer tracking or layout resizing. */
+@keyframes tactile-evidence-arrive {from {transform:translateY(3px)} to {transform:translateY(0)}}
+body[data-blue-tactile][data-reduced=false] .inspector {animation:tactile-evidence-arrive 170ms var(--tactile-ease)}
+body[data-blue-tactile][data-reduced=true] :is(.project,.inspector,button,.button) {
+  transform:none!important;animation:none!important;transition:none!important;
+}
+@media(prefers-reduced-motion:reduce) {
+  body[data-blue-tactile] :is(.project,.inspector,button,.button) {
+    transform:none!important;animation:none!important;transition:none!important;
+  }
+}
