@@ -38,15 +38,14 @@ body[data-live12] .live-journal>header h2{font-size:17px}
 body[data-live12] .live-journal-inspection .live-event-list button{grid-template-columns:52px minmax(0,1fr);gap:8px;padding:12px}
 body[data-live12] .event-copy{padding-left:4px}
 body[data-live12] .minimal-event-detail{padding:0 14px 14px;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
-body[data-horizon][data-live12] .remote-chrome{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px;padding:11px 14px;background:#edf5f1;border-color:#c7d9d0}
+body[data-horizon][data-live12] .remote-chrome{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px;padding:11px 14px}
 body[data-live12] .remote-chrome>div:first-child{flex:1;min-width:120px}
-body[data-live12] .remote-product{color:#426757}
 body[data-live12] .live12-header-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}
 body[data-horizon][data-live12] .live12-header-actions button{min-height:38px;padding:8px 11px;font-size:11px}
 @media(max-width:1100px),(max-height:699px){body[data-horizon][data-live12] .minimal-workspace{grid-template-columns:minmax(0,1fr)}body[data-horizon][data-live12][data-live-view] .horizon-live{grid-template-rows:auto auto}}
 @media(max-width:760px){body[data-horizon][data-live12] .live12-target{align-items:flex-start;flex-direction:column;gap:13px;padding:17px 18px}body[data-live12] .live12-status{text-align:left;max-width:none}body[data-live12] .live12-target h1{font-size:20px}body[data-horizon][data-live12] .minimal-workspace{margin:12px;gap:12px}body[data-live12] .live12-header-actions{justify-content:flex-start;flex:1 1 100%}body[data-live12] .live12-header-actions button{flex:1 1 auto}}
 
-/* A quieter frame, clearer surfaces, and more room for the actual review. */
+/* Live audit 12 layout and readable type; surfaces inherit original Horizon. */
 body[data-horizon][data-live12] .work{background:#eef2f8}
 body[data-horizon][data-live12] .live12-target{padding:14px 22px;gap:20px}
 body[data-live12] .live12-target-page{display:flex;align-items:center;flex-wrap:wrap;gap:7px 12px}
@@ -58,28 +57,25 @@ body[data-live12] .live12-status{gap:1px;font-size:12px;max-width:360px;flex-shr
 body[data-live12] .live12-status strong{font-size:13px;color:#e3fff0}
 body[data-live12] .live12-status span{color:#eef0ff}
 body[data-horizon][data-live12] .minimal-workspace{margin:22px 26px 26px;gap:16px}
-body[data-horizon][data-live12] :is(.live-journal,.horizon-remote){border-color:#b9c5d9;box-shadow:0 2px 5px #26365309}
-body[data-horizon][data-live12] .live-journal>header{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;padding:12px 14px;background:#e2e8f3;border-bottom:1px solid #becbdd}
-body[data-horizon][data-live12] .live-journal>header h2{margin:0;font-size:17px;color:#293b58}
-body[data-horizon][data-live12] .live-journal>header>span{border:0;padding:0;color:#53617a;font-size:12px}
-body[data-horizon][data-live12] .journal-controls{background:#f5f7fb;padding:8px 10px;gap:6px}
-body[data-horizon][data-live12] .horizon-live :is(.journal-controls,.journal-footer) button{font-size:12px;min-height:34px!important;padding:6px 8px}
+body[data-horizon][data-live12] .live-journal>header{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;padding:12px 14px}
+body[data-horizon][data-live12] .live-journal>header h2{margin:0;font-size:17px}
+body[data-horizon][data-live12] .live-journal>header>span{border:0;padding:0;color:#dedaf0;font-size:12px}
+body[data-horizon][data-live12] .journal-controls{padding:8px 10px;gap:6px}
+body[data-horizon][data-live12] .horizon-live :is(.journal-controls,.journal-footer) button{font-size:12px;min-height:38px!important;padding:6px 8px}
 body[data-horizon][data-live12] .live-journal-inspection .live-event-list button{grid-template-columns:60px minmax(0,1fr);gap:6px;padding:12px 10px}
-body[data-horizon][data-live12] .event-time{font-size:12px;color:#526079;font-variant-numeric:tabular-nums}
-body[data-horizon][data-live12] .event-copy small{font-size:11px;letter-spacing:.02em;color:#665795}
-body[data-horizon][data-live12] .event-copy strong{font-size:14px;line-height:1.4;color:#29354c}
-body[data-horizon][data-live12] .minimal-event-detail{font-size:13px;line-height:1.55;color:#4a5269}
-body[data-horizon][data-live12] .live-journal-inspection .live-event-list button[aria-expanded=true],body[data-live12] .minimal-event-detail{background:#eeedf9}
-body[data-horizon][data-live12] .remote-chrome{padding:9px 12px;background:#e1eee9;border-color:#b7d0c5}
-body[data-horizon][data-live12] .remote-product{font-size:12px;letter-spacing:.02em;color:#3e6659}
-body[data-horizon][data-live12] .remote-chrome strong{font-size:13px;color:#294c40}
-body[data-horizon][data-live12] .live12-header-actions button{font-size:13px;min-height:36px;padding:7px 12px;border-radius:9px}
-body[data-horizon][data-live12] .live12-header-actions .primary{background:#4c4ca3;border-color:#40428d;color:#fff;box-shadow:0 2px 3px #33356818}
-body[data-horizon][data-live12] .remote-scrollport{background:#343e54;scrollbar-color:#a3b1c8 #343e54}
-body[data-horizon][data-live12] .remote-meta{font-size:12px;background:#f4f7fb;color:#526078;padding:8px 12px}
+body[data-horizon][data-live12] .event-time{font-size:12px;font-variant-numeric:tabular-nums}
+body[data-horizon][data-live12] .event-copy small{font-size:11px;letter-spacing:.02em}
+body[data-horizon][data-live12] .event-copy strong{font-size:14px;line-height:1.4}
+body[data-horizon][data-live12] .minimal-event-detail{font-size:13px;line-height:1.55}
+body[data-horizon][data-live12] .remote-chrome{padding:9px 12px}
+body[data-horizon][data-live12] .remote-product{font-size:12px;letter-spacing:.02em}
+body[data-horizon][data-live12] .remote-chrome strong{font-size:13px}
+body[data-horizon][data-live12] .live12-header-actions button{font-size:13px;min-height:44px;padding:9px 14px}
+body[data-horizon][data-live12] .remote-meta{font-size:12px;padding:8px 12px}
 body[data-horizon][data-live12] .remote-key-status:empty{display:none}
 @media(max-width:760px){body[data-live12] .live12-status{flex-shrink:1;max-width:100%}}
 
-/* Slightly deepen only the shell backgrounds; preserve its original controls. */
-body[data-horizon][data-live12] .sidebar{background:linear-gradient(180deg,#d5deef,#dadeed 70%,#e0dfed)}
-body[data-horizon][data-live12] .topbar{background:linear-gradient(105deg,#e0e6f2,#e7eaf4 68%,#e9ebf4)}
+/* Blend the earlier shell tones; match the main top bar to the workspace. */
+body[data-horizon][data-live12] .sidebar{background:linear-gradient(180deg,#d9e2f2,#dee2f0 70%,#e4e3f0)}
+body[data-horizon][data-live12] .labbar{background:#d9e2f2}
+body[data-horizon][data-live12] .topbar{background:#eef2f8}
