@@ -79,3 +79,7 @@ body[data-horizon][data-live12] .remote-scrollport{background:#343e54;scrollbar-
 body[data-horizon][data-live12] .remote-meta{font-size:12px;background:#f4f7fb;color:#526078;padding:8px 12px}
 body[data-horizon][data-live12] .remote-key-status:empty{display:none}
 @media(max-width:760px){body[data-live12] .live12-status{flex-shrink:1;max-width:100%}}
+
+/* Slightly deepen only the shell backgrounds; preserve its original controls. */
+body[data-horizon][data-live12] .sidebar{background:linear-gradient(180deg,#d5deef,#dadeed 70%,#e0dfed)}
+body[data-horizon][data-live12] .topbar{background:linear-gradient(105deg,#e0e6f2,#e7eaf4 68%,#e9ebf4)}
