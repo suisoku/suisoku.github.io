@@ -1,0 +1,188 @@
+/* Live audit 10: native desktop viewer with the final 10px-margin, 1600x1000 cap below. */
+body[data-horizon] .horizon-live10 {width:80%;max-width:1480px;margin:0 auto;padding:28px 0 112px;min-height:0}
+body[data-horizon] .horizon-live10 svg {width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:none}
+body[data-horizon] .horizon-live10 button {display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;font-size:11px;padding:8px 11px}
+body[data-horizon] .l10-summary {position:relative;margin:0 0 24px;border:1px solid #6660be;border-radius:24px;background:linear-gradient(115deg,#424fac,#6650b7 82%,#7962c4);color:#fff;box-shadow:0 5px 0 #d7d0ec,0 12px 24px #55458a0b}
+body[data-horizon] .l10-summary-top {display:flex;gap:15px;align-items:center;padding:21px 24px 18px}
+body[data-horizon] .l10-summary-mark {display:grid;place-items:center;width:46px;height:46px;border:1px solid #ffffff40;border-radius:15px;background:#ffffff12;color:#e7e5ff}
+body[data-horizon] .l10-summary-mark svg {width:24px;height:24px}
+body[data-horizon] .l10-target {flex:1;min-width:0}
+body[data-horizon] .l10-target p {margin:0 0 7px;color:#dfdbfa;font-size:9px;letter-spacing:1.35px}
+body[data-horizon] .l10-target h1 {margin:0;color:#fff;font-size:26px;font-weight:550;letter-spacing:-.75px;line-height:1.2}
+body[data-horizon] .l10-target h1 span {color:#e7e2fd;font-weight:400}
+body[data-horizon] .l10-summary-bottom {display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 24px;border-top:1px solid #ffffff24;color:#e6e2fb;font-size:10px}
+body[data-horizon] .l10-summary-bottom>div {display:flex;align-items:center;gap:8px}
+body[data-horizon] .l10-summary-bottom strong {font-size:11px;font-weight:550;color:#fff}
+body[data-horizon] .l10-signal {width:6px;height:6px;border-radius:50%;background:#c6e8d8;flex:none}
+body[data-horizon] .l10-meta {position:relative}
+body[data-horizon] .l10-meta summary {display:grid;place-items:center;width:38px;height:38px;cursor:pointer;list-style:none;color:#e2dcfa;border:1px solid #ffffff3a;border-radius:12px}
+body[data-horizon] .l10-meta summary::-webkit-details-marker {display:none}
+body[data-horizon] .l10-meta dl {position:absolute;z-index:8;right:0;top:36px;width:250px;margin:12px 0 0;padding:18px;background:#fff;border:1px solid #d2cbe4;border-radius:16px;box-shadow:0 12px 32px #30234c24;color:#3b3551}
+body[data-horizon] .l10-meta dl>div+div {margin-top:13px}
+body[data-horizon] .l10-meta dt {font-size:10px;color:#777085;margin-bottom:3px}
+body[data-horizon] .l10-meta dd {margin:0;font-size:12px}
+body[data-horizon] .l10-meta summary:focus-visible {outline:2px solid #fff;outline-offset:4px}
+body[data-horizon] .l10-layout {display:grid;grid-template-columns:252px minmax(0,1fr);gap:20px;align-items:start}
+body[data-horizon] .l10-journal {border:1px solid #d2cce0;border-radius:22px;background:#faf8fe;overflow:hidden;box-shadow:0 4px 0 #e7e1f0;min-width:0}
+body[data-horizon] .l10-journal>header {display:flex;justify-content:space-between;gap:10px;align-items:center;padding:18px 16px;border-bottom:1px solid #e5dfef}
+body[data-horizon] .l10-journal>header p {font-size:9px;letter-spacing:1.2px;color:#827394;margin:0 0 5px}
+body[data-horizon] .l10-journal h2 {font-size:19px;letter-spacing:-.4px;font-weight:550;margin:0;color:#3f3559}
+body[data-horizon] .l10-journal [data-l10=follow] {font-size:10px;min-height:32px;padding:5px 9px;background:#fff;border-color:#d8cde7;color:#72618b;box-shadow:none}
+body[data-horizon] .l10-journal [data-l10=follow][aria-pressed=true] {background:#ebe3f7;border-color:#baa8d2;color:#5c407e}
+body[data-horizon] #l10-events {list-style:none;margin:0;padding:8px;max-height:450px;overflow:auto;overscroll-behavior:contain}
+body[data-horizon] #l10-events li {border-bottom:1px solid #e8e2ef}
+body[data-horizon] #l10-events li:last-child {border:0}
+body[data-horizon] #l10-events button {display:grid;grid-template-columns:1fr auto;gap:6px;width:100%;padding:13px 10px;border:0;box-shadow:none;background:transparent;text-align:left;color:#473b5f;min-height:64px}
+body[data-horizon] #l10-events button[aria-expanded=true] {background:#ece5f6}
+body[data-horizon] #l10-events button time {grid-column:1/-1;color:#85788f;font-size:9px;font-variant-numeric:tabular-nums;letter-spacing:.3px}
+body[data-horizon] #l10-events button span {font-size:12px;line-height:1.4;font-weight:550}
+body[data-horizon] #l10-events button b {font-size:14px;font-weight:400;color:#927fa8}
+body[data-horizon] #l10-events li>p {margin:0;padding:9px 10px 15px;color:#72627e;font-size:11px;line-height:1.6}
+body[data-horizon] .l10-journal>footer {padding:13px 18px;font-size:10px;line-height:1.5;color:#8b7e96;border-top:1px solid #e3dcec}
+body[data-horizon] .l10-unread {width:calc(100% - 20px);margin:10px 10px 0;background:#fff0da;color:#795519;border-color:#ead1a4}
+body[data-horizon] .l10-sandbox {min-width:0;overflow:hidden;border:1px solid #b7cec7;border-radius:23px;background:#f1f8f5;box-shadow:0 5px 0 #dbe8e1,0 15px 28px #294c3810}
+body[data-horizon] .l10-sandbox-head {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:15px 17px;background:linear-gradient(125deg,#e2f0e9,#f4faf6);border-bottom:1px solid #c8dcd1}
+body[data-horizon] .l10-sandbox-title {display:flex;align-items:center;gap:10px;flex-shrink:0;color:#4f7c69}
+body[data-horizon] .l10-sandbox-title h2 {margin:0 0 3px;font-size:17px;letter-spacing:-.4px;font-weight:550;color:#284c40}
+body[data-horizon] #l10-browser-status {font-size:10px;color:#59796a}
+body[data-horizon] .l10-sandbox-tools {display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}
+body[data-horizon] .l10-sandbox-tools button {background:#ffffff9c;border-color:#b6cfc1;color:#4a7561;box-shadow:0 2px 0 #d4e2db;white-space:nowrap}
+body[data-horizon] .l10-sandbox-tools [data-l10=size] {min-width:48px}
+body[data-horizon] .l10-sandbox-tools button:disabled {opacity:.4;cursor:not-allowed;box-shadow:none}
+body[data-horizon] .l10-stage {position:relative;width:100%;aspect-ratio:16/10;isolation:isolate;background:#131932}
+body[data-horizon] .l10-stage iframe {display:block;width:100%;height:100%;border:0;background:#151b35}
+body[data-horizon] .l10-state {position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 55% 40%,#44417950,transparent 65%),linear-gradient(145deg,#131a32,#25213f);color:#fff;text-align:center;padding:16px;overflow:auto}
+body[data-horizon] .l10-state-inner {max-width:400px;width:100%;position:relative}
+body[data-horizon] .l10-state .l10-cosmos {width:min(260px,65%);height:auto;stroke:none;display:block;margin:0 auto -4px}
+body[data-horizon] .l10-state h3 {font-size:clamp(17px,1.65vw,24px);font-weight:500;line-height:1.2;letter-spacing:-.6px;color:#f0edff;margin:0 0 10px}
+body[data-horizon] .l10-state p {font-size:11px;line-height:1.65;max-width:300px;margin:0 auto;color:#b9b5d0}
+body[data-horizon] .l10-state button {margin:17px auto 0;border-color:#777497;background:#eeeaff;color:#433762;box-shadow:0 3px 0 #0a1029}
+body[data-horizon] .l10-preview-label {position:absolute;top:0;right:0;color:#a39bbd;font-size:9px}
+body[data-horizon] .l10-sandbox-foot {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;color:#648271;font-size:10px;border-top:1px solid #c9d9d0;background:#eef6f1}
+body[data-horizon] .l10-sandbox-foot button {border:0;box-shadow:none;min-height:30px;padding:4px;background:transparent;color:#6a7d73;font-size:10px;white-space:nowrap}
+body[data-horizon] .l10-lab {position:fixed;bottom:22px;left:calc(50% + 116px);transform:translateX(-50%);z-index:40;display:flex;align-items:center;max-width:calc(100vw - 36px);padding:6px;border:1px solid #c9c0de;border-radius:18px;background:#fdfbfff5;box-shadow:0 8px 30px #38275622;backdrop-filter:blur(14px);color:#5b4b75}
+body[data-horizon] .l10-lab-toggle {border:0;box-shadow:none;background:transparent;color:#5d4585;white-space:nowrap}
+body[data-horizon] .l10-lab-toggle svg {color:#8a6dbc;width:16px;height:16px}
+body[data-horizon] .l10-lab-options {display:flex;align-items:center;gap:10px;padding:0 8px;border-left:1px solid #e5ddee}
+body[data-horizon] .l10-lab label {position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}
+body[data-horizon] .l10-lab select {width:210px;max-width:210px;min-height:36px;padding:5px 26px 5px 10px;font-size:11px;border-color:#d4c9e3;border-radius:10px;background:#f4effa;color:#5e497a}
+body[data-horizon] #l10-preview-note {max-width:126px;font-size:9px;line-height:1.4;color:#8a7b99}
+body[data-horizon] .horizon-live10.l10-focused {width:94%}
+body[data-horizon] .l10-focused .l10-layout {grid-template-columns:minmax(0,1fr)}
+body[data-horizon] .l10-focused :is(.l10-summary,.l10-journal) {display:none}
+body[data-horizon] .l10-focused .l10-stage {height:clamp(240px,calc(100dvh - 380px),900px);aspect-ratio:auto}
+body[data-horizon][data-collapsed=true] .l10-lab {left:calc(50% + 39px)}
+body[data-horizon] .horizon-live10 [hidden] {display:none!important}
+body[data-horizon] .l10-drift {animation:l10-drift 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes l10-drift {50% {translate:0 -7px}}
+@media(prefers-reduced-motion:reduce) {body[data-horizon] .l10-drift {animation:none}}
+body[data-horizon][data-reduced=true] .l10-drift {animation:none}
+@media(max-width:1400px) {
+ body[data-horizon] .l10-layout {grid-template-columns:220px minmax(0,1fr);gap:16px}
+ body[data-horizon] .l10-state .l10-cosmos {width:190px;max-width:60%}
+}
+@media(max-width:1100px) {
+ body[data-horizon] .horizon-live10 {width:88%}
+ body[data-horizon] .l10-layout {grid-template-columns:1fr}
+ body[data-horizon] .l10-sandbox {grid-row:1}
+ body[data-horizon] .l10-sandbox-head {flex-direction:row;align-items:center}
+ body[data-horizon] .l10-sandbox-tools {width:auto;justify-content:flex-end}
+ body[data-horizon] #l10-events {max-height:280px}
+}
+@media(max-width:760px) {
+ body[data-horizon] .horizon-live10,body[data-horizon] .horizon-live10.l10-focused {width:calc(100% - 28px);padding:20px 0 132px}
+ body[data-horizon] .l10-summary {border-radius:20px;margin-bottom:20px}
+ body[data-horizon] .l10-summary-top {padding:18px 16px;gap:10px}
+ body[data-horizon] .l10-summary-mark {display:none}
+ body[data-horizon] .l10-target h1 {font-size:22px}
+ body[data-horizon] .l10-target h1 span {display:block;font-size:18px;margin-top:5px}
+ body[data-horizon] .l10-summary-bottom {padding:12px 16px;flex-direction:column;align-items:flex-start;gap:7px}
+ body[data-horizon] .l10-sandbox-head {flex-direction:column;align-items:flex-start;padding:14px}
+ body[data-horizon] .l10-sandbox-tools {justify-content:flex-start}
+ body[data-horizon] .l10-sandbox-tools button {padding:7px 9px;font-size:10px}
+ body[data-horizon] .l10-sandbox-tools svg {width:15px;height:15px}
+ body[data-horizon] .l10-state {padding:12px}
+ body[data-horizon] .l10-state .l10-cosmos {width:120px;margin-top:-12px;margin-bottom:-12px}
+ body[data-horizon] .l10-state h3 {font-size:17px;margin-bottom:6px}
+ body[data-horizon] .l10-state p {font-size:10px;line-height:1.4;max-width:260px}
+ body[data-horizon] .l10-state button {margin-top:8px;min-height:30px;font-size:10px}
+ body[data-horizon] .l10-preview-label {right:0;top:0;font-size:8px}
+ body[data-horizon] .l10-sandbox-foot {font-size:9px;padding:8px 12px}
+ body[data-horizon] .l10-lab,body[data-horizon][data-collapsed=true] .l10-lab {left:50%;bottom:12px;max-width:calc(100vw - 20px)}
+ body[data-horizon] .l10-lab-toggle {font-size:10px;padding:6px}
+ body[data-horizon] .l10-lab-options {padding:0 4px}
+ body[data-horizon] .l10-lab select {width:170px;max-width:170px;font-size:10px}
+ body[data-horizon] #l10-preview-note {display:none}
+ body[data-horizon][data-live10] .app.menu-open .project-nav {display:block}
+ body[data-horizon][data-live10] .sidebar {overflow-y:auto}
+}
+@media(forced-colors:active) {
+ body[data-horizon] .l10-state {background:Canvas;color:CanvasText}
+ body[data-horizon] .l10-state :is(h3,p) {color:CanvasText}
+ body[data-horizon] #l10-events button[aria-expanded=true] {outline:2px solid Highlight;outline-offset:-3px}
+}
+
+/* Version 6: no outer margins; cap the main element itself at 1920 by 1080. */
+body[data-horizon][data-live10] {height:100dvh;overflow:hidden}
+body[data-horizon][data-live10] #root {height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}
+body[data-horizon][data-live10] .app {height:100%;min-height:0;overflow:hidden}
+body[data-horizon][data-live10] .sidebar {height:100%;min-height:0;max-height:none;overflow-y:auto}
+body[data-horizon][data-live10] .work {height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+body[data-horizon][data-live10] .topbar {flex:none}
+body[data-horizon] .horizon-live10,
+body[data-horizon] .horizon-live10.l10-focused {position:relative;flex:1;display:flex;flex-direction:column;gap:16px;min-height:0;width:100%;max-width:1920px;max-height:1080px;margin:0;padding:0;overflow:hidden}
+body[data-horizon] .horizon-live10 .l10-summary {flex:none;margin:0;box-shadow:0 3px 0 #d7d0ec;border-radius:0 0 22px 22px}
+body[data-horizon] .horizon-live10 .l10-layout {flex:1;min-height:0;grid-template-columns:clamp(240px,17vw,320px) minmax(0,1fr);gap:16px;align-items:stretch}
+body[data-horizon] .horizon-live10 .l10-journal {display:flex;flex-direction:column;min-height:0;border-radius:20px 20px 0 0;box-shadow:none}
+body[data-horizon] .horizon-live10 .l10-journal>header,
+body[data-horizon] .horizon-live10 .l10-journal>footer {flex:none}
+body[data-horizon] .horizon-live10 #l10-events {flex:1;min-height:0;max-height:none}
+body[data-horizon] .horizon-live10 .l10-sandbox {display:flex;flex-direction:column;min-height:0;border-radius:22px 22px 0 0;box-shadow:none}
+body[data-horizon] .horizon-live10 .l10-sandbox-head,
+body[data-horizon] .horizon-live10 .l10-sandbox-foot {flex:none}
+body[data-horizon] .horizon-live10 .l10-stage {flex:1;min-height:0;height:auto;aspect-ratio:auto}
+body[data-horizon] .horizon-live10 .l10-stage iframe {position:absolute;inset:0}
+body[data-horizon] .horizon-live10 .l10-lab {position:absolute;top:16px;right:78px;bottom:auto;left:auto;transform:none;max-width:50%;z-index:4}
+body[data-horizon] .horizon-live10.l10-focused .l10-layout {grid-template-columns:minmax(0,1fr)}
+body[data-horizon] .horizon-live10.l10-focused :is(.l10-summary,.l10-journal) {display:none}
+body[data-horizon] .horizon-live10.l10-focused .l10-lab {top:auto;bottom:72px;left:20px;right:auto}
+body[data-horizon][data-live10] .brand {display:flex;align-items:center;justify-content:center;gap:0;min-height:86px;padding:8px 0;background:none;border:0;box-shadow:none}
+body[data-horizon][data-live10] .l10-brand-mark {position:relative;display:block;width:64px;height:62px;overflow:hidden}
+body[data-horizon][data-live10] .l10-brand-mark img {position:absolute;left:-14px;top:-17px;width:94px;height:94px;max-width:none;object-fit:contain;filter:none}
+body[data-horizon][data-live10][data-collapsed=true] .brand {min-height:70px}
+body[data-horizon][data-live10][data-collapsed=true] .l10-brand-mark {width:38px;height:37px}
+body[data-horizon][data-live10][data-collapsed=true] .l10-brand-mark img {width:55px;height:55px;left:-7.85px;top:-9.5px}
+
+/* Latest sizing: 10px outer margins; cap main at 1600 by 1000. */
+body[data-horizon] .horizon-live10,
+body[data-horizon] .horizon-live10.l10-focused {width:calc(100% - 20px);max-width:1600px;max-height:1000px;margin:10px;padding:0}
+
+/* Center within the content area below the header, retaining 10px minimum clearance. */
+body[data-horizon][data-live10] .work {display:grid;grid-template-rows:auto minmax(0,1fr)}
+body[data-horizon] .horizon-live10,
+body[data-horizon] .horizon-live10.l10-focused {flex:none;place-self:center;height:calc(100% - 20px)}
+
+/* Full-width summary is outside the centered, capped main element. */
+body[data-horizon][data-live10] .work {grid-template-rows:auto auto minmax(0,1fr)}
+body[data-horizon][data-live10-focused] .work {grid-template-rows:auto minmax(0,1fr)}
+body[data-horizon] .l10-banner {position:relative;min-width:0;z-index:5}
+body[data-horizon] .l10-banner [hidden],
+body[data-horizon] .l10-banner[hidden] {display:none!important}
+body[data-horizon] .l10-banner .l10-summary {margin:0;border-radius:0;box-shadow:none;border-width:0 0 1px}
+body[data-horizon] .l10-banner svg {width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:none}
+body[data-horizon] .l10-banner .l10-summary-mark svg {width:24px;height:24px}
+body[data-horizon] .l10-banner button {display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;font-size:11px;padding:8px 11px}
+body[data-horizon] .l10-banner .l10-lab {position:absolute;top:16px;right:78px;bottom:auto;left:auto;transform:none;max-width:50%;z-index:4}
+
+/* Public static browser specimen; the original layout and state illustrations remain. */
+body[data-horizon] .l10-stage {overflow:auto}
+.l10-demo-browser {display:flex;flex-direction:column;position:absolute;inset:0;color:#283047;background:#e5e8ee;font:13px/1.5 system-ui,sans-serif}
+.l10-demo-tab {display:flex;justify-content:space-between;flex:none;padding:10px 16px;width:230px;max-width:90%;background:#f7f8fa;border-radius:12px 12px 0 0;margin:7px 8px 0}
+.l10-demo-address {display:flex;gap:16px;align-items:center;flex:none;background:#f7f8fa;padding:8px 14px}
+.l10-demo-address>span:nth-child(2) {flex:1;padding:5px 14px;background:#e8ebf0;border-radius:22px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.l10-demo-page {flex:1;min-height:0;overflow:auto;background:#f4f6fa;padding:28px}
+.l10-demo-wordmark {font-size:24px;color:#243e56;letter-spacing:-1px}
+.l10-demo-card {max-width:320px;margin:35px auto;padding:25px;background:white;border:1px solid #dee3ec;border-radius:12px;box-shadow:0 10px 30px #25375408}
+.l10-demo-card p {font-size:9px;letter-spacing:1.5px;color:#67768a}.l10-demo-card h2{font:600 24px/1.2 system-ui,sans-serif;color:#283047;margin:12px 0}.l10-demo-card>span{font-size:12px;color:#657285}
+.l10-demo-label{font-size:11px;margin:20px 0 7px}.l10-demo-field{border:1px solid #cdd5e1;border-radius:5px;padding:9px;color:#6e7889;font-size:12px}.l10-demo-submit{background:#344ec0;color:white;padding:11px;text-align:center;margin-top:24px;border-radius:6px}.l10-demo-browser.l10-actual{width:1440px;height:900px;right:auto;bottom:auto}
+@media(max-width:900px){body[data-horizon][data-live10]{height:auto;min-height:100dvh;overflow:auto}body[data-horizon][data-live10] #root,body[data-horizon][data-live10] .app{height:auto}body[data-horizon][data-live10] .work{height:auto;overflow:visible;display:flex}body[data-horizon] .horizon-live10,body[data-horizon] .horizon-live10.l10-focused{height:auto;max-height:none;overflow:visible;margin:10px;min-height:0}body[data-horizon] .horizon-live10 .l10-layout{grid-template-columns:minmax(0,1fr)}body[data-horizon] .horizon-live10 .l10-stage{flex:none;height:520px}body[data-horizon] .horizon-live10 #l10-events{max-height:280px}body[data-horizon] .l10-banner .l10-lab,body[data-horizon] .horizon-live10.l10-focused .l10-lab{position:relative;inset:auto;transform:none;max-width:100%;width:100%;border-radius:0}body[data-horizon] .l10-demo-page{padding:16px}.l10-demo-card{margin:18px auto}}
