@@ -322,9 +322,6 @@
     brand.innerHTML = '<span class="minimal-brand-mark" aria-hidden="true"><img src="icon_v4.png" width="1254" height="1254" alt=""></span>';
     brand.setAttribute('aria-label', 'a11ya');
     brand.title = 'a11ya';
-    const collapse = document.querySelector('#collapse');
-    collapse.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/><path class="live12-collapse-arrow" d="m16 9-3 3 3 3"/></svg><span>Menu</span>';
-
     const route = liveRoute();
     document.body.toggleAttribute('data-live-view', Boolean(route));
     installNavigation(route);
