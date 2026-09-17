@@ -143,12 +143,12 @@
       : study.connection === 'reconnecting' ? t('Reconnecting · last frame is stale','Reconnexion · dernière image non actuelle')
       : study.control === 'human' ? t('Local input simulation · Escape to release','Simulation locale de saisie · Échap pour libérer')
       : t('Reading form structure · no final results','Lecture du formulaire · aucun résultat définitif');
-    return `<header class="live12-target"><div class="live12-target-page"><p>${t('TARGET PAGE · RUN 025','PAGE CIBLE · AUDIT 025')}</p><h1 id="view-title" tabindex="-1">atlas.example/sign-in</h1><div class="live12-scope"><span>${t('One public page','Une page publique')}</span><span>RGAA 4.1.2</span><span>1440 × 900</span></div></div><div class="live12-status" id="remote-input-status" tabindex="-1" aria-label="${t('Browser responsibility and status','Responsabilité et état du navigateur')}"><strong>${state}</strong><span>${detail}</span></div></header>`;
+    return `<header class="live12-target"><div class="live12-target-page"><span class="live12-target-label">${t('Target page','Page cible')}</span><h1 id="view-title" tabindex="-1">atlas.example/sign-in</h1><div class="live12-scope"><span>${t('Run 025','Audit 025')}</span><span>RGAA 4.1.2</span><span>1440 × 900</span></div></div><div class="live12-status" id="remote-input-status" tabindex="-1" aria-label="${t('Browser responsibility and status','Responsabilité et état du navigateur')}"><strong>${state}</strong><span>${detail}</span></div></header>`;
   }
 
   function headerActions() {
     const connectionAction = study.connection === 'reconnecting'
-      ? t('Restore viewer','Rétablir l’affichage') : t('Preview connection loss','Aperçu d’une perte de connexion');
+      ? t('Restore viewer','Rétablir l’affichage') : t('Simulate disconnect','Simuler une coupure');
     let actions;
     if (study.control === 'engine') {
       actions=`<button type="button" data-live-action="toggle-connection">${connectionAction}</button><button type="button" class="primary" data-live-action="open-takeover">${t('Take control','Prendre le contrôle')}</button>`;
@@ -195,8 +195,8 @@
 
   function journalControls() {
     return `<div class="journal-controls">
-      <button type="button" data-live-action="toggle-follow" aria-pressed="${study.follow}">${study.follow ? t('Following newest', 'Suivi du plus récent') : t('Follow newest', 'Suivre le plus récent')}</button>
-      <button type="button" data-live-action="incoming-event">${t('Preview incoming event', 'Aperçu d’un nouvel événement')}</button>
+      <button type="button" data-live-action="toggle-follow" aria-pressed="${study.follow}">${study.follow ? t('Auto-follow', 'Suivi auto') : t('Follow paused', 'Suivi en pause')}</button>
+      <button type="button" data-live-action="incoming-event">${t('Add event', 'Ajouter un événement')}</button>
       <button type="button" data-live-action="show-newest" class="journal-unread" ${study.unread ? '' : 'hidden'}>${t(`${study.unread} new event${study.unread === 1 ? '' : 's'} · Show newest`, `${study.unread} nouvel${study.unread === 1 ? '' : 's'} événement${study.unread === 1 ? '' : 's'} · Afficher`)}</button>
     </div>`;
   }
@@ -211,7 +211,7 @@
   function journal() {
     const selectable = true;
     return `<section class="live-journal live-journal-inspection" aria-labelledby="journal-title">
-      <header><div><p class="eyebrow">${t('Run activity', 'Activité de l’audit')}</p><h2 id="journal-title" tabindex="-1">${t('Execution journal', 'Journal d’exécution')}</h2><p>${t('Newest first. Pause follow to read without being moved.', 'Du plus récent au plus ancien. Suspendez le suivi pour lire sans déplacement.')}</p></div></header>
+      <header><h2 id="journal-title" tabindex="-1">${t('Journal', 'Journal')}</h2><span>${t('Newest first', 'Plus récent en premier')}</span></header>
       ${journalControls()}
       <ol class="live-event-list" aria-label="${t('Newest events first', 'Événements du plus récent au plus ancien')}">${study.events.map(event => eventItem(event, selectable)).join('')}</ol>
       <div class="journal-footer"><button type="button" data-live-action="load-older" ${study.olderLoaded ? 'disabled' : ''}>${study.olderLoaded ? t('Earlier activity loaded', 'Activité antérieure chargée') : t('Load earlier activity', 'Charger l’activité antérieure')}</button></div>
@@ -322,6 +322,9 @@
     brand.innerHTML = '<span class="minimal-brand-mark" aria-hidden="true"><img src="icon_v4.png" width="1254" height="1254" alt=""></span>';
     brand.setAttribute('aria-label', 'a11ya');
     brand.title = 'a11ya';
+    const collapse = document.querySelector('#collapse');
+    collapse.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/><path class="live12-collapse-arrow" d="m16 9-3 3 3 3"/></svg><span>Menu</span>';
+
     const route = liveRoute();
     document.body.toggleAttribute('data-live-view', Boolean(route));
     installNavigation(route);
