@@ -2,7 +2,7 @@
 
 Static design snapshot published at https://suisoku.github.io/a11ya/.
 
-`index.html` lists 41 designs and presets and eight comparison galleries. The two
+`index.html` lists 42 designs and presets and eight comparison galleries. The two
 collections contain only the HTML, CSS, browser JavaScript and images needed to
 view the designs. No build, package installation or application service is required.
 GitHub Pages publishes this repository's `main` branch from its root.
@@ -50,3 +50,5 @@ Live audit 10, 11 and all other existing prototype files are unchanged.
 Before publishing an update, check local HTML/CSS/JavaScript asset references,
 render the linked designs, scan for credentials and private endpoints, and verify
 the Pages deployment and public URLs after pushing.
+
+Live audit 13 (`studio-evolution/horizon-live-13.html?lang=fr`) is a browser-first exploration with an on-demand journal drawer, optional pinned journal and local takeover. No runtime is connected.
