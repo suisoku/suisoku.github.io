@@ -112,3 +112,17 @@ body[data-live13] #focus-navigation form{text-align:right}
 body[data-live13] #focus-navigation nav{display:grid;gap:8px}
 body[data-live13] #focus-navigation nav a{padding:12px;border-radius:10px;background:#f0edf9;color:#443b80;text-decoration:none}
 @media(max-width:950px){body[data-live13] .focusbar{gap:8px;padding:10px 12px}body[data-live13] .focus-actions{flex:1 1 100%}body[data-live13] .focus-actions>.live13-header-actions{margin-left:auto}body[data-live13] .focus-stage{padding:12px}body[data-live13] .focus-stage.is-pinned{grid-template-columns:260px minmax(0,1fr)}body[data-live13] .focus-bottom>span{display:none}}
+
+/* A single shared workspace, with a journal rail and browser separated by one rule. */
+body[data-horizon][data-live13] .focus-stage{padding:0;gap:0;background:#fff;border-bottom:1px solid #cbd2e4}
+body[data-horizon][data-live13] .focus-pinned{display:grid;grid-template-rows:minmax(0,1fr);gap:0;border-right:1px solid #cbd2e4;background:#fff;overflow:hidden}
+body[data-horizon][data-live13] .focus-pinned .live-journal,body[data-horizon][data-live13] .focus-stage>.horizon-remote{border:0;border-radius:0;box-shadow:none}
+body[data-horizon][data-live13] .focus-pinned .live-journal>header{min-height:53px;padding:10px 12px;gap:8px;flex-wrap:nowrap;background:#f7f8fc;border-bottom:1px solid #dde1ec;color:#30374f}
+body[data-horizon][data-live13] .focus-pinned .live-journal>header h2{color:#30374f;font-size:16px}
+body[data-live13] .focus-pinned .live-journal>header>span{display:none}
+body[data-live13] .focus-pinned .focus-journal-actions{margin-left:auto;gap:4px}
+body[data-live13] .focus-pinned .focus-journal-actions button{font-size:12px;min-height:30px;padding:4px 6px;border-color:transparent;background:transparent;color:#615b7f;box-shadow:none}
+body[data-live13] .focus-pinned .focus-journal-actions button:hover{background:#ece9f8;color:#433698}
+body[data-horizon][data-live13] .focus-pinned .journal-controls{background:#fff}
+body[data-horizon][data-live13] .focus-stage>.horizon-remote[data-controller=human]{box-shadow:inset 0 0 0 3px #5650c9}
+body[data-live13] .focus-bottom{padding:6px 16px;background:#f7f8fc}
