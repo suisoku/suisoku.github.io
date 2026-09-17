@@ -370,9 +370,20 @@
     status.textContent = t('Remote input simulation active · press Escape to return to audit status', 'Simulation de saisie distante active · appuyez sur Échap pour revenir à l’état de l’audit');
   }
 
+  let previousBrand = null;
   const horizonRender = render;
   render = function (...args) {
+    // Shared theme renderers expect their original logo node on later renders.
+    const existingBrand = document.querySelector('.brand');
+    if (previousBrand !== null && existingBrand) existingBrand.innerHTML = previousBrand;
     horizonRender(...args);
+    // design.md: current v4 identity, independently of the original live layout.
+    // Apply after every shell render so navigation/language never restore v2.
+    const brand = document.querySelector('.brand');
+    previousBrand = brand.innerHTML;
+    brand.innerHTML = '<span class="minimal-brand-mark" aria-hidden="true"><img src="icon_v4.png" width="1254" height="1254" alt=""></span>';
+    brand.setAttribute('aria-label', 'a11ya');
+    brand.title = 'a11ya';
     const route = liveRoute();
     document.body.toggleAttribute('data-live-view', Boolean(route));
     installNavigation(route);

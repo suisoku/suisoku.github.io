@@ -34,6 +34,11 @@ details expand inside the journal; Fit/100%, follow, incoming-event preview and
 earlier-activity controls remain available. It does not load or modify Live audit
 10 or any other prototype. No separate state, control or event-detail panel is shown.
 
+Live audit 11 uses the current `icon_v4.png` standalone sidebar mark and optical
+expanded/collapsed sizing from the newer Horizon views. It deliberately overrides
+the historical v2/plinth/wordmark restored by the shared original shell, including
+after navigation or language changes, without changing any other prototype.
+
 Before publishing an update, check local HTML/CSS/JavaScript asset references,
 render the linked designs, scan for credentials and private endpoints, and verify
 the Pages deployment and public URLs after pushing.

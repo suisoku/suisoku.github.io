@@ -1,4 +1,11 @@
 /* Preserve the original Horizon shell; simplify only its live workspace. */
+/* Current v4 optical sizing from Live audits 7–10, scoped to this page's shell. */
+body[data-horizon][data-minimal-live] .brand{display:flex;align-items:center;justify-content:center;gap:0;min-height:86px;padding:8px 0;background:none;border:0;box-shadow:none}
+body[data-horizon][data-minimal-live] .minimal-brand-mark{position:relative;display:block;width:64px;height:62px;overflow:hidden}
+body[data-horizon][data-minimal-live] .minimal-brand-mark img{position:absolute;left:-14px;top:-17px;width:94px;height:94px;max-width:none;object-fit:contain;filter:none}
+body[data-horizon][data-minimal-live][data-collapsed=true] .brand{min-height:70px}
+body[data-horizon][data-minimal-live][data-collapsed=true] .minimal-brand-mark{width:38px;height:37px}
+body[data-horizon][data-minimal-live][data-collapsed=true] .minimal-brand-mark img{width:55px;height:55px;left:-7.85px;top:-9.5px}
 body[data-minimal-live][data-live-view] .horizon-live{display:grid;grid-template-rows:auto minmax(0,1fr);gap:14px;min-height:0}
 body[data-minimal-live] .live-run-context{margin:0}
 body[data-minimal-live] .minimal-run-actions{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 16px;border-top:1px solid #dce0eb;background:#f7f6fc}
