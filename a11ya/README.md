@@ -2,7 +2,7 @@
 
 Static design snapshot published at https://suisoku.github.io/a11ya/.
 
-`index.html` lists 42 designs and presets and eight comparison galleries. The two
+`index.html` lists 43 designs and presets and eight comparison galleries. The two
 collections contain only the HTML, CSS, browser JavaScript and images needed to
 view the designs. No build, package installation or application service is required.
 GitHub Pages publishes this repository's `main` branch from its root.
@@ -52,3 +52,5 @@ render the linked designs, scan for credentials and private endpoints, and verif
 the Pages deployment and public URLs after pushing.
 
 Live audit 13 (`studio-evolution/horizon-live-13.html?lang=fr`) is a browser-first exploration with an on-demand journal drawer, optional pinned journal and local takeover. No runtime is connected.
+
+Silk Arc / Live audit 14 (`studio-evolution/silk-arc-live-14.html?lang=fr`) reuses the original Arc navigation and visual theme, with a browser-first workspace, optional right journal and local takeover.
