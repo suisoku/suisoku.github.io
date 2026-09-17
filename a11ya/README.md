@@ -25,11 +25,14 @@ the entry points.
 
 Live audit 11 (`studio-evolution/horizon-live-11.html`, also `?lang=fr`) is a
 separate minimal variant derived from the original `horizon-live-audits.js`:
-only its run identity bar, activity journal and fictional Atlas browser remain.
-The original component templates, fixture content and styles preserve its visual
-lineage. Event details expand inside the journal; Fit/100%, follow, incoming-event
-preview and earlier-activity controls operate locally. It does not load or modify
-Live audit 10, the application shell or any runtime service.
+the original application shell, navigation, header and bars remain intact. Only
+the workspace is reduced to the run identity bar, activity journal and fictional
+Atlas browser. The run bar contains the original control actions: connection-loss
+preview, takeover confirmation, simulated input, close session and reset. They
+operate entirely locally; no browser service or real input is connected. Event
+details expand inside the journal; Fit/100%, follow, incoming-event preview and
+earlier-activity controls remain available. It does not load or modify Live audit
+10 or any other prototype. No separate state, control or event-detail panel is shown.
 
 Before publishing an update, check local HTML/CSS/JavaScript asset references,
 render the linked designs, scan for credentials and private endpoints, and verify

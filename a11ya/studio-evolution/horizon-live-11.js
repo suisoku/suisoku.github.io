@@ -1,10 +1,16 @@
-/* Live audit 11: the original Horizon #live run bar, journal and browser only.
-   Templates and fictional fixtures derive from horizon-live-audits.js, never Live audit 10. */
+/* Live audit 11 adapts the original Horizon live view within its original shell.
+   Run controls remain local simulations; only the three workspace regions remain. */
 (() => {
-  const lang=new URLSearchParams(location.search).get('lang')==='fr'?'fr':'en';
-  const t=(en,fr)=>lang==='fr'?fr:en;
-  const local=pair=>t(...pair);
-  const icon=()=>'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8m-4-5v5"/></svg>';
+  if (!document.body.hasAttribute('data-minimal-live')) return;
+  if (!location.hash) history.replaceState(null,'',location.pathname+location.search+'#live');
+
+  const routeCopy = {
+    live: {
+      menu: ['Live audit 11', 'Audit en direct 11'],
+      title: ['Minimal workspace', 'Espace minimal']
+    }
+  };
+
   const eventFixtures = [
     {
       id: 'structure', time: '11:08:26', phase: ['Observation', 'Observation'],
@@ -98,6 +104,36 @@
     events: [...eventFixtures]
   };
 
+  let takeoverReturn = null;
+  const local = pair => t(pair[0], pair[1]);
+  const hashRoute = () => location.hash.slice(1).split('?')[0];
+  const liveRoute = () => {
+    const value = hashRoute();
+    return value === 'live' || value === 'live-audit-3' ? 'live' : '';
+  };
+  const isLiveStudy = () => Boolean(liveRoute());
+
+  function resetStudy() {
+    Object.assign(study, {
+      presentation: 'fit', follow: true, unread: 0, connection: 'connected',
+      control: 'engine', olderLoaded: false, incomingIndex: 0,
+      selectedEvent: 'structure', events: [...eventFixtures]
+    });
+  }
+
+  function installNavigation(route) {
+    const link = document.querySelector('.project-nav [data-nav="live"]');
+    if (!link) return;
+    const label = local(routeCopy.live.menu);
+    link.title = label;
+    link.setAttribute('aria-label', label);
+    link.querySelector('.nav-text').textContent = label;
+    if (route) {
+      document.querySelectorAll('[data-nav]').forEach(item => item.removeAttribute('aria-current'));
+      link.setAttribute('aria-current', 'page');
+    }
+  }
+
   function runContext() {
     return `<section class="live-run-context" aria-label="${t('Illustrative run identity and scope', 'Identité et périmètre de l’audit illustratif')}">
       <div class="live-run-id"><span>${t('Run', 'Audit')}</span><strong>025</strong><small>${t('Illustrative demo', 'Démo illustrative')}</small></div>
@@ -110,12 +146,73 @@
     </section>`;
   }
 
+  function axes() {
+    const interrupted = study.control !== 'engine';
+    const closed = study.control === 'closed';
+    const execution = interrupted
+      ? [t('Interrupted · terminal', 'Interrompue · état terminal'), t('Human control ended automation', 'Le contrôle humain a arrêté l’automatisation')]
+      : [t('Running', 'En cours'), t('Reading form structure', 'Lecture de la structure du formulaire')];
+    const connection = closed
+      ? [t('Session closed', 'Session fermée'), t('No live image or input', 'Aucune image ni saisie en direct')]
+      : study.connection === 'reconnecting'
+        ? [t('Reconnecting', 'Reconnexion'), t('Last frame is stale', 'La dernière image n’est plus actuelle')]
+        : [t('Connected', 'Connecté'), t('Live image available', 'Image en direct disponible')];
+    const input = study.control === 'engine'
+      ? [t('Monitor only', 'Observation seule'), t('Automation owns input', 'La saisie appartient à l’automatisation')]
+      : study.control === 'human'
+        ? [t('Human input', 'Saisie humaine'), t('Retained browser session', 'Session de navigateur conservée')]
+        : [t('Ended', 'Terminée'), t('No controller', 'Aucun contrôle')];
+    const results = interrupted
+      ? [t('Partial results saved', 'Résultats partiels enregistrés'), t('Unfinished checks stay incomplete', 'Les vérifications inachevées restent incomplètes')]
+      : [t('Not final', 'Non définitifs'), t('Outcomes remain separate from execution', 'Les décisions restent distinctes de l’exécution')];
+    const item = (label, value, detail, tone) => `<div data-tone="${tone}"><dt>${label}</dt><dd><strong>${value}</strong><span>${detail}</span></dd></div>`;
+    return `<dl class="live-axes" aria-label="${t('Run state', 'État de l’audit')}">
+      ${item(t('Execution', 'Exécution'), execution[0], execution[1], interrupted ? 'warning' : 'active')}
+      ${item(t('Connection', 'Connexion'), connection[0], connection[1], closed || study.connection === 'reconnecting' ? 'warning' : 'good')}
+      ${item(t('Input', 'Saisie'), input[0], input[1], study.control === 'human' ? 'control' : 'neutral')}
+      ${item(t('Recorded results', 'Résultats enregistrés'), results[0], results[1], interrupted ? 'warning' : 'neutral')}
+    </dl>`;
+  }
+
+  function controlBar() {
+    const connectionAction = study.connection === 'reconnecting'
+      ? t('Restore viewer', 'Rétablir l’affichage')
+      : t('Preview connection loss', 'Aperçu d’une perte de connexion');
+    let message;
+    let actions;
+    if (study.control === 'engine') {
+      message = t(
+        'You are monitoring. Watching does not interrupt automation. Taking control permanently ends this run.',
+        'Vous observez l’audit. L’observation n’interrompt pas l’automatisation. Prendre le contrôle met définitivement fin à cet audit.'
+      );
+      actions = `<button type="button" data-live-action="toggle-connection">${connectionAction}</button>
+        <button type="button" class="primary" data-live-action="open-takeover">${t('Take human control', 'Prendre le contrôle')}</button>`;
+    } else if (study.control === 'human') {
+      message = study.connection === 'reconnecting'
+        ? t('Automation has ended and partial results are saved. The retained browser is reconnecting; its last frame is stale.', 'L’automatisation est terminée et les résultats partiels sont enregistrés. Le navigateur conservé se reconnecte ; sa dernière image n’est plus actuelle.')
+        : t('Automation has ended and partial results are saved. The browser remains open for your input.', 'L’automatisation est terminée et les résultats partiels sont enregistrés. Le navigateur reste ouvert pour votre saisie.');
+      actions = `<button type="button" data-live-action="toggle-connection">${connectionAction}</button>
+        <button type="button" data-live-action="enter-input" ${study.connection === 'reconnecting' ? 'disabled aria-describedby="remote-input-status"' : ''}>${t('Enter remote input', 'Activer la saisie distante')}</button>
+        <button type="button" class="primary" data-live-action="close-session">${t('Close retained session', 'Fermer la session conservée')}</button>`;
+    } else {
+      message = t(
+        'The retained browser is closed. Run 025 remains interrupted; closing never resumes or retries it.',
+        'Le navigateur conservé est fermé. L’audit 025 reste interrompu ; la fermeture ne le reprend ni ne le relance.'
+      );
+      actions = `<button type="button" class="primary" data-live-action="reset-study">${t('Reset demo', 'Réinitialiser la démo')}</button>`;
+    }
+    return `<section class="live-control-bar" id="remote-input-status" tabindex="-1" aria-label="${t('Browser responsibility and controls', 'Responsabilité et commandes du navigateur')}">
+      <div><span class="live-responsibility">${study.control === 'engine' ? t('Automation has input', 'L’automatisation contrôle la saisie') : study.control === 'human' ? t('You have input · automation ended', 'Vous contrôlez la saisie · automatisation terminée') : t('Session ended', 'Session terminée')}</span><p>${message}</p></div>
+      <div class="live-control-actions">${actions}</div>
+    </section>`;
+  }
+
   function remoteCanvas() {
     const closed = study.control === 'closed';
     const stale = study.connection === 'reconnecting';
     const browserState = closed
       ? t('Session closed', 'Session fermée')
-      : stale ? t('Reconnecting · stale frame', 'Reconnexion · image non actuelle') : t('Static browser specimen', 'Maquette statique du navigateur');
+      : stale ? t('Reconnecting · stale frame', 'Reconnexion · image non actuelle') : t('Static preview · connected', 'Aperçu statique · connecté');
     const displayLabel = study.presentation === 'fit' ? t('Fit', 'Ajusté') : '100%';
     return `<section class="horizon-remote" data-presentation="${study.presentation}" data-connection="${study.connection}" data-controller="${study.control}" aria-label="${t('Illustrative remote browser', 'Navigateur distant illustratif')}">
       <header class="remote-chrome">
@@ -171,29 +268,210 @@
     </section>`;
   }
 
-
-  document.documentElement.lang=lang;
-  document.title=t('a11ya — Live audit 11 / Minimal','a11ya — Audit en direct 11 / Minimal');
-  function render(focusSelector,prepend=false){
-    const list=document.querySelector('.live-event-list');
-    const saved=list?{top:list.scrollTop,height:list.scrollHeight}:null;
-    document.querySelector('#minimal-live').innerHTML='<h1 class="live-view-title">'+t('Live audit 11','Audit en direct 11')+'</h1>'+runContext()+'<div class="minimal-workspace">'+journal()+remoteCanvas()+'</div>';
-    const next=document.querySelector('.live-event-list');
-    if(saved)next.scrollTop=study.follow?0:saved.top+(prepend?next.scrollHeight-saved.height:0);
-    if(focusSelector)document.querySelector(focusSelector)?.focus({preventScroll:true});
+  function selectedEventDetail() {
+    const event = study.events.find(item => item.id === study.selectedEvent) || study.events[0];
+    return `<section class="live-event-detail" aria-live="polite" aria-labelledby="selected-event-title">
+      <p class="eyebrow">${t('Selected journal event', 'Événement du journal sélectionné')}</p>
+      <div><time>${event.time}</time><span>${local(event.phase)}</span></div>
+      <h2 id="selected-event-title">${local(event.title)}</h2>
+      <p>${local(event.detail)}</p>
+    </section>`;
   }
-  document.addEventListener('click',event=>{
-    const selected=event.target.closest('[data-live-event]');
-    if(selected){study.selectedEvent=study.selectedEvent===selected.dataset.liveEvent?null:selected.dataset.liveEvent;render('[data-live-event="'+selected.dataset.liveEvent+'"]');return;}
-    const button=event.target.closest('[data-live-action]');if(!button)return;
-    const action=button.dataset.liveAction;let focus='[data-live-action="'+action+'"]',prepend=false;
-    if(action==='display-fit'||action==='display-actual')study.presentation=action==='display-fit'?'fit':'actual';
-    else if(action==='toggle-follow'){study.follow=!study.follow;if(study.follow)study.unread=0;}
-    else if(action==='show-newest'){study.follow=true;study.unread=0;focus='[data-live-action="toggle-follow"]';}
-    else if(action==='incoming-event'){const sample=incomingFixtures[study.incomingIndex%incomingFixtures.length];study.incomingIndex++;study.events.unshift({...sample,id:sample.id+'-'+study.incomingIndex});if(!study.follow)study.unread++;prepend=true;}
-    else if(action==='load-older'){if(!study.olderLoaded)study.events.push(...olderFixtures);study.olderLoaded=true;focus='#journal-title';}
-    else return;
-    render(focus,prepend);
+
+  function takeoverDialog() {
+    return `<dialog id="horizon-takeover" aria-labelledby="takeover-title">
+      <form method="dialog">
+        <div class="dialog-head"><div><p class="eyebrow">${t('Run 025', 'Audit 025')}</p><h2 id="takeover-title">${t('End automation and take control?', 'Arrêter l’automatisation et prendre le contrôle ?')}</h2></div><button value="cancel" aria-label="${t('Close without taking control', 'Fermer sans prendre le contrôle')}">×</button></div>
+        <div class="dialog-body">
+          <p>${t('Taking control permanently interrupts this audit. Work already completed is saved; unfinished checks remain incomplete.', 'Prendre le contrôle interrompt définitivement cet audit. Le travail déjà terminé est enregistré ; les vérifications inachevées restent incomplètes.')}</p>
+          <ul><li>${t('The browser stays open for your manual input.', 'Le navigateur reste ouvert pour votre saisie manuelle.')}</li><li>${t('Closing it later never resumes or retries this run.', 'Le fermer ensuite ne reprend ni ne relance cet audit.')}</li><li>${t('Watching without control never stops automation.', 'Observer sans prendre le contrôle n’arrête jamais l’automatisation.')}</li></ul>
+        </div>
+        <div class="dialog-actions"><button value="cancel">${t('Keep observing', 'Continuer à observer')}</button><button type="button" class="primary" data-live-action="confirm-takeover">${t('End automation & take control', 'Arrêter et prendre le contrôle')}</button></div>
+      </form>
+    </dialog>`;
+  }
+
+  function page() {
+    const controls=controlBar().replace('<section class="live-control-bar"','<div class="minimal-run-actions"').replace('</section>','</div>');
+    const run=runContext().replace('</section>',controls+'</section>');
+    return '<h1 class="live-view-title" id="view-title" tabindex="-1">'+local(routeCopy.live.menu)+'</h1>'+run+'<div class="minimal-workspace">'+journal()+remoteCanvas()+'</div>'+takeoverDialog();
+  }
+
+  function captureJournalPosition() {
+    return [...document.querySelectorAll('.live-event-list')].map(list => ({scrollTop: list.scrollTop, scrollHeight: list.scrollHeight}));
+  }
+
+  function restoreJournalPosition(savedPositions, prepended = false) {
+    document.querySelectorAll('.live-event-list').forEach((list, index) => {
+      const savedPosition = savedPositions[index];
+      if (!savedPosition) return;
+      if (study.follow) list.scrollTop = 0;
+      else list.scrollTop = savedPosition.scrollTop + (prepended ? list.scrollHeight - savedPosition.scrollHeight : 0);
+    });
+  }
+
+  function renderStudy(options = {}) {
+    const route = liveRoute();
+    if (!route) return;
+    const positions = options.preserveJournal ? captureJournalPosition() : [];
+    active = route;
+    document.documentElement.lang = lang;
+    document.title = `a11ya Studio — Horizon / ${local(routeCopy[route].menu)} · ${local(routeCopy[route].title)}`;
+    const crumb = document.querySelector('#crumb-view');
+    if (crumb) crumb.textContent = local(routeCopy[route].menu);
+    installNavigation(route);
+    const main = document.querySelector('#main');
+    main.classList.add('horizon-live');
+
+    main.innerHTML = page();
+    restoreJournalPosition(positions, options.prepended);
+    applyPreferences();
+    moveNavIndicator();
+    if (options.focusTitle) document.querySelector('#view-title')?.focus({preventScroll: true});
+    if (options.focusSelector) requestAnimationFrame(() => document.querySelector(options.focusSelector)?.focus({preventScroll: true}));
+  }
+
+  function addStateEvent(event, selected = true) {
+    study.events = [event, ...study.events.filter(item => item.id !== event.id)];
+    if (selected) study.selectedEvent = event.id;
+  }
+
+  function openTakeover(trigger) {
+    takeoverReturn = trigger;
+    const dialog = document.querySelector('#horizon-takeover');
+    dialog.addEventListener('close', () => takeoverReturn?.isConnected && takeoverReturn.focus({preventScroll: true}), {once: true});
+    dialog.showModal();
+    dialog.querySelector('button[value="cancel"]')?.focus();
+  }
+
+  function confirmTakeover() {
+    const dialog = document.querySelector('#horizon-takeover');
+    dialog?.close('confirmed');
+    study.control = 'human';
+    addStateEvent({
+      id: 'takeover', time: '11:09:03', phase: ['Control', 'Contrôle'],
+      title: ['Automation interrupted for human control', 'Automatisation interrompue pour le contrôle humain'],
+      detail: [
+        'Completed and partial results were saved before the retained browser became available for input. This run will not resume.',
+        'Les résultats terminés et partiels ont été enregistrés avant l’ouverture de la saisie dans le navigateur conservé. Cet audit ne reprendra pas.'
+      ]
+    });
+    renderStudy({focusSelector: '#remote-input-status'});
+  }
+
+  function enterRemoteInput() {
+    const canvas = document.querySelector('#horizon-remote-canvas');
+    if (!canvas || study.control !== 'human' || study.connection !== 'connected') return;
+    canvas.tabIndex = 0;
+    canvas.dataset.capturing = 'true';
+    canvas.setAttribute('aria-label', t('Remote input simulation active. Press Escape to return to audit status. No input is sent.', 'Simulation de saisie distante active. Appuyez sur Échap pour revenir à l’état de l’audit. Aucune saisie n’est envoyée.'));
+    canvas.focus({preventScroll: true});
+    const status = document.querySelector('#remote-key-status');
+    status.textContent = t('Remote input simulation active · press Escape to return to audit status', 'Simulation de saisie distante active · appuyez sur Échap pour revenir à l’état de l’audit');
+  }
+
+  const horizonRender = render;
+  render = function (...args) {
+    horizonRender(...args);
+    const route = liveRoute();
+    document.body.toggleAttribute('data-live-view', Boolean(route));
+    installNavigation(route);
+    if (route) renderStudy({focusTitle: args[0] !== false});
+    else {
+      const main = document.querySelector('#main');
+      main?.classList.remove('horizon-live');
+      if (main) delete main.dataset.liveLayout;
+    }
+  };
+
+  document.addEventListener('click', event => {
+    if (!isLiveStudy()) return;
+    const selectedEvent = event.target.closest('[data-live-event]');
+    if (selectedEvent) {
+      study.selectedEvent = study.selectedEvent === selectedEvent.dataset.liveEvent ? null : selectedEvent.dataset.liveEvent;
+      renderStudy({focusSelector: `[data-live-event="${study.selectedEvent}"]`, preserveJournal: true});
+      return;
+    }
+    const trigger = event.target.closest('[data-live-action]');
+    if (!trigger) return;
+    event.preventDefault();
+    const action = trigger.dataset.liveAction;
+    if (action === 'display-fit' || action === 'display-actual') {
+      study.presentation = action === 'display-fit' ? 'fit' : 'actual';
+      renderStudy({focusSelector: `[data-live-action="${action}"]`, preserveJournal: true});
+      return;
+    }
+    if (action === 'toggle-follow') {
+      study.follow = !study.follow;
+      if (study.follow) study.unread = 0;
+      renderStudy({focusSelector: '[data-live-action="toggle-follow"]', preserveJournal: true});
+      return;
+    }
+    if (action === 'show-newest') {
+      study.follow = true; study.unread = 0;
+      renderStudy({focusSelector: '[data-live-action="toggle-follow"]'});
+      return;
+    }
+    if (action === 'incoming-event') {
+      const incoming = incomingFixtures[study.incomingIndex % incomingFixtures.length];
+      study.incomingIndex += 1;
+      const copy = {...incoming, id: `${incoming.id}-${study.incomingIndex}`};
+      if (!study.follow) study.unread += 1;
+      addStateEvent(copy, false);
+      renderStudy({focusSelector: '[data-live-action="incoming-event"]', preserveJournal: true, prepended: true});
+      return;
+    }
+    if (action === 'load-older') {
+      if (!study.olderLoaded) study.events = [...study.events, ...olderFixtures];
+      study.olderLoaded = true;
+      renderStudy({focusSelector: '#journal-title', preserveJournal: true});
+      return;
+    }
+    if (action === 'toggle-connection') {
+      study.connection = study.connection === 'connected' ? 'reconnecting' : 'connected';
+      addStateEvent({
+        id: `connection-${study.connection}`, time: study.connection === 'connected' ? '11:08:58' : '11:08:53', phase: ['Connection', 'Connexion'],
+        title: study.connection === 'connected' ? ['Live image restored', 'Image en direct rétablie'] : ['Viewer reconnecting', 'Reconnexion de l’affichage'],
+        detail: study.connection === 'connected'
+          ? ['The viewer is current again. Execution and result state did not change.', 'L’affichage est de nouveau actuel. Les états d’exécution et de résultat n’ont pas changé.']
+          : ['The last frame is stale. A viewer transport problem does not by itself mean the audit failed.', 'La dernière image n’est plus actuelle. Un problème de transport de l’affichage ne signifie pas à lui seul que l’audit a échoué.']
+      }, false);
+      renderStudy({focusSelector: '[data-live-action="toggle-connection"]', preserveJournal: true, prepended: true});
+      return;
+    }
+    if (action === 'open-takeover') { openTakeover(trigger); return; }
+    if (action === 'confirm-takeover') { confirmTakeover(); return; }
+    if (action === 'enter-input') { enterRemoteInput(); return; }
+    if (action === 'close-session') {
+      study.control = 'closed';
+      study.connection = 'closed';
+      addStateEvent({
+        id: 'session-closed', time: '11:09:28', phase: ['Control', 'Contrôle'],
+        title: ['Retained browser closed', 'Navigateur conservé fermé'],
+        detail: ['The interrupted run remains terminal. Releasing the browser does not resume or retry it.', 'L’audit interrompu reste terminal. Libérer le navigateur ne reprend ni ne relance l’audit.']
+      });
+      renderStudy({focusSelector: '#remote-input-status'});
+      return;
+    }
+    if (action === 'reset-study') {
+      resetStudy();
+      renderStudy({focusSelector: '#remote-input-status'});
+    }
   });
-  render();
+
+  document.addEventListener('keydown', event => {
+    const canvas = event.target.closest?.('#horizon-remote-canvas[data-capturing="true"]');
+    if (!canvas) return;
+    event.preventDefault();
+    if (event.key === 'Escape') {
+      canvas.dataset.capturing = 'false';
+      canvas.removeAttribute('tabindex');
+      document.querySelector('#remote-key-status').textContent = t('Remote input simulation released. Audit controls are active again.', 'Simulation de saisie distante libérée. Les commandes de l’audit sont de nouveau actives.');
+      document.querySelector('#remote-input-status')?.focus({preventScroll: true});
+    } else {
+      document.querySelector('#remote-key-status').textContent = t('Demo only · no key was sent to the sample page', 'Démo uniquement · aucune touche n’a été envoyée à la page fictive');
+    }
+  }, true);
+
+  render(false);
 })();
