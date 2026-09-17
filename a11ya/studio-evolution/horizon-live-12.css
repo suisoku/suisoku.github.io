@@ -1,0 +1,47 @@
+/* Preserve the original Horizon shell; simplify only its live workspace. */
+/* Current v4 optical sizing from Live audits 7–10, scoped to this page's shell. */
+body[data-horizon][data-live12] .brand{display:flex;align-items:center;justify-content:center;gap:0;min-height:86px;padding:8px 0;background:none;border:0;box-shadow:none}
+body[data-horizon][data-live12] .minimal-brand-mark{position:relative;display:block;width:64px;height:62px;overflow:hidden}
+body[data-horizon][data-live12] .minimal-brand-mark img{position:absolute;left:-14px;top:-17px;width:94px;height:94px;max-width:none;object-fit:contain;filter:none}
+body[data-horizon][data-live12][data-collapsed=true] .brand{min-height:70px}
+body[data-horizon][data-live12][data-collapsed=true] .minimal-brand-mark{width:38px;height:37px}
+body[data-horizon][data-live12][data-collapsed=true] .minimal-brand-mark img{width:55px;height:55px;left:-7.85px;top:-9.5px}
+body[data-live12][data-live-view] .horizon-live{display:grid;grid-template-rows:auto minmax(0,1fr);gap:14px;min-height:0}
+body[data-live12] .minimal-workspace{display:grid;grid-template-columns:clamp(280px,23vw,340px) minmax(0,1fr);gap:16px;min-height:0}
+body[data-live12] .live-journal{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;min-height:0}
+body[data-live12] .live-journal-inspection .live-event-list{min-height:0;max-height:none}
+body[data-live12] .live-journal-inspection .live-event-list button[aria-expanded=true]{background:#eeecff;box-shadow:inset 4px 0 #5650c9}
+body[data-live12] .minimal-event-detail{margin:0;padding:0 18px 16px 82px;background:#eeecff;color:#535369;font-size:12px;line-height:1.55}
+body[data-live12] .horizon-remote{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;min-height:0}
+body[data-live12] .remote-scrollport{min-height:0;container-type:size}
+body[data-live12] .horizon-remote[data-presentation=fit] .remote-canvas{width:min(100cqw,160cqh);height:auto;aspect-ratio:16/10}
+body[data-live12] .horizon-remote[data-presentation=actual] .remote-scrollport{max-height:none}
+body[data-live12] .remote-scrollport:focus-visible{outline:3px solid #8076ee;outline-offset:-3px}
+@media(max-width:1100px),(max-height:699px){body[data-live12][data-live-view] .horizon-live{grid-template-rows:auto auto}body[data-live12] .minimal-workspace{grid-template-columns:minmax(0,1fr)}body[data-live12] .live-journal-inspection .live-event-list{max-height:300px}body[data-live12] .remote-scrollport{height:clamp(260px,60vw,520px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media(forced-colors:active){body[data-live12] .live-journal-inspection .live-event-list button[aria-expanded=true]{outline:2px solid Highlight;outline-offset:-4px}}
+
+/* Connect the target/status zone to the shell and move actions into the browser header. */
+body[data-horizon][data-live12][data-live-view] .horizon-live{padding:0;gap:0;grid-template-rows:auto minmax(0,1fr)}
+body[data-horizon][data-live12] .live12-target{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 22px;background:linear-gradient(115deg,#424fac,#6650b7 82%,#7962c4);color:#fff;border-bottom:1px solid #5047a1;min-width:0}
+body[data-live12] .live12-target-page{min-width:0}
+body[data-live12] .live12-target-page>p{margin:0 0 6px;font-size:9px;letter-spacing:1.2px;color:#e1def8}
+body[data-live12] .live12-target h1{margin:0;font-size:22px;line-height:1.2;letter-spacing:-.4px;font-weight:600;color:#fff;overflow-wrap:anywhere}
+body[data-live12] .live12-scope{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;color:#e4e0fa;font-size:10px}
+body[data-live12] .live12-status{display:grid;gap:5px;max-width:380px;min-width:0;text-align:right;font-size:11px;line-height:1.5}
+body[data-live12] .live12-status strong{color:#e3f7ed;font-size:12px}
+body[data-live12] .live12-status span{color:#e4e0fa}
+body[data-live12] .live12-status:focus-visible,body[data-live12] .live12-target h1:focus-visible{outline:2px solid white;outline-offset:4px}
+body[data-horizon][data-live12] .minimal-workspace{grid-template-columns:clamp(240px,18vw,280px) minmax(0,1fr);gap:14px;margin:14px 18px 18px}
+body[data-live12] .live-journal>header{padding:14px}
+body[data-live12] .live-journal>header h2{font-size:17px}
+body[data-live12] .live-journal-inspection .live-event-list button{grid-template-columns:52px minmax(0,1fr);gap:8px;padding:12px}
+body[data-live12] .event-copy{padding-left:4px}
+body[data-live12] .minimal-event-detail{padding:0 14px 14px;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+body[data-horizon][data-live12] .remote-chrome{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px;padding:11px 14px;background:#edf5f1;border-color:#c7d9d0}
+body[data-live12] .remote-chrome>div:first-child{flex:1;min-width:120px}
+body[data-live12] .remote-product{color:#426757}
+body[data-live12] .live12-header-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}
+body[data-horizon][data-live12] .live12-header-actions button{min-height:38px;padding:8px 11px;font-size:11px}
+@media(max-width:1100px),(max-height:699px){body[data-horizon][data-live12] .minimal-workspace{grid-template-columns:minmax(0,1fr)}body[data-horizon][data-live12][data-live-view] .horizon-live{grid-template-rows:auto auto}}
+@media(max-width:760px){body[data-horizon][data-live12] .live12-target{align-items:flex-start;flex-direction:column;gap:13px;padding:17px 18px}body[data-live12] .live12-status{text-align:left;max-width:none}body[data-live12] .live12-target h1{font-size:20px}body[data-horizon][data-live12] .minimal-workspace{margin:12px;gap:12px}body[data-live12] .live12-header-actions{justify-content:flex-start;flex:1 1 100%}body[data-live12] .live12-header-actions button{flex:1 1 auto}}

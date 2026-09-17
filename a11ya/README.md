@@ -2,7 +2,7 @@
 
 Static design snapshot published at https://suisoku.github.io/a11ya/.
 
-`index.html` lists 40 designs and presets and eight comparison galleries. The two
+`index.html` lists 41 designs and presets and eight comparison galleries. The two
 collections contain only the HTML, CSS, browser JavaScript and images needed to
 view the designs. No build, package installation or application service is required.
 GitHub Pages publishes this repository's `main` branch from its root.
@@ -38,6 +38,14 @@ Live audit 11 uses the current `icon_v4.png` standalone sidebar mark and optical
 expanded/collapsed sizing from the newer Horizon views. It deliberately overrides
 the historical v2/plinth/wordmark restored by the shared original shell, including
 after navigation or language changes, without changing any other prototype.
+
+Live audit 12 (`studio-evolution/horizon-live-12.html`, also `?lang=fr`) derives
+from corrected 11. It preserves the v4 shell and local takeover workflow, with
+session actions replacing Fit/100% in the browser header. A compact indigo
+target/status zone joins the top bar; the separate run/action panel is removed.
+The journal uses `clamp(240px, 18vw, 280px)` on desktop, giving the recovered width
+to the browser; narrow screens stack the regions. Details stay inside the journal.
+Live audit 10, 11 and all other existing prototype files are unchanged.
 
 Before publishing an update, check local HTML/CSS/JavaScript asset references,
 render the linked designs, scan for credentials and private endpoints, and verify
