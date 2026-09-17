@@ -1,0 +1,18 @@
+/* Original #live component styling, with only a run bar and two work regions. */
+body[data-horizon]{margin:0;background:#e9edf7;color:#29283b;min-width:320px}
+body[data-horizon] #minimal-live{height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr);gap:16px;padding:20px;box-sizing:border-box}
+body[data-horizon] .live-run-context{margin:0}
+body[data-horizon] .minimal-workspace{display:grid;grid-template-columns:clamp(280px,24vw,360px) minmax(0,1fr);gap:16px;min-height:0}
+body[data-horizon] .live-journal{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;min-height:0}
+body[data-horizon] .live-journal-inspection .live-event-list{min-height:0;max-height:none}
+body[data-horizon] .live-journal-inspection .live-event-list button[aria-expanded=true]{background:#eeecff;box-shadow:inset 4px 0 #5650c9}
+body[data-horizon] .minimal-event-detail{margin:0;padding:0 18px 16px 82px;background:#eeecff;color:#535369;font-size:12px;line-height:1.55}
+body[data-horizon] .horizon-remote{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;min-height:0}
+body[data-horizon] .remote-scrollport{min-height:0;container-type:size}
+body[data-horizon] .horizon-remote[data-presentation=fit] .remote-canvas{width:min(100cqw,160cqh);height:auto;aspect-ratio:16/10}
+body[data-horizon] .horizon-remote[data-presentation=actual] .remote-scrollport{max-height:none}
+body[data-horizon] .remote-scrollport:focus-visible{outline:3px solid #8076ee;outline-offset:-3px}
+body[data-horizon] .remote-meta span:last-child{display:none}
+@media(max-width:850px){body[data-horizon] #minimal-live{height:auto;min-height:100dvh;padding:12px;gap:12px}body[data-horizon] .minimal-workspace{grid-template-columns:minmax(0,1fr);gap:12px}body[data-horizon] .live-journal-inspection .live-event-list{max-height:320px}body[data-horizon] .remote-scrollport{height:clamp(260px,60vw,520px)}body[data-horizon] .remote-meta{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media(forced-colors:active){body[data-horizon] .live-journal-inspection .live-event-list button[aria-expanded=true]{outline:2px solid Highlight;outline-offset:-4px}}

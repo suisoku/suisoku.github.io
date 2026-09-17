@@ -2,7 +2,7 @@
 
 Static design snapshot published at https://suisoku.github.io/a11ya/.
 
-`index.html` lists 39 designs and presets and eight comparison galleries. The two
+`index.html` lists 40 designs and presets and eight comparison galleries. The two
 collections contain only the HTML, CSS, browser JavaScript and images needed to
 view the designs. No build, package installation or application service is required.
 GitHub Pages publishes this repository's `main` branch from its root.
@@ -22,6 +22,14 @@ submissions. Links to internal research documents point to the public demo guide
 Keep these adaptations when refreshing the archive; do not copy the entire source
 repository or the runtime-dependent viewers. The homepage and main gallery remain
 the entry points.
+
+Live audit 11 (`studio-evolution/horizon-live-11.html`, also `?lang=fr`) is a
+separate minimal variant derived from the original `horizon-live-audits.js`:
+only its run identity bar, activity journal and fictional Atlas browser remain.
+The original component templates, fixture content and styles preserve its visual
+lineage. Event details expand inside the journal; Fit/100%, follow, incoming-event
+preview and earlier-activity controls operate locally. It does not load or modify
+Live audit 10, the application shell or any runtime service.
 
 Before publishing an update, check local HTML/CSS/JavaScript asset references,
 render the linked designs, scan for credentials and private endpoints, and verify
