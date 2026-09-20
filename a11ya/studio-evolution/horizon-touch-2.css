@@ -155,6 +155,7 @@ body[data-horizon-touch][data-horizon][data-vivid][data-lucent][data-silk-study]
    Every color below already belongs to Horizon and its inherited styles. */
 body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][data-lucent][data-silk-study][data-evolution] {
   --nav:224px;
+  --poise-surface-depth:0 3px 0 #e5e7f1,0 14px 30px #5140700a;
   .labbar,.sidebar-caption {display:none}
   .app {height:100dvh;min-height:100dvh}
   .work {min-height:0;scroll-padding-top:96px;scrollbar-width:thin;scrollbar-color:#cfd4ec transparent}
@@ -286,9 +287,9 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
   .review-toolbar button {font-size:11px;padding:9px 12px}
   .review-count {font-size:11px;color:#66667d}
   .results-grid {grid-template-columns:minmax(0,1fr) minmax(360px,1.03fr);gap:28px;align-items:start}
-  .results-grid>.stack {gap:12px;padding:16px;background:#fff;border-radius:18px}
+  .results-grid>.stack {gap:12px}
   .finding-list {gap:10px}
-  .finding {position:relative;padding:14px 18px;text-align:left;background:#fff;border:1px solid #d7d9e8;border-radius:10px!important;scroll-margin-block:18px}
+  .finding {position:relative;padding:14px 18px;text-align:left;background:#ffffffa0;border:1px solid #cfd4ec;border-radius:10px!important;scroll-margin-block:18px}
   .finding .title {font-size:15px;line-height:1.5;font-weight:550;max-width:96%;margin-top:8px}
   .finding .meta {font-size:11px;line-height:1.7;color:#66667d;margin-top:10px;gap:12px}
   .finding[aria-pressed=true] {background:#eeebff;border-color:#a99cec}
@@ -298,8 +299,8 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
   .finding-selection {position:absolute;right:18px;top:18px;display:none;align-items:center;justify-content:center;width:20px;height:20px;background:#5650c9;color:#fff;border-radius:50%}
   .finding-selection svg {width:13px;height:13px;stroke-width:2}
   .finding[aria-pressed=true] .finding-selection {display:flex}
-  .inspector {padding:0 20px 20px;border:0;background:#fff;border-radius:18px;overflow:hidden;scroll-margin-top:16px;top:96px}
-  .inspector-head {margin:0 -20px 23px;padding:16px 20px;min-height:80px;background:linear-gradient(110deg,#f0e9fc,#f8f7ff);border:0;border-bottom:1px solid #ded8e9;border-radius:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .inspector {padding:0 0 20px 26px;border:0;border-left:1px solid var(--line);background:transparent;border-radius:0;scroll-margin-top:16px;top:96px}
+  .inspector-head {margin:0 -1px 23px -26px;padding:16px 16px 16px 26px;min-height:80px;background:linear-gradient(110deg,#f0e9fc,#f8f7ff);border:0;border-block:1px solid #d5c4ec;border-radius:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
   .inspector-context {display:flex;align-items:center;gap:12px;min-width:0}
   .inspector-symbol {display:grid;place-items:center;width:38px;height:42px;border:1px solid #cfd4ec;border-radius:10px;background:#f8f7ff;color:#6052d9;flex:none}
   .inspector-symbol svg {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5}
@@ -330,9 +331,19 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
   .local-note {margin-top:20px;padding:16px;background:#f8f7ff;border:1px solid var(--line);border-radius:8px}
   .local-note h3 {font-size:12px;margin:0 0 8px}
 
-  /* No new surface system: existing controls, menus and dialogs keep their states. */
-  :is(.form-grid.panel,.table-wrap) {border-radius:12px;border-color:#cfd4ec}
-  .form-layout>.aside-note {background:#f8f7ff}
+  /* Lucent's whole-section card logic, translated into Poise's cooler material. */
+  :is(.project,.rows,.panel,.table-wrap,.metrics,.results-grid>.stack,.inspector,.form-layout>.aside-note,.playground-cell) {background:#fff;border:1px solid #d7d9e8;border-radius:18px;box-shadow:var(--poise-surface-depth)!important}
+  .grid>.panel {padding:24px;background:linear-gradient(145deg,#f0f4fc 0%,#fff 82%)}
+  .rows {overflow:hidden}
+  .results-grid>.stack {gap:12px;padding:16px}
+  .finding {background:#fbfbff;border-color:#d7d9e8}
+  .metrics {overflow:hidden;margin-block:14px 18px}
+  .inspector {padding:0 20px 20px;overflow:hidden}
+  .inspector-head {margin:0 -20px 23px;padding:16px 20px;border:0;border-bottom:1px solid #ded8e9}
+  :is(.form-grid.panel,.table-wrap) {border-radius:18px;border-color:#d7d9e8}
+  .table-wrap {overflow:auto}
+  .form-layout>.aside-note {max-width:none;padding:24px;background:linear-gradient(145deg,#f0e9fc 0%,#f8f7ff 82%);border-color:#ded8e9;box-shadow:0 3px 0 #e3ddec,0 14px 30px #5140700a!important}
+  .state-grid>.empty {border-radius:18px;box-shadow:var(--poise-surface-depth)!important}
   .form-layout>.aside-note .eyebrow {color:#514d77}
   .form-grid label small,.form-grid .notice.info {color:#514d77}
   .state-grid :is(.muted,.notice p) {color:#514d77}
@@ -388,7 +399,7 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
     .lucent-review-workspace {grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
     .lucent-review-targets {grid-template-columns:1fr}
     .lucent-target-top {flex-wrap:wrap}
-    .grid>.panel {padding:0 0 24px;border:0;border-bottom:1px solid var(--line);margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px;align-items:start}
+    .grid>.panel {padding:22px;margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px;align-items:start}
     .grid>.panel>.eyebrow {grid-column:1;margin:0 0 10px}
     .grid>.panel>h2 {grid-column:1;font-size:22px}
     .grid>.panel>p:not(.eyebrow) {grid-column:1;margin:0}
@@ -405,10 +416,10 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
     .metric {padding:14px 10px;display:block}
     .metric span {display:block;font-size:11px;margin-top:6px}
     .metric b {font-size:24px}
-    .inspector {padding:0 20px 20px;border:0;background:#fff;border-radius:18px}
-    .inspector-head {margin:0 -20px 22px;padding:16px 20px;border-top:0}
+    .inspector {padding:0 20px 20px}
+    .inspector-head {margin:0 -20px 22px;padding:16px 20px}
     .form-layout {grid-template-columns:1fr}
-    .form-layout>.aside-note {border-left:0;border-top:1px solid var(--line)}
+    .form-layout>.aside-note {max-width:none}
   }
   @media (min-width:1001px) and (max-width:1100px) {
     .search-trigger {min-width:44px;width:44px;padding:10px}
@@ -424,9 +435,10 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
     .search-trigger :is(span,kbd) {display:none}
     .main:not([class*="horizon-live"]) {padding:24px 16px}
     .attention {padding:20px}
-    .grid,.results-grid {grid-template-columns:1fr}
+    .grid,.results-grid,.project-grid,.state-grid,.form-layout {grid-template-columns:1fr}
+    .grid>.panel,.form-layout>.aside-note {padding:20px;border-radius:16px}
     .results-grid>.stack {padding:14px}
-    .inspector {padding:0 16px 16px;border:0;background:#fff;border-radius:18px}
+    .inspector {padding:0 16px 16px;border-radius:16px}
     .inspector-head {margin:0 -16px 22px;padding:16px}
   }
   @media (max-width:480px) {

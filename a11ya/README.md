@@ -49,8 +49,9 @@ Live audit 10, 11 and all other existing prototype files are unchanged.
 
 Horizon Poise (`studio-evolution/horizon-poise.html?lang=en#dashboard`, also
 `?lang=fr`) is the refined Horizon workspace. It keeps the local fictional data
-and interactions, with restrained layered surfaces in results while the surrounding
-workspace remains continuous across overview, history, projects and forms. Live audit 2 remains a static in-page browser
+and interactions, with Lucent-inspired whole-section cards across overview,
+results, projects, history and forms. Rounded light surfaces, internal padding
+and subtle depth retain Poise's cooler identity. Live audit 2 remains a static in-page browser
 demonstration; no audit service, browser runtime, frame or network connection is
 present.
 
