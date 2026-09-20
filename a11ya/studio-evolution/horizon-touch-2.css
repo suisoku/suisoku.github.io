@@ -286,9 +286,9 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
   .review-toolbar button {font-size:11px;padding:9px 12px}
   .review-count {font-size:11px;color:#66667d}
   .results-grid {grid-template-columns:minmax(0,1fr) minmax(360px,1.03fr);gap:28px;align-items:start}
-  .results-grid>.stack {gap:12px}
+  .results-grid>.stack {gap:12px;padding:16px;background:linear-gradient(145deg,#f3f5fc,#faf8fd);border-radius:18px}
   .finding-list {gap:10px}
-  .finding {position:relative;padding:14px 18px;text-align:left;background:#ffffffa0;border:1px solid #cfd4ec;border-radius:10px!important;scroll-margin-block:18px}
+  .finding {position:relative;padding:14px 18px;text-align:left;background:#fff;border:1px solid #d7d9e8;border-radius:10px!important;scroll-margin-block:18px}
   .finding .title {font-size:15px;line-height:1.5;font-weight:550;max-width:96%;margin-top:8px}
   .finding .meta {font-size:11px;line-height:1.7;color:#66667d;margin-top:10px;gap:12px}
   .finding[aria-pressed=true] {background:#eeebff;border-color:#a99cec}
@@ -298,8 +298,8 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
   .finding-selection {position:absolute;right:18px;top:18px;display:none;align-items:center;justify-content:center;width:20px;height:20px;background:#5650c9;color:#fff;border-radius:50%}
   .finding-selection svg {width:13px;height:13px;stroke-width:2}
   .finding[aria-pressed=true] .finding-selection {display:flex}
-  .inspector {padding:0 0 20px 26px;border:0;border-left:1px solid var(--line);background:transparent;border-radius:0;scroll-margin-top:16px;top:96px}
-  .inspector-head {margin:0 -1px 23px -26px;padding:16px 16px 16px 26px;min-height:80px;background:linear-gradient(110deg,#f0e9fc,#f8f7ff);border:0;border-block:1px solid #d5c4ec;border-radius:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .inspector {padding:0 20px 20px;border:0;background:#fcfcff;border-radius:18px;overflow:hidden;scroll-margin-top:16px;top:96px}
+  .inspector-head {margin:0 -20px 23px;padding:16px 20px;min-height:80px;background:linear-gradient(110deg,#f0e9fc,#f8f7ff);border:0;border-bottom:1px solid #ded8e9;border-radius:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
   .inspector-context {display:flex;align-items:center;gap:12px;min-width:0}
   .inspector-symbol {display:grid;place-items:center;width:38px;height:42px;border:1px solid #cfd4ec;border-radius:10px;background:#f8f7ff;color:#6052d9;flex:none}
   .inspector-symbol svg {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5}
@@ -358,8 +358,8 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
     .lucent-excerpt {min-height:140px}
     .grid>.panel {padding-left:20px}
     .results-grid {gap:22px;grid-template-columns:minmax(0,1fr) minmax(340px,1fr)}
-    .inspector {padding-left:22px}
-    .inspector-head {margin-left:-22px;padding-left:22px}
+    .inspector {padding-inline:18px;padding-bottom:18px}
+    .inspector-head {margin-inline:-18px;padding-inline:18px}
     .project {padding:16px;column-gap:10px;grid-template-columns:32px minmax(0,1fr)}
     .project .monogram {width:32px;height:35px}
     .project-index {display:none}
@@ -405,8 +405,8 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
     .metric {padding:14px 10px;display:block}
     .metric span {display:block;font-size:11px;margin-top:6px}
     .metric b {font-size:24px}
-    .inspector {padding:0;border:0;border-top:1px solid var(--line)}
-    .inspector-head {margin:0 0 22px;padding:16px 20px;border-top:0}
+    .inspector {padding:0 20px 20px;border:0;background:#fcfcff;border-radius:18px}
+    .inspector-head {margin:0 -20px 22px;padding:16px 20px;border-top:0}
     .form-layout {grid-template-columns:1fr}
     .form-layout>.aside-note {border-left:0;border-top:1px solid var(--line)}
   }
@@ -425,8 +425,9 @@ body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][d
     .main:not([class*="horizon-live"]) {padding:24px 16px}
     .attention {padding:20px}
     .grid,.results-grid {grid-template-columns:1fr}
-    .inspector {padding:0;border-left:0}
-    .inspector-head {margin:0 0 22px;padding:16px}
+    .results-grid>.stack {padding:14px}
+    .inspector {padding:0 16px 16px;border:0;background:#fcfcff;border-radius:18px}
+    .inspector-head {margin:0 -16px 22px;padding:16px}
   }
   @media (max-width:480px) {
     .lucent-review-workspace {grid-template-columns:1fr}
