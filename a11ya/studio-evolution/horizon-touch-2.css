@@ -1,0 +1,459 @@
+/* Cloned from Horizon Touch. Horizon's palette and state selectors are inherited.
+   This layer changes their framing, geometry and touch spacing only. */
+body[data-horizon-touch][data-horizon][data-vivid][data-lucent][data-silk-study][data-evolution] {
+  --depth:none;
+
+  /* A continuous shell. Each scroll area keeps its own context in reach. */
+  .app {height:calc(100dvh - 36px);min-height:0;overflow:hidden}
+  .work {border-radius:0;box-shadow:none;border-left:1px solid #cdd5eb;overflow:auto;scroll-padding-top:96px;min-width:0}
+  .topbar {position:sticky;top:0;border-radius:0;min-height:72px;padding:12px 28px;z-index:5}
+  .main:not([class*="horizon-live"]) {max-width:1480px;padding:28px;min-width:0}
+  .sidebar {height:100%;min-height:0;max-height:none;padding:14px 14px 16px;gap:18px;position:relative;overflow:hidden}
+  .navigation-region {min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;gap:22px;padding:4px; margin:-4px}
+  .sidebar-caption {flex:none;padding:0 12px;font-size:10px}
+  .navgroup {gap:2px}
+  .navgroup a {min-height:44px;padding:10px 12px}
+  .nav-indicator {transition:none}
+  .org-select {flex:none}
+
+  /* The supplied mark carries the identity; the small caption names it. */
+  .brand {display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:126px;padding:4px 0;flex:none;font-size:13px;letter-spacing:.04em;font-weight:600}
+  .brand .horizon-emblem,.brand .l5-brand-mark {display:block;position:relative;width:104px;height:100px;overflow:hidden;flex:none}
+  .brand .horizon-emblem::before {display:none}
+  .brand :is(.horizon-emblem,.l5-brand-mark) img {position:absolute;left:-23px;top:-27px;width:154px;height:154px;max-width:none;object-fit:contain;filter:none;border-radius:0}
+  .brand-dot {display:none}
+  .brand:hover {background:transparent}
+  .brand:focus-visible {outline:2px solid var(--focus);outline-offset:0;border-radius:8px}
+  &[data-collapsed=true] .brand {min-height:80px;gap:0}
+  &[data-collapsed=true] .brand :is(.horizon-emblem,.l5-brand-mark) {width:42px;height:42px}
+  &[data-collapsed=true] .brand :is(.horizon-emblem,.l5-brand-mark) img {width:64px;height:64px;left:-10px;top:-11px}
+
+  /* Embedded surfaces use outlines. Only floating UI casts a shadow. */
+  .app,.app * {box-shadow:none!important;text-shadow:none!important}
+  :is(button,.button,input,select,textarea) {border-radius:8px!important;min-height:44px;transition:background-color 140ms,border-color 140ms,color 140ms;touch-action:manipulation}
+  :is(button,.button,input,select,textarea),.silk-popover * {box-shadow:none!important}
+  textarea {min-height:110px}
+  :is(button,.button,.project,.lucent-run-preview):is(:hover,:focus,:focus-visible,:active) {transform:none!important}
+  .main>*,.inspector,.lucent-excerpt {transform:none!important}
+  :is(.finding,.lucent-review-targets button) {border-radius:10px!important}
+  :is(a,button,input,select,textarea,summary):focus-visible {outline:2px solid var(--focus);outline-offset:3px}
+  .icon-button,.account-link,.inspector-head button {min-width:44px}
+  :is(button,.button,.navgroup a)>svg {stroke-width:1.6}
+  .tools {gap:8px}
+  .tools select {min-width:52px}
+  .heading .actionrow {padding-top:0}
+  .heading {align-items:center;gap:20px;margin-bottom:25px}
+  .heading h1 {font-weight:600}
+  .heading p:last-child {max-width:640px}
+
+  /* Same overview objects, joined to the workspace rather than elevated. */
+  .grid {gap:0;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr);align-items:stretch}
+  .attention {border:0;border-radius:0;padding:0 24px 0 0;background:transparent;overflow:visible}
+  .vivid-review-banner {margin:0 0 18px;padding:20px;border-radius:12px;border:1px solid #38349b;box-shadow:none}
+  .attention .number {border-radius:8px}
+  .lucent-review-workspace {gap:12px}
+  .lucent-review-footer {margin-top:16px;gap:12px}
+  .grid>.panel {border:0;border-left:1px solid var(--line);border-radius:0;background:transparent;padding:20px 0 0 24px}
+  .lucent-browser-link {padding-top:20px}
+  .project-grid {gap:16px}
+  .project {padding:20px;border-radius:12px}
+  .project-top {margin-bottom:14px}
+  .project h3 {font-weight:600}
+  .project footer {gap:10px}
+  .rows {border:0;border-block:1px solid var(--line);border-radius:0;background:transparent}
+  .row {padding:16px 0}
+
+  /* Evidence stays in Horizon's right-hand hierarchy, docked to the work. */
+  .metrics {border:0;border-block:1px solid var(--line);border-radius:0;background:transparent}
+  .metric {padding:14px 18px}
+  .metric:first-child {padding-left:0}
+  .metric b {font-size:27px}
+  .results-grid {grid-template-columns:minmax(0,1.13fr) minmax(340px,.95fr);gap:24px;align-items:start}
+  .inspector {border:0;border-left:1px solid var(--line);border-radius:0;padding:0 0 20px 24px;background:transparent;min-width:0}
+  .inspector-head {margin:0 0 18px;padding:10px 12px;border:0;border-bottom:1px solid #d5c4ec;border-radius:0}
+  .inspector-head button {padding:4px}
+  .inspector h2 {font-weight:600}
+  .finding {padding:16px}
+  .finding .title {font-weight:600}
+  .indigo-evidence {border-radius:8px}
+  .review-toolbar {gap:8px;flex-wrap:wrap}
+  .review-toolbar>label {min-width:180px}
+  .tablinks a {min-height:44px;display:inline-flex;align-items:center}
+
+  /* Forms and the existing browser/journal use the same continuous plane. */
+  .form-layout>.aside-note {border:0;border-left:1px solid #c4afe6;border-radius:0}
+  .table-wrap {border-radius:10px}
+  .indigo-run {border-radius:0;border:0;border-block:1px solid #ad9bce}
+  .run-journal {border-radius:0}
+  .desktop-tools {padding:15px 19px}
+  .page-footer {margin-top:28px}
+
+  .silk-popover {border-radius:12px;box-shadow:0 16px 38px #3021541a!important}
+  dialog {border-radius:16px;box-shadow:0 20px 80px #0003;padding:26px}
+  dialog::backdrop {backdrop-filter:none}
+  .dialog-head {gap:16px}
+  .dialog-actions {flex-wrap:wrap}
+
+  @media (pointer:coarse) {
+    :is(.pop-row,.pop-links a,.command-results button,summary,.filter-chip) {min-height:44px}
+    :is(.labbar a,.page-footer a) {display:inline-flex;align-items:center;min-height:44px}
+    :is(.project h3 a,.row a,td>a) {display:inline-flex;align-items:center;min-height:44px}
+    .labbar {min-height:44px;padding-block:0}
+    .app {height:calc(100dvh - 44px)}
+    input[type=checkbox] {width:20px;height:20px;min-height:20px}
+    .check {min-height:44px}
+  }
+  @media (min-width:761px) and (max-width:1100px) {
+    --nav:190px;
+    &[data-collapsed=true] {--nav:76px}
+    .main:not([class*="horizon-live"]) {padding:24px}
+    .topbar {padding:12px 24px;gap:12px}
+    .crumb {gap:8px}
+    .search-trigger :is(span,kbd) {display:none}
+    .grid {grid-template-columns:minmax(0,1.45fr) minmax(240px,1fr)}
+    .attention {padding-right:20px}
+    .grid>.panel {padding-left:20px}
+    .lucent-review-workspace {grid-template-columns:1fr}
+    .lucent-review-targets {grid-template-columns:1fr 1fr}
+    .lucent-target-top {align-items:start;flex-wrap:wrap}
+    .lucent-excerpt {min-height:140px}
+    .results-grid {grid-template-columns:minmax(0,1fr) minmax(290px,.95fr);gap:18px}
+    .inspector {padding-left:18px}
+    .project-grid {gap:12px}
+    .project {padding:16px}
+  }
+  @media (min-width:761px) and (max-width:920px) {
+    .heading {align-items:start;flex-wrap:wrap}
+    .heading .actionrow {margin-top:0}
+    .grid,.results-grid {grid-template-columns:minmax(0,1fr)}
+    .attention {padding:0}
+    .lucent-review-workspace {grid-template-columns:1fr 1.12fr}
+    .lucent-review-targets {grid-template-columns:1fr}
+    .grid>.panel {border-left:0;border-top:1px solid var(--line);padding:24px 0 0;margin-top:24px}
+    .inspector {border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
+    .project-grid {grid-template-columns:1fr}
+    .project footer {flex-wrap:nowrap}
+    .form-layout {grid-template-columns:minmax(0,1fr)}
+    .form-layout>.aside-note {max-width:none;border-left:0;border-top:1px solid #c4afe6}
+    .tools {gap:4px}
+    .topbar {padding:12px 16px}
+    .crumb>span {display:none}
+  }
+  @media (max-width:760px) {
+    .app {height:auto;overflow:visible}
+    .work {overflow:visible}
+    .sidebar {height:auto;max-height:80dvh}
+    .navigation-region {flex:auto}
+    .main:not([class*="horizon-live"]) {padding:20px 16px}
+    .grid,.results-grid {grid-template-columns:minmax(0,1fr)}
+    .attention {padding:0}
+    .grid>.panel,.inspector {border-left:0;border-top:1px solid var(--line);padding:20px 0 0;margin-top:20px}
+  }
+}
+
+/* Second pass: one composed review object inside an otherwise continuous plane.
+   Every color below already belongs to Horizon and its inherited styles. */
+body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][data-lucent][data-silk-study][data-evolution] {
+  --nav:224px;
+  --poise-card:#fcfcff;
+  --poise-card-tint:#f7f8ff;
+  --poise-card-border:#cfd4ec;
+  --poise-card-radius:18px;
+  .labbar,.sidebar-caption {display:none}
+  .app {height:100dvh;min-height:100dvh}
+  .work {min-height:0;scroll-padding-top:96px;scrollbar-width:thin;scrollbar-color:#cfd4ec transparent}
+  .topbar {height:72px;min-height:72px;padding:12px 32px}
+  .location-tools {gap:14px}
+  .crumb {font-size:12px;gap:12px}
+  .crumb strong {font-weight:600;color:#514d77}
+  .topbar .quiet {border-color:transparent;background:transparent}
+  .topbar .quiet:is(:hover,:focus-visible) {background:#f8f7ff;border-color:#cfd4ec}
+  .topbar select {background:transparent;min-width:60px;border-color:transparent}
+  .search-trigger {min-width:172px;justify-content:flex-start;background:#f8f9ff;border-color:#cfd4ec;font-size:12px}
+  .search-trigger kbd {margin-left:auto;font-size:10px;font-weight:400;padding:1px 5px;background:transparent;border-color:#cfd4ec}
+  .account-link {padding:4px;min-width:44px}
+  .avatar {width:30px;height:30px;font-size:11px}
+  .tools {gap:6px}
+  .sidebar {padding:0 14px 20px;gap:20px}
+  .brand {flex-direction:row;justify-content:flex-start;align-items:center;gap:10px;min-height:72px;height:72px;padding:0 12px;font-size:22px;font-weight:600;letter-spacing:-.8px;color:#28345b}
+  .brand .horizon-emblem {width:42px;height:46px}
+  .brand .horizon-emblem img {width:62px;height:62px;left:-9px;top:-9px;opacity:.96}
+  .brand .nav-text {padding-top:3px}
+  #sidebar .org-select {background:#f0f4fcb8;border-color:#cdd5eb;min-height:48px;padding:9px 12px;gap:10px;font-size:13px;font-weight:500}
+  .org-select .nav-text:last-child {margin-left:auto;font-weight:400}
+  .org-initial {width:26px;height:26px;font-size:11px;border-radius:6px}
+  .navigation-region {gap:28px;padding:4px;margin:-4px}
+  .navlabel {font-size:9px;letter-spacing:1.2px;margin-bottom:10px;color:#66667d;padding-left:12px}
+  .navgroup {gap:4px}
+  .navgroup a {min-height:44px;gap:11px;font-size:12px;border-radius:8px}
+  .navgroup a svg {width:18px;height:18px;stroke-width:1.65}
+  .navgroup a[aria-current=page] {font-weight:600}
+  .nav-indicator {left:4px;right:4px;background:#f8f7ff;border-color:#b3abdf;border-radius:8px}
+  &[data-collapsed=true] {--nav:76px}
+  &[data-collapsed=true] .brand {min-height:72px;justify-content:center;padding:0}
+  &[data-collapsed=true] .brand .horizon-emblem {width:36px;height:42px}
+  &[data-collapsed=true] .brand .horizon-emblem img {width:54px;height:54px;left:-8px;top:-6px}
+
+  .main:not([class*="horizon-live"]) {padding:30px 32px 22px;max-width:1480px}
+  .heading {margin-bottom:26px;align-items:center}
+  .heading .eyebrow {font-size:10px;margin-bottom:12px;letter-spacing:1.25px}
+  .heading h1 {font-size:30px;line-height:1.2;letter-spacing:-1px;margin-bottom:12px}
+  .heading p:last-child {font-size:13px;line-height:1.65;color:var(--muted)}
+  .heading .actionrow {flex:none}
+  :is(button,.button) {font-weight:550}
+  :is(button,.button,.finding):not(:disabled):active {transition-duration:60ms}
+  .badge {font-size:11px;font-weight:550;padding:4px 7px;border-radius:5px}
+  .badge.neutral,th {color:#514d77}
+  .badge.warn {color:#805000}
+  .badge.good {color:#226345}
+
+  /* Arc's stacked silhouette, using the existing Horizon violet material. */
+  .grid {grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr);gap:28px;align-items:stretch}
+  .attention {border:1px solid #38349b;border-radius:20px;padding:24px;background:linear-gradient(112deg,#3e43b5 0%,#5145c4 64%,#6350c8 100%);box-shadow:0 5px 0 #d1c8f0,0 14px 28px #5140a512!important;overflow:visible}
+  .vivid-review-banner {background:none;border:0;padding:0;margin:0 0 21px;border-radius:0}
+  .lucent-review-head {gap:16px;margin:0 0 12px;align-items:center}
+  .attention .eyebrow {font-size:10px;letter-spacing:1.3px;margin-bottom:10px;color:#ddd9ff}
+  .attention h2 {font-size:23px;line-height:1.25;letter-spacing:-.65px;max-width:430px}
+  .attention .number {width:46px;height:50px;font-size:32px;letter-spacing:-1.5px;font-weight:400;border:1px solid #ffffff50;border-radius:12px;background:#ffffff15}
+  .attention .vivid-review-banner p:not(.eyebrow) {font-size:12px;line-height:1.7;margin:0;max-width:560px;color:#e3dfff}
+  .lucent-review-workspace {grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:12px;min-height:150px}
+  .lucent-review-targets {gap:10px}
+  .lucent-review-targets button {min-height:72px;padding:12px;gap:10px;background:#ffffff15;border-color:#ffffff50;border-radius:10px!important}
+  .lucent-review-targets button .lucent-target-top code {color:#e3dfff;font-size:10px}
+  .lucent-review-targets button>span:last-child {color:#fff;font-size:12px;font-weight:550}
+  .lucent-review-targets button>span:last-child svg {color:#ddd9ff}
+  .lucent-review-targets button[aria-pressed=true] {background:#fff;border-color:#fff}
+  .lucent-review-targets button[aria-pressed=true] .lucent-target-top code {color:#66667d}
+  .lucent-review-targets button[aria-pressed=true]>span:last-child {color:#44316c}
+  .lucent-review-targets button[aria-pressed=true]>span:last-child svg {color:#5145c4}
+  .lucent-review-targets button:is(:hover,:focus-visible) {background:#f1eaff;border-color:#fff}
+  .lucent-review-targets button:is(:hover,:focus-visible) :is(.lucent-target-top code,span:last-child) {color:#44316c}
+  .attention :is(a,button):focus-visible {outline:2px solid #fff!important;outline-offset:4px}
+  .lucent-excerpt {border-radius:10px;padding:16px;background:#262454;border-color:#ffffff50}
+  .lucent-excerpt header {font-size:9px;letter-spacing:.6px;color:#ddd9ff}
+  .lucent-excerpt code {font-size:12px;line-height:1.85;font-weight:400;padding:16px 0;color:#f0eaff}
+  .lucent-excerpt footer {font-size:10px;color:#b6abec}
+  .lucent-review-footer {margin-top:22px;gap:14px}
+  .attention .primary {min-height:44px;padding:9px 14px;background:#fff;border-color:#fff;color:#51428c!important}
+  .lucent-review-footer>span {font-size:10px;color:#e3dfff;text-align:right}
+  .grid>.panel {padding:24px;border:1px solid var(--poise-card-border);background:var(--poise-card);border-radius:var(--poise-card-radius)}
+  .grid>.panel .eyebrow {color:#66667d;font-size:10px;letter-spacing:1.3px;margin-bottom:14px}
+  .grid>.panel h2 {font-size:23px;line-height:1.3;letter-spacing:-.6px;margin-bottom:12px}
+  .grid>.panel>p:not(.eyebrow) {font-size:12px;line-height:1.7;color:#66667d;margin-bottom:20px}
+  .main a.lucent-run-preview {border-radius:10px;background:#f8f7ff;border-color:#cfd4ec}
+  .lucent-mini-bar {background:#eeebff;border-color:#cfd4ec;padding:10px 12px;color:#51428c}
+  .lucent-mini-bar>span {color:#66667d}
+  .lucent-mini-body {min-height:88px;padding:15px 12px;margin:10px;border-color:#cfd4ec;border-radius:6px}
+  .lucent-mini-body>span:first-child>b {font-size:16px;font-weight:600}
+  .lucent-mini-body>span:first-child>span,.lucent-mini-field {color:#66667d;font-size:10px}
+  .lucent-browser-link {padding-top:22px}
+  .lucent-browser-link>span {color:#66667d}
+  .lucent-browser-link .button {border-color:#cfd4ec;color:#51428c;background:#fff;min-height:44px}
+
+  /* Projects keep their family color, with less framing and denser geometry. */
+  .section-head {margin:32px 0 16px;align-items:center}
+  .section-head h2 {font-size:17px;font-weight:600;letter-spacing:-.3px}
+  .section-head .button {font-size:12px;min-height:44px}
+  .section-head:has(+ :is(.project-grid,.rows)) {margin-bottom:0;padding:20px 20px 12px;background:var(--poise-card-tint);border:1px solid var(--poise-card-border);border-bottom:0;border-radius:var(--poise-card-radius) var(--poise-card-radius) 0 0}
+  .section-head + :is(.project-grid,.rows) {border-top:0;border-radius:0 0 var(--poise-card-radius) var(--poise-card-radius)}
+  .project-grid {gap:16px;padding:18px;background:var(--poise-card-tint);border:1px solid var(--poise-card-border);border-radius:var(--poise-card-radius)}
+  .project {display:grid;grid-template-columns:36px minmax(0,1fr) auto;column-gap:13px;padding:20px;border-radius:14px;background:#fff;border:1px solid #cfd4ec}
+  .project:last-child {border-right:1px solid #cfd4ec}
+  .project-top {display:contents}
+  .project .monogram {grid-column:1;grid-row:1;width:36px;height:38px;font-size:15px;border-radius:9px}
+  .project-index {grid-column:3;grid-row:1;font-size:10px;color:#66667d;line-height:38px}
+  .project>div:nth-child(2) {grid-column:2;grid-row:1}
+  .project h3 {font-size:17px;line-height:1.3;letter-spacing:-.35px;margin:1px 0 7px}
+  .project h3 a {font-size:17px;font-weight:600}
+  .project p {font-size:12px;line-height:1.65;margin:0;color:#66667d}
+  .project footer {grid-column:1/-1;margin-top:17px;padding-top:13px;border-top:1px solid #cfd4ec;gap:8px}
+  .project footer .button {font-size:12px;min-height:44px;padding:8px 10px}
+  .project:hover {transform:none}
+  .rows {padding:8px;background:var(--poise-card-tint);border:1px solid var(--poise-card-border);border-radius:var(--poise-card-radius)}
+  .row {padding:14px 16px;border:1px solid transparent;border-bottom-color:#dfe3f1;border-radius:11px;transition:background-color 140ms,border-color 140ms}
+  .row:last-child {border-bottom-color:transparent}
+  .row:is(:hover,:focus-within) {background:#eeebff;border-color:#a99cec}
+  .row:is(:hover,:focus-within) a {color:#433698}
+  .row p {color:#66667d;font-size:12px;margin-top:4px}
+  .row a {font-weight:550}
+  .page-footer {margin-top:24px;border:0;padding-top:12px;color:#66667d;font-size:10px}
+
+  /* The inspector is a reading plane, its header an integrated piece of chrome. */
+  &[data-indigo-view=results] .heading {margin-bottom:14px}
+  &[data-indigo-view=results] .heading p:last-child {margin-bottom:8px}
+  .metrics {margin:14px 0 18px;background:var(--poise-card);border:1px solid var(--poise-card-border);border-radius:14px;overflow:hidden}
+  .metric {display:flex;align-items:center;gap:12px;padding:12px 22px}
+  .metric b {font-size:25px;font-weight:450;line-height:1.2}
+  .metric span {font-size:12px;color:#66667d}
+  .tablinks {margin-bottom:12px;padding-bottom:0;gap:24px}
+  .tablinks a {padding:8px 0;border-radius:0;min-height:44px;font-size:12px;border:0;border-bottom:2px solid transparent}
+  .tablinks a[aria-current=page] {background:transparent;border:0;border-bottom:2px solid #5650c9;color:#433698}
+  .notice.info {padding:12px 14px;color:#66667d;font-size:12px;line-height:1.65;background:#f8f7ff;border:1px solid #d8dced;border-radius:12px}
+  .detail-toolbar {padding:14px 16px;background:var(--poise-card-tint);border:1px solid var(--poise-card-border);border-radius:14px}
+  .review-toolbar {gap:8px;align-items:flex-end}
+  .review-toolbar>label {min-width:190px;font-size:11px;gap:7px}
+  .review-toolbar input {font-size:12px;background:#ffffffa0}
+  .review-toolbar button {font-size:11px;padding:9px 12px}
+  .review-count {font-size:11px;color:#66667d}
+  .results-grid {grid-template-columns:minmax(0,1fr) minmax(360px,1.03fr);gap:28px;align-items:start}
+  .results-grid>.stack {gap:12px;padding:18px;background:var(--poise-card-tint);border:1px solid var(--poise-card-border);border-radius:var(--poise-card-radius)}
+  .finding-list {gap:10px}
+  .finding {position:relative;padding:14px 18px;text-align:left;background:#ffffffa0;border:1px solid #cfd4ec;border-radius:10px!important;scroll-margin-block:18px}
+  .finding .title {font-size:15px;line-height:1.5;font-weight:550;max-width:96%;margin-top:8px}
+  .finding .meta {font-size:11px;line-height:1.7;color:#66667d;margin-top:10px;gap:12px}
+  .finding[aria-pressed=true] {background:#eeebff;border-color:#a99cec}
+  .finding[aria-pressed=true] .title {color:#44316c}
+  .finding[aria-pressed=true] .meta {color:#514d77}
+  .finding:is(:hover,:focus-visible) {background:#f1eaff;border-color:#a99cec}
+  .finding-selection {position:absolute;right:18px;top:18px;display:none;align-items:center;justify-content:center;width:20px;height:20px;background:#5650c9;color:#fff;border-radius:50%}
+  .finding-selection svg {width:13px;height:13px;stroke-width:2}
+  .finding[aria-pressed=true] .finding-selection {display:flex}
+  .inspector {padding:0 20px 20px;border:1px solid var(--poise-card-border);background:var(--poise-card);border-radius:var(--poise-card-radius);overflow:hidden;scroll-margin-top:16px;top:96px}
+  .inspector-head {margin:0 -20px 23px;padding:16px 20px;min-height:80px;background:linear-gradient(110deg,#f0e9fc,#f8f7ff);border:0;border-bottom:1px solid #d5c4ec;border-radius:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .inspector-context {display:flex;align-items:center;gap:12px;min-width:0}
+  .inspector-symbol {display:grid;place-items:center;width:38px;height:42px;border:1px solid #cfd4ec;border-radius:10px;background:#f8f7ff;color:#6052d9;flex:none}
+  .inspector-symbol svg {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5}
+  .inspector-context .eyebrow {display:block;font-size:9px;letter-spacing:1.25px;color:#66667d;margin:0 0 5px;font-weight:500}
+  .inspector-procedure {display:flex;align-items:center;gap:9px;font-size:12px;line-height:1.3;color:#514d77}
+  .inspector-procedure b {font:500 13px ui-monospace,Consolas,monospace;letter-spacing:-.4px}
+  .inspector-procedure>span {color:#80728e}
+  .inspector-head .icon-button {background:transparent;border-color:transparent;width:44px;height:44px;flex:none;color:#66667d}
+  .inspector-head .icon-button:hover {background:#fff;border-color:#cfd4ec}
+  .inspector-summary>.badge {margin-bottom:12px}
+  .inspector h2 {font-size:23px;line-height:1.3;letter-spacing:-.6px;font-weight:550;margin:0 0 12px;color:#362641}
+  .inspector-summary p {font-size:13px;line-height:1.75;margin:0;color:#66667d}
+  .inspector dl.evidence-facts {display:grid;grid-template-columns:1.2fr 1fr;gap:18px;border-block:1px solid var(--line);margin:22px 0;padding:16px 0}
+  .evidence-facts>div {min-width:0}
+  .evidence-facts dt {font-size:10px;line-height:1.5;color:#66667d;margin:0 0 7px}
+  .evidence-facts dd {font-size:12px;line-height:1.7;color:#514d77;margin:0;overflow-wrap:anywhere}
+  .evidence-facts dd>span {display:block;color:#66667d;font-size:11px}
+  .indigo-evidence {border-radius:10px;background:#342d72;border:1px solid #282157;padding:17px 18px}
+  .indigo-evidence h3 {display:flex;align-items:center;gap:9px;font-size:9px;letter-spacing:1.2px;font-weight:500;color:#ddd9ff;margin:0 0 14px;text-transform:uppercase}
+  .indigo-evidence h3 svg {width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4}
+  .indigo-evidence code {display:block;font:400 12px/1.85 ui-monospace,Consolas,monospace;color:#f6eaff;white-space:pre-wrap;overflow-wrap:anywhere;padding:4px 0 20px}
+  .lucent-code-meta {padding-top:12px;font-size:9px;color:#c0b1e8;border-color:#ffffff30}
+  .evidence-source {display:grid;gap:3px;margin:14px 0 21px;font-size:10px;line-height:1.7;color:#66667d}
+  .inspector-actions {gap:6px;flex-wrap:wrap}
+  .inspector-actions button {font-size:11px;padding:9px 12px}
+  .inspector-actions button:first-child {background:#fff;border-color:#bdb5cf}
+  .inspector-actions .quiet {border-color:transparent}
+  .local-note {margin-top:20px;padding:16px;background:#f8f7ff;border:1px solid var(--line);border-radius:8px}
+  .local-note h3 {font-size:12px;margin:0 0 8px}
+
+  /* No new surface system: existing controls, menus and dialogs keep their states. */
+  .filters {padding:16px;background:var(--poise-card-tint);border:1px solid var(--poise-card-border);border-radius:16px}
+  :is(.form-grid.panel,.table-wrap,.main:not([class*="horizon-live"])>.panel) {background:var(--poise-card);border:1px solid var(--poise-card-border);border-radius:16px}
+  .form-layout>.aside-note {padding:22px;background:#f8f7ff;border:1px solid var(--poise-card-border);border-radius:16px}
+  .form-layout>.aside-note .eyebrow {color:#514d77}
+  .form-grid label small,.form-grid .notice.info {color:#514d77}
+  .state-grid :is(.muted,.notice p) {color:#514d77}
+  .silk-popover {box-shadow:0 16px 38px #3021541a!important}
+  .pop-head button,.dialog-head button[aria-label] {min-width:44px;min-height:44px;padding:8px}
+  dialog {box-shadow:0 24px 80px #30215433!important;border:1px solid #c4b9d7;border-radius:16px}
+
+  @media (pointer:coarse) {
+    .app {height:100dvh}
+    .project h3 a {display:inline-flex;align-items:center;min-height:44px}
+    .project h3 {margin-top:1px}
+  }
+  @media (min-width:1001px) and (max-width:1200px) {
+    --nav:196px;
+    .main:not([class*="horizon-live"]) {padding:26px 24px}
+    .topbar {padding:12px 24px}
+    .grid {grid-template-columns:minmax(0,1.55fr) minmax(254px,1fr);gap:22px}
+    .attention {padding:20px}
+    .attention h2 {font-size:21px}
+    .lucent-review-workspace {grid-template-columns:1fr}
+    .lucent-review-targets {grid-template-columns:1fr 1fr;gap:10px}
+    .lucent-target-top {flex-wrap:wrap;align-items:start}
+    .lucent-excerpt {min-height:140px}
+    .grid>.panel {padding:20px}
+    .results-grid {gap:22px;grid-template-columns:minmax(0,1fr) minmax(340px,1fr)}
+    .inspector {padding-inline:18px;padding-bottom:18px}
+    .inspector-head {margin-inline:-18px;padding-inline:18px}
+    .project {padding:16px;column-gap:10px;grid-template-columns:32px minmax(0,1fr)}
+    .project .monogram {width:32px;height:35px}
+    .project-index {display:none}
+    .project h3 a {font-size:16px}
+    .project p {font-size:11px}
+    .project footer {flex-wrap:wrap}
+  }
+  @media (min-width:761px) and (max-width:1000px) {
+    --nav:180px;
+    .main:not([class*="horizon-live"]) {padding:26px 24px}
+    .topbar {padding:12px 20px;gap:8px}
+    .search-trigger {min-width:44px;width:44px;padding:10px}
+    .search-trigger :is(span,kbd) {display:none}
+    .tools {gap:2px}
+    .crumb>span {display:none}
+    .location-tools {gap:8px}
+    .sidebar {padding-inline:12px}
+    .brand {padding-inline:8px;font-size:21px;gap:8px}
+    .navgroup a {padding-inline:10px;font-size:12px}
+    .heading {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:18px}
+    .heading .actionrow {margin-top:25px}
+    .heading h1 {font-size:28px}
+    .grid,.results-grid {grid-template-columns:minmax(0,1fr)}
+    .grid {gap:28px}
+    .attention {padding:22px}
+    .lucent-review-workspace {grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+    .lucent-review-targets {grid-template-columns:1fr}
+    .lucent-target-top {flex-wrap:wrap}
+    .grid>.panel {padding:20px;border:1px solid var(--poise-card-border);border-radius:var(--poise-card-radius);margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px;align-items:start}
+    .grid>.panel>.eyebrow {grid-column:1;margin:0 0 10px}
+    .grid>.panel>h2 {grid-column:1;font-size:22px}
+    .grid>.panel>p:not(.eyebrow) {grid-column:1;margin:0}
+    .grid>.panel>.lucent-run-preview {grid-column:2;grid-row:1/4;align-self:center}
+    .lucent-mini-body {display:grid;gap:12px}
+    .lucent-browser-link {grid-column:1/-1;padding-top:20px}
+    .project-grid {grid-template-columns:1fr;gap:12px}
+    .project {grid-template-columns:36px minmax(0,1fr) auto;align-items:center;padding:16px}
+    .project-index {display:none}
+    .project h3 {margin-bottom:4px}
+    .project p br {display:block}
+    .project p {display:block}
+    .project footer {grid-column:3;grid-row:1;flex-direction:column;align-items:flex-end;border:0;margin:0;padding:0;gap:4px}
+    .metric {padding:14px 10px;display:block}
+    .metric span {display:block;font-size:11px;margin-top:6px}
+    .metric b {font-size:24px}
+    .inspector {padding:0 20px 20px;border:1px solid var(--poise-card-border)}
+    .inspector-head {margin:0 -20px 22px;padding:16px 20px;border-top:0}
+    .form-layout {grid-template-columns:1fr}
+    .form-layout>.aside-note {border:1px solid var(--poise-card-border)}
+  }
+  @media (min-width:1001px) and (max-width:1100px) {
+    .search-trigger {min-width:44px;width:44px;padding:10px}
+  }
+  @media (max-width:760px) {
+    .app {height:auto;min-height:100dvh}
+    .topbar {height:72px;min-height:72px;flex-wrap:nowrap;gap:6px;padding:12px 16px}
+    .location-tools {min-width:0;flex:1;gap:8px}
+    .crumb {min-width:0;flex:1;flex-wrap:nowrap}
+    .crumb strong {min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .tools {flex:none;gap:2px}
+    .search-trigger {min-width:44px;width:44px;padding:10px}
+    .search-trigger :is(span,kbd) {display:none}
+    .main:not([class*="horizon-live"]) {padding:24px 16px}
+    .attention {padding:20px}
+    .grid,.results-grid {grid-template-columns:1fr}
+    .form-layout {grid-template-columns:1fr}
+    .inspector {padding:0 16px 16px;border:1px solid var(--poise-card-border)}
+    .inspector-head {margin:0 -16px 22px;padding:16px}
+  }
+  @media (max-width:480px) {
+    .lucent-review-workspace {grid-template-columns:1fr}
+    .lucent-excerpt {min-height:140px}
+    .lucent-review-footer {align-items:flex-start}
+    .lucent-review-footer>span {max-width:150px}
+  }
+  @media (prefers-reduced-motion:reduce) {
+    *,*::before,*::after {transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  }
+  &[data-reduced=true] :is(button,a,input,select,textarea) {transition:none!important}
+  @media (forced-colors:active) {
+    .attention {border:2px solid CanvasText;background:Canvas}
+    .attention :is(h2,p,.eyebrow,.number,span,code),.lucent-excerpt :is(header,footer) {color:CanvasText}
+    .finding[aria-pressed=true] {outline:2px solid Highlight;outline-offset:-2px}
+    .inspector-head {border-block:1px solid CanvasText}
+  }
+}

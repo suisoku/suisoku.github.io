@@ -47,6 +47,12 @@ The journal uses `clamp(240px, 18vw, 280px)` on desktop, giving the recovered wi
 to the browser; narrow screens stack the regions. Details stay inside the journal.
 Live audit 10, 11 and all other existing prototype files are unchanged.
 
+Horizon Poise (`studio-evolution/horizon-poise.html?lang=en#dashboard`, also
+`?lang=fr`) is the refined Horizon workspace. It keeps the local fictional data
+and interactions, with bordered card surfaces across overview, history, results,
+projects and forms. Live audit 2 remains a static in-page browser demonstration;
+no audit service, browser runtime, frame or network connection is present.
+
 Before publishing an update, check local HTML/CSS/JavaScript asset references,
 render the linked designs, scan for credentials and private endpoints, and verify
 the Pages deployment and public URLs after pushing.

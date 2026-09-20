@@ -1,0 +1,107 @@
+/* Live audit 13's joined browser and optional journal, inside the Touch shell.
+   Component colors and the fictional browser remain inherited from Horizon. */
+body[data-horizon-touch][data-horizon][data-vivid][data-lucent][data-silk-study][data-evolution][data-touch-live-browser] {
+  .work {display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden}
+  .topbar {flex:none;position:relative}
+  .horizon-live-browser {display:grid;grid-template-rows:auto minmax(0,1fr) auto;flex:1;min-height:0;width:100%;max-width:none;margin:0;padding:0;overflow:hidden}
+  .touch-browser-toolbar {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 20px;padding:16px 24px;border-bottom:1px solid var(--line)}
+  .touch-browser-target {min-width:0;flex:1}
+  .touch-browser-target h1 {margin:0;font-size:20px;line-height:1.4;letter-spacing:-.4px;overflow-wrap:anywhere}
+  .touch-browser-target>span {font-size:12px;color:var(--muted)}
+  .touch-browser-actions,.touch-session-actions {display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .touch-browser-actions button {font-size:12px;padding:8px 12px}
+  .touch-event-count {background:var(--tint);color:#433698;border-radius:5px;padding:1px 6px;font-variant-numeric:tabular-nums}
+  .touch-browser-stage {display:grid;grid-template-columns:minmax(0,1fr);min-height:0;overflow:hidden;border-bottom:1px solid var(--line)}
+  .touch-browser-stage.is-pinned {grid-template-columns:280px minmax(0,1fr)}
+  .touch-pinned-journal {min-height:0;min-width:0;border-right:1px solid var(--line);overflow:hidden}
+  .touch-pinned-journal .live-journal {height:100%}
+  .live-journal {display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;min-height:0;border:0;border-radius:0;background:var(--surface)}
+  .live-journal>header {display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 12px;background:#f8f7ff;border-bottom:1px solid var(--line)}
+  .live-journal>header h2 {margin:0;font-size:16px;font-weight:600;color:var(--text)}
+  .live-journal>header>span {display:none}
+  .touch-journal-actions {display:flex;gap:4px;justify-content:space-between}
+  .touch-pinned-journal .touch-journal-actions {margin-left:auto}
+  .touch-journal-actions button {min-width:44px;padding:7px 9px;font-size:12px}
+  .journal-controls {padding:10px 12px;gap:8px;background:var(--surface)}
+  :is(.journal-controls,.journal-footer) button {font-size:12px;padding:8px 10px}
+  .journal-footer {padding:10px 12px}
+  .live-event-list {min-height:0;max-height:none;overflow:auto;overscroll-behavior:contain}
+  .live-event-list button {grid-template-columns:54px minmax(0,1fr);gap:8px;padding:14px 12px;border-radius:0!important;border:0}
+  .live-event-list button[aria-expanded=true] {background:#eee6ff;color:#593382}
+  .event-time {font-size:10px;font-variant-numeric:tabular-nums}
+  .event-copy small {font-size:10px;letter-spacing:.03em}
+  .event-copy strong {font-size:12px;font-weight:600;line-height:1.5}
+  .minimal-event-detail {margin:0;padding:0 14px 16px;background:#eee6ff;color:var(--muted);font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+  .horizon-remote {display:grid;grid-template-rows:minmax(0,1fr) auto auto;border:0;border-radius:0;min-width:0;min-height:0}
+  .remote-scrollport {container-type:size;min-height:0;max-height:none;height:auto}
+  .horizon-remote[data-presentation=fit] .remote-canvas {width:min(100cqw,160cqh);height:auto;aspect-ratio:16/10}
+  .horizon-remote[data-controller=human] {outline:2px solid var(--focus);outline-offset:-2px}
+  .remote-meta {font-size:10px;padding:10px 14px;gap:6px 14px}
+  .remote-key-status:empty {display:none}
+  .remote-scrollport:focus-visible {outline:2px solid var(--focus);outline-offset:-3px}
+  .touch-browser-footer {display:flex;align-items:center;gap:16px;padding:6px 16px;background:#f8f7ff;color:var(--muted);font-size:10px}
+  .touch-browser-footer button {flex:1;justify-content:flex-start;text-align:left;min-width:0;font-size:12px;padding:6px 10px}
+  #touch-journal-dialog {width:min(440px,calc(100vw - 32px));height:min(760px,calc(100dvh - 48px));max-height:calc(100dvh - 48px);padding:16px;border:1px solid var(--line);box-shadow:0 20px 80px #0003!important}
+  #touch-journal-dialog[open] {display:grid;grid-template-rows:auto minmax(0,1fr);gap:14px}
+  #touch-takeover {box-shadow:0 20px 80px #0003!important}
+  #touch-takeover .dialog-head {align-items:flex-start}
+  #touch-takeover .dialog-head .eyebrow {margin-bottom:8px}
+  #touch-takeover .dialog-body ul {padding-left:20px;line-height:1.7}
+
+  @media (max-width:1100px) {
+    .touch-browser-toolbar {padding:14px 20px}
+    .touch-browser-actions {flex-basis:100%}
+    .touch-session-actions {margin-left:auto}
+    .touch-browser-stage.is-pinned {grid-template-columns:240px minmax(0,1fr)}
+  }
+  @media (max-width:920px) {
+    .touch-browser-stage.is-pinned {grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(240px,1fr) minmax(260px,.85fr)}
+    .touch-pinned-journal {grid-row:2;border-right:0;border-top:1px solid var(--line)}
+    .touch-browser-stage>.horizon-remote {grid-row:1}
+    .touch-browser-footer>span {display:none}
+  }
+  @media (max-width:760px) {
+    .app {height:100dvh;min-height:100dvh;overflow:hidden}
+    .work {height:100%;min-height:0;overflow:hidden}
+  }
+  @media (max-height:620px) {
+    .work {overflow:auto}
+    .horizon-live-browser {flex:none;height:680px}
+  }
+  @media (forced-colors:active) {
+    .live-event-list button[aria-expanded=true] {outline:2px solid Highlight;outline-offset:-3px}
+  }
+}
+
+/* Refined application chrome; the simulated browser itself stays unchanged. */
+body[data-horizon-touch-refined][data-horizon-touch][data-horizon][data-vivid][data-lucent][data-silk-study][data-evolution][data-touch-live-browser] {
+  .touch-browser-toolbar {padding:18px 26px;background:#ffffff30;gap:12px 24px}
+  .touch-browser-target h1 {font-size:19px;letter-spacing:-.45px;font-weight:550;margin-bottom:4px}
+  .touch-browser-target>span {font-size:12px}
+  .touch-browser-actions button {font-size:12px;padding-inline:14px}
+  .touch-event-count {font-size:11px;font-weight:500;padding:2px 6px}
+  .live-journal>header {padding:12px 14px;min-height:70px;background:#f8f7ff}
+  .live-journal>header h2 {font-size:15px;font-weight:550;letter-spacing:-.25px}
+  .touch-journal-actions button {font-size:11px;background:transparent;border-color:transparent}
+  .touch-journal-actions button:hover {background:#eeebff;border-color:#cfd4ec}
+  .journal-controls {padding:10px 14px;background:transparent;border-bottom:1px solid var(--line)}
+  .journal-controls button {font-size:11px}
+  .live-event-list button {padding:15px 14px}
+  .event-copy strong {font-weight:550}
+  .event-copy small {font-size:9px;font-weight:500;letter-spacing:.7px;color:#66667d}
+  .event-time {font-size:10px;color:#66667d}
+  .minimal-event-detail {padding:0 16px 18px;font-size:12px;line-height:1.75}
+  .journal-footer {padding:10px 14px;background:#f8f7ff}
+  .journal-footer button {border-color:transparent;background:transparent;font-size:11px}
+  .journal-footer button:hover {background:#eeebff;border-color:#cfd4ec}
+  .touch-browser-footer {padding:5px 20px;background:transparent;border-top:1px solid var(--line)}
+  .touch-browser-footer button {border-color:transparent;background:transparent;font-size:11px}
+  .touch-browser-footer button:hover {background:#eeebff;border-color:#cfd4ec}
+  .remote-meta {padding:10px 16px;font-size:10px}
+  .remote-page-copy>span,.remote-field,.remote-login-card p {color:#526766}
+  &:not([data-preview-controls]) :is([data-touch-live-action="toggle-connection"],[data-touch-live-action="incoming-event"]) {display:none}
+  @media (min-width:761px) and (max-width:1000px) {
+    .touch-browser-toolbar {padding:16px 20px}
+    .touch-browser-actions {gap:6px}
+  }
+}
