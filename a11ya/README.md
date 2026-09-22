@@ -2,7 +2,7 @@
 
 Static design snapshot published at https://suisoku.github.io/a11ya/.
 
-`index.html` lists 43 designs and presets and eight comparison galleries. The two
+`index.html` lists 45 designs and presets and eight comparison galleries. The
 collections contain only the HTML, CSS, browser JavaScript and images needed to
 view the designs. No build, package installation or application service is required.
 GitHub Pages publishes this repository's `main` branch from its root.
@@ -22,6 +22,16 @@ submissions. Links to internal research documents point to the public demo guide
 Keep these adaptations when refreshing the archive; do not copy the entire source
 repository or the runtime-dependent viewers. The homepage and main gallery remain
 the entry points.
+
+Landing 2050 (`landing-2050/fr/` and `landing-2050/en/`) is a static production
+export of the landing components, with a living violet canvas and interactive
+agent and audience demonstrations. The export includes only browser assets and
+public copy. Audit, contact and newsletter forms show explicit local preview
+messages without sending or storing input. Workspace links open the existing
+Horizon Poise demonstration. Its content security policy permits same-origin
+static asset requests, but blocks external connections and form submissions.
+Rebuild with the source application's `scripts/build-landing-preview.mjs`; do not
+edit the generated bundles. Product services and source maps are excluded.
 
 Live audit 11 (`studio-evolution/horizon-live-11.html`, also `?lang=fr`) is a
 separate minimal variant derived from the original `horizon-live-audits.js`:
