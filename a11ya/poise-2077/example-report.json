@@ -1,0 +1,12 @@
+{
+  "kind": "DESIGN_PREVIEW_ONLY",
+  "realAudit": false,
+  "description": "Fictional sample data. No site was audited, no conformity claim is made.",
+  "site": "https://atelier.example/",
+  "views": [
+    "overview",
+    "setup",
+    "live",
+    "results"
+  ]
+}
